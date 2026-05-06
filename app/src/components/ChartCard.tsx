@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { spring, hoverLift } from "../utils/motionPresets";
 import styles from "./ChartCard.module.css";
-
-const spring = { type: "spring" as const, stiffness: 240, damping: 28, mass: 0.8 };
 
 interface ChartCardProps {
   title: string;
@@ -16,9 +15,11 @@ export function ChartCard({ title, eyebrow, action, children, className = "" }: 
   return (
     <motion.section
       className={`${styles.card} ${className}`}
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={spring}
+      whileHover={hoverLift.whileHover}
+      whileTap={hoverLift.whileTap}
     >
       <header className={styles.header}>
         <div>

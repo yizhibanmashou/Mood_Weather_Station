@@ -87,6 +87,125 @@ button {
   background: rgba(100, 75, 50, 0.22);
 }
 
+/* ═══════════════════════════════════════════════════════
+   Hero Section — product-grade title area
+   ═══════════════════════════════════════════════════════ */
+.hero-section {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.6), rgba(214,230,249,0.25)),
+    var(--surface);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 40px clamp(24px, 4vw, 56px);
+  min-height: 360px;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(59,125,216,0.06), transparent 50%),
+    radial-gradient(ellipse at 85% 70%, rgba(242,162,58,0.04), transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  flex: 0 0 45%;
+  min-width: 0;
+}
+
+.hero-kicker {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-family: "Fira Code", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(28px, 3.8vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.hero-desc {
+  margin: 16px 0 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.hero-btn-primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  box-shadow: 0 4px 16px rgba(59,125,216,0.18);
+}
+
+.hero-btn-primary:hover {
+  box-shadow: 0 8px 24px rgba(59,125,216,0.25);
+}
+
+.hero-btn-secondary {
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+}
+
+.hero-btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.hero-illustration {
+  flex: 0 0 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   prefers-reduced-motion
+   ═══════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -95,5 +214,40 @@ button {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Hero responsive
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-text {
+    flex: none;
+    width: 100%;
+  }
+  .hero-desc {
+    max-width: 100%;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .hero-illustration {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 28px 16px;
+    min-height: auto;
+  }
+  .hero-illustration {
+    display: none;
   }
 }

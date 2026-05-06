@@ -3,15 +3,14 @@ import type { EChartsOption } from "echarts";
 import { ChartCard } from "../components/ChartCard";
 import { EChart } from "../components/EChart";
 import { ErrorBoundary } from "../components/ErrorBoundary";
+import { HeroSection } from "../components/HeroSection";
 import { MetricCard } from "../components/MetricCard";
 import { EmptyState } from "../components/StateViews";
 import { StaticImageBubbleMap } from "../components/StaticImageBubbleMap";
-import { StorySummary } from "../components/StorySummary";
 import { EMOTION_META, EMOTIONS, type EmotionKey } from "../config";
 import type { DataBundle } from "../types";
 import { buildDashboardMetrics, formatNumber, formatPct, getTopAnomalies } from "../utils/analytics";
 import { dateWeekToShortRange, dateWeekToFullRange, dateWeekToAxisRange } from "../utils/dateUtils";
-import { MethodDrawer } from "../components/MethodDrawer";
 import { severityLabel, zScoreDescription, deviationDescription } from "../utils/metricLabels";
 import { cssVar } from "../theme";
 import styles from "./Pages.module.css";
@@ -211,26 +210,11 @@ export function Dashboard({ data, onProvinceSelect }: DashboardProps) {
 
   return (
     <div className={styles.pageStack}>
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div>
-          <p className={styles.kicker}>PUBLIC EMOTION OBSERVATORY</p>
-          <h1>情绪气象站</h1>
-          <p className={styles.subtitle}>Mood Weather Station</p>
-          <StorySummary nationalWeeks={data.nationalWeeks} provinceVectors={data.provinceVectors} />
-        </div>
-        <div className={styles.snapshot}>
-          <span>{metrics.weekRange}</span>
-          <strong>{formatNumber(metrics.totalPosts)}</strong>
-          <span>{metrics.provinceCount} 省份 · 6 维情绪</span>
-          <div style={{ marginTop: 10 }}>
-            <MethodDrawer />
-          </div>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <HeroSection scrollTargetId="dashboard-metrics" />
 
       {/* Metrics */}
-      <div className={styles.metricsGrid}>
+      <div className={styles.metricsGrid} id="dashboard-metrics">
         <MetricCard label="全国情绪温度" value={formatPct(metrics.avgIntensity)} detail="非中性情绪的综合强度" tone="warm" />
         <MetricCard label="积极指数变化" value={`${metrics.positiveDelta >= 0 ? "+" : ""}${metrics.positiveDelta.toFixed(2)}`} detail="最新周相对前一周的变化" tone={metrics.positiveDelta >= 0 ? "warm" : "danger"} />
         <MetricCard label="恐惧峰值周" value={metrics.fearPeak ? dateWeekToShortRange(metrics.fearPeak.date_week) : "-"} detail={`恐惧情绪达到 ${formatPct(metrics.fearPeak?.fear_mean ?? 0)}`} tone="danger" />

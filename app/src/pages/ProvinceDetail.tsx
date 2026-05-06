@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { EChartsOption } from "echarts";
 import { ChartCard } from "../components/ChartCard";
 import { EChart } from "../components/EChart";
@@ -22,8 +22,25 @@ export function ProvinceDetail({ data, initialProvince }: ProvinceDetailProps) {
   );
   const [province, setProvince] = useState(initialProvince && provinces.includes(initialProvince) ? initialProvince : (provinces[0] ?? ""));
   const [emotion, setEmotion] = useState<EmotionKey>("joy");
+
+  // Sync province when initialProvince changes from external navigation (e.g. map click)
+  const prevInitialRef = useRef(initialProvince);
+  useEffect(() => {
+    if (initialProvince && initialProvince !== prevInitialRef.current && provinces.includes(initialProvince)) {
+      setProvince(initialProvince);
+    }
+    prevInitialRef.current = initialProvince;
+  }, [initialProvince, provinces]);
+
   const vector = vectorForProvince(data, province);
   const weeks = provinceWeeks(data, province);
+
+  // Debug: log radar values to verify per-province data
+  useEffect(() => {
+    if (!vector) return;
+    const vals = EMOTIONS.map((k) => `${k}=${(vector[`${k}_mean_all` as keyof typeof vector] as number).toFixed(4)}`).join(", ");
+    console.log(`[RadarDebug] ${province}: ${vals}`);
+  }, [province, vector]);
   const examples = data.postExamples.provinces[province]?.[emotion] ?? [];
 
   // Get top 3 emotions for default display
@@ -49,7 +66,17 @@ export function ProvinceDetail({ data, initialProvince }: ProvinceDetailProps) {
       tooltip: {
         backgroundColor: surfaceColor,
         borderColor: borderColor,
-        textStyle: { color: textColor }
+        textStyle: { color: textColor },
+        formatter: (params: unknown) => {
+          const p = params as { value?: number[]; name?: string };
+          const vals = p.value ?? [];
+          let html = `<div style="font-weight:600;margin-bottom:6px">${province}</div>`;
+          EMOTIONS.forEach((key, i) => {
+            const v = vals[i] ?? 0;
+            html += `<div style="display:flex;align-items:center;gap:6px;font-size:12px"><span style="width:8px;height:8px;border-radius:50%;background:${EMOTION_META[key].color};display:inline-block"></span>${EMOTION_META[key].label}: ${formatPct(v, 1)}</div>`;
+          });
+          return html;
+        }
       },
       radar: {
         radius: "68%",
@@ -160,7 +187,7 @@ export function ProvinceDetail({ data, initialProvince }: ProvinceDetailProps) {
 
       <div className={styles.detailGrid}>
         <ChartCard title="省份情绪雷达" eyebrow="EMOTION RADAR">
-          {vector ? <EChart option={radarOption} height={340} /> : <EmptyState title="暂无省份向量" />}
+          {vector ? <EChart key={`radar-${province}`} option={radarOption} height={340} /> : <EmptyState title="暂无省份向量" />}
         </ChartCard>
         <ChartCard title="情绪周演变" eyebrow="PROVINCE EVOLUTION" className={styles.wideCard}>
           {weeks.length ? <EChart option={lineOption} height={340} /> : <EmptyState title="暂无周度记录" />}

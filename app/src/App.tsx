@@ -8,6 +8,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { EventTimeline } from "./pages/EventTimeline";
 import { ProvinceDetail } from "./pages/ProvinceDetail";
 import { applyTheme, DEFAULT_THEME, THEME_META, type ThemePreset } from "./theme";
+import { spring, pageVariants, hoverScale } from "./utils/motionPresets";
 import styles from "./App.module.css";
 
 type PageKey = "dashboard" | "province" | "cluster" | "events";
@@ -18,14 +19,6 @@ const pages: Array<{ key: PageKey; label: string; sub: string }> = [
   { key: "cluster", label: "聚类分析", sub: "Cluster" },
   { key: "events", label: "事件时间线", sub: "Events" }
 ];
-
-const spring = { type: "spring" as const, stiffness: 240, damping: 28, mass: 0.8 };
-
-const pageVariants = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0, transition: spring },
-  exit: { opacity: 0, y: -12, transition: { duration: 0.18 } }
-};
 
 const THEME_PRESETS: ThemePreset[] = ["warmIvory", "paperBeige", "softDataBlue"];
 

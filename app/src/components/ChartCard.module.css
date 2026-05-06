@@ -6,6 +6,7 @@
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
   overflow: hidden;
+  cursor: default;
 }
 
 .header {

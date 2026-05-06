@@ -10,10 +10,10 @@ interface EChartProps {
 function withAnimation(option: EChartsOption): EChartsOption {
   return {
     ...option,
-    animationDuration: 800,
-    animationDurationUpdate: 600,
+    animationDuration: 900,
+    animationDurationUpdate: 700,
     animationEasing: "cubicOut",
-    animationEasingUpdate: "cubicOut"
+    animationEasingUpdate: "cubicOut",
   };
 }
 

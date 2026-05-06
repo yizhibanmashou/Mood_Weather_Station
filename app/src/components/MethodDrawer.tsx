@@ -1,21 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { METRIC_LABELS } from "../utils/metricLabels";
-
-const spring = { type: "spring" as const, stiffness: 240, damping: 28, mass: 0.8 };
+import { spring } from "../utils/motionPresets";
 
 interface MethodDrawerProps {
   trigger?: string;
+  /** Controlled open state — if provided, component becomes controlled */
+  open?: boolean;
+  /** Called when drawer wants to close (backdrop click, X button) */
+  onClose?: () => void;
+  /** Called when trigger button is clicked (uncontrolled mode) */
+  onOpen?: () => void;
 }
 
-export function MethodDrawer({ trigger = "查看方法说明" }: MethodDrawerProps) {
-  const [open, setOpen] = useState(false);
+export function MethodDrawer({ trigger = "查看方法说明", open: controlledOpen, onClose, onOpen }: MethodDrawerProps) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isOpen = controlledOpen ?? internalOpen;
+
+  const handleOpen = () => {
+    if (onOpen) onOpen();
+    else setInternalOpen(true);
+  };
+
+  const handleClose = () => {
+    if (onClose) onClose();
+    else setInternalOpen(false);
+  };
+
+  // Close on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") handleClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [isOpen]);
 
   return (
     <>
-      <button
+      <motion.button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={handleOpen}
+        whileHover={{ y: -1, boxShadow: "0 4px 16px rgba(30,50,80,0.08)" }}
+        whileTap={{ scale: 0.97 }}
+        transition={spring}
         style={{
           background: "var(--surface)",
           border: "1px solid var(--border-strong)",
@@ -23,32 +50,33 @@ export function MethodDrawer({ trigger = "查看方法说明" }: MethodDrawerPro
           padding: "5px 14px",
           color: "var(--text-secondary)",
           fontSize: 12,
-          cursor: "pointer"
+          cursor: "pointer",
         }}
       >
         {trigger}
-      </button>
+      </motion.button>
       <AnimatePresence>
-        {open && (
+        {isOpen && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setOpen(false)}
+              transition={{ duration: 0.22 }}
+              onClick={handleClose}
               style={{
                 position: "fixed",
                 inset: 0,
-                background: "rgba(26, 35, 50, 0.25)",
-                zIndex: 100
+                background: "rgba(26, 35, 50, 0.2)",
+                backdropFilter: "blur(4px)",
+                zIndex: 100,
               }}
             />
             <motion.aside
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={spring}
+              transition={{ ...spring, stiffness: 220, damping: 30 }}
               style={{
                 position: "fixed",
                 top: 0,
@@ -61,25 +89,28 @@ export function MethodDrawer({ trigger = "查看方法说明" }: MethodDrawerPro
                 padding: "32px 24px",
                 overflowY: "auto",
                 zIndex: 101,
-                boxShadow: "-8px 0 32px rgba(30, 50, 80, 0.1)"
+                boxShadow: "-8px 0 32px rgba(30, 50, 80, 0.1)",
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
                 <h3 style={{ margin: 0, color: "var(--text)", fontSize: 18 }}>方法说明</h3>
-                <button
+                <motion.button
                   type="button"
-                  onClick={() => setOpen(false)}
+                  onClick={handleClose}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={spring}
                   style={{
                     background: "none",
                     border: "none",
                     color: "var(--text-muted)",
                     fontSize: 20,
                     cursor: "pointer",
-                    padding: "4px 8px"
+                    padding: "4px 8px",
                   }}
                 >
                   ×
-                </button>
+                </motion.button>
               </div>
 
               <div style={{ marginBottom: 20, padding: "12px 14px", borderRadius: 12, background: "var(--surface-warm)", border: "1px solid var(--border)" }}>
@@ -106,13 +137,16 @@ export function MethodDrawer({ trigger = "查看方法说明" }: MethodDrawerPro
 
               <div style={{ display: "grid", gap: 12 }}>
                 {Object.entries(METRIC_LABELS).map(([key, meta]) => (
-                  <div
+                  <motion.div
                     key={key}
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ ...spring, delay: 0.05 }}
                     style={{
                       padding: "12px 14px",
                       borderRadius: 12,
                       border: "1px solid var(--border)",
-                      background: "var(--surface-warm)"
+                      background: "var(--surface-warm)",
                     }}
                   >
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
@@ -122,7 +156,7 @@ export function MethodDrawer({ trigger = "查看方法说明" }: MethodDrawerPro
                     <p style={{ margin: 0, color: "var(--text-secondary)", fontSize: 12, lineHeight: 1.5 }}>
                       {meta.description}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
