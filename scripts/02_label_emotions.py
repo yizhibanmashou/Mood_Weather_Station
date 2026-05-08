@@ -56,6 +56,8 @@ Few-shot示例:
 EMOTION_KEYS = ["joy", "sadness", "anger", "fear", "surprise", "neutral"]
 SOURCE_REQUIRED_COLS = ["post_id", "date_week", "date_month", "province", "content_clean", "word_count"]
 OUTPUT_REQUIRED_COLS = SOURCE_REQUIRED_COLS + EMOTION_KEYS
+LOG_PATH = TMP_DIR / "02_labeling_log.json"
+FAILED_PATH = TMP_DIR / "02_labeling_failed.csv"
 client = None
 
 
@@ -354,7 +356,7 @@ def label_dataset(df, mode, output_path):
             print(f"  [WARN] Could not remove temp checkpoint {tmp_path}: {exc}")
 
     # Save logs
-    log_path = TMP_DIR / "02_labeling_log.json"
+    log_path = LOG_PATH
     json.dump({
         "mode": mode,
         "total_labeled": len(existing),
@@ -370,7 +372,7 @@ def label_dataset(df, mode, output_path):
     }, open(log_path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 
     if failed_entries:
-        failed_path = TMP_DIR / "02_labeling_failed.csv"
+        failed_path = FAILED_PATH
         pd.DataFrame(failed_entries).to_csv(failed_path, index=False, encoding="utf-8-sig")
         print(f"  [WARN] {len(failed_entries)} failed entries saved to {failed_path}")
 
@@ -394,7 +396,23 @@ def main():
     parser.add_argument("--limit", type=int, default=None,
                         help="Maximum number of rows to label (safety cap). "
                              "When set, only the first N rows will be labeled.")
+    parser.add_argument("--batch-size", type=int, default=None,
+                        help="Batch size for API calls (overrides env DEEPSEEK_BATCH_SIZE)")
+    parser.add_argument("--log", type=str, default=None,
+                        help="Path for labeling log JSON (default: tmp/02_labeling_log.json)")
+    parser.add_argument("--failed", type=str, default=None,
+                        help="Path for failed entries CSV (default: tmp/02_labeling_failed.csv)")
     args = parser.parse_args()
+
+    global BATCH_SIZE
+    if args.batch_size is not None:
+        BATCH_SIZE = args.batch_size
+    if args.log:
+        global LOG_PATH
+        LOG_PATH = Path(args.log)
+    if args.failed:
+        global FAILED_PATH
+        FAILED_PATH = Path(args.failed)
 
     print("=" * 60)
     print(f"Script 02: DeepSeek Emotion Labeling (mode={args.mode})")

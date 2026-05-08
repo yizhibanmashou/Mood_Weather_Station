@@ -4,27 +4,27 @@
 
 采用 6 维情绪分数：
 
-| 字段 | 中文 | Pilot 3000 均值 |
+| 字段 | 中文 | Cap60 均值 (39,973 条) |
 |---|---|---:|
-| `joy` | 喜悦 | 0.2716 |
-| `sadness` | 悲伤 | 0.0977 |
-| `anger` | 愤怒 | 0.1024 |
-| `fear` | 恐惧 | 0.0371 |
-| `surprise` | 惊讶 | 0.0595 |
-| `neutral` | 中性 | 0.4317 |
+| `joy` | 喜悦 | 0.2683 |
+| `sadness` | 悲伤 | 0.0902 |
+| `anger` | 愤怒 | 0.0948 |
+| `fear` | 恐惧 | 0.0344 |
+| `surprise` | 惊讶 | 0.0560 |
+| `neutral` | 中性 | 0.4564 |
 
-每条微博的 6 维分数应在 `[0, 1]`，总和接近 1。主导情绪为最高分维度。
+每条微博的 6 维分数应在 `[0, 1]`，总和为 1。主导情绪为最高分维度。
 
-### Pilot 3000 主导情绪分布
+### Cap60 主导情绪分布 (39,973 条)
 
 | 情绪 | 数量 | 占比 |
 |---|---:|---:|
-| 中性 | 1150 | 38.3% |
-| 喜悦 | 1077 | 35.9% |
-| 愤怒 | 414 | 13.8% |
-| 悲伤 | 245 | 8.2% |
-| 恐惧 | 76 | 2.5% |
-| 惊讶 | 38 | 1.3% |
+| 中性 | 16,360 | 40.9% |
+| 喜悦 | 13,976 | 35.0% |
+| 愤怒 | 5,114 | 12.8% |
+| 悲伤 | 2,999 | 7.5% |
+| 恐惧 | 918 | 2.3% |
+| 惊讶 | 606 | 1.5% |
 
 ## 标注
 
@@ -73,12 +73,23 @@
 
 `scripts/04_aggregate_emotions.py` 生成：
 
-- `emotion_panel_weekly.csv`：周×省
-- `emotion_panel_monthly.csv`：月×省
-- `emotion_national_timeline.csv`：全国周时序
-- `province_emotion_vectors.csv`：省份全年特征向量
+- `emotion_panel_weekly.csv`：周×省 (1,888 行)
+- `emotion_panel_monthly.csv`：月×省 (442 行)
+- `emotion_national_timeline.csv`：全国周时序 (58 周)
+- `province_emotion_vectors.csv`：省份全年特征向量 (34 省)
 
 省级面板使用 34 省白名单过滤噪声值，全国时序使用全部标注样本。
+
+## NLP 关键词提取
+
+`scripts/04b_nlp_keywords.py` 使用 jieba + TF-IDF 提取微博关键词，解释情绪异常背后的语义驱动力。
+
+- 分词：jieba.posseg，保留名词/动词/形容词/成语
+- TF-IDF：以周为文档单位，max_features=8000
+- 情绪归属：所有 6 维情绪均值 >= 0.05 的情绪都会获得关键词
+- 输出：55 周关键词 + 6 维度 × 30 情绪关键词 + 5000 全局词表
+
+详见 [NLP_WORDCLOUD_MODULE.md](NLP_WORDCLOUD_MODULE.md)。
 
 ## 异常检测
 

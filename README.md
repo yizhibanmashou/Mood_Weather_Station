@@ -10,7 +10,7 @@
 
 | 算法 | 应用场景 | 实现 |
 |---|---|---|
-| **LLM 文本分类** | DeepSeek API 对 76,441 条微博进行 6 维情绪标注 | `scripts/02_label_emotions.py` |
+| **LLM 文本分类** | DeepSeek API 对 39,973 条微博进行 6 维情绪标注 | `scripts/02_label_emotions.py` |
 | **中文 NLP 分词 + TF-IDF** | jieba 分词 + 词性过滤 + TF-IDF 提取异常周关键词，解释情绪异常背后的语义 | `scripts/04b_nlp_keywords.py` |
 | **Rolling Z-Score 异常检测** | 对全国情绪时序做滑动窗口检测，识别情绪突变周 | `scripts/05_detect_anomalies.py` |
 | **层次聚类 (Agglomerative Clustering)** | 基于省份情绪特征向量做层次聚类，生成 dendrogram | `scripts/06_cluster_provinces.py` |
@@ -61,9 +61,12 @@ cp .env.example .env
 conda activate py312
 pip install -r requirements.txt
 
-# 运行聚合管线（需要先完成标注）
-python scripts/04_aggregate_emotions.py
-python scripts/04b_nlp_keywords.py    # NLP 关键词提取
+# 一键运行完整扩展流水线（标注 → 合并 → 质量检查 → 下游分析 → 前端导出）
+python scripts/run_week_cap60_expansion_pipeline.py
+
+# 或手动运行聚合管线（需要先完成标注）
+python scripts/04_aggregate_emotions.py --input data/processed/labeled_dataset_merged_week_cap60.csv
+python scripts/04b_nlp_keywords.py --input data/processed/labeled_dataset_merged_week_cap60.csv
 python scripts/05_detect_anomalies.py
 python scripts/06_cluster_provinces.py
 python scripts/07_cluster_evolution.py
@@ -99,6 +102,10 @@ Mood_Weather_Station/
 | 00 | `00_probe_data_feasibility.py` | 数据可行性探测 |
 | 01 | `01_build_mini_dataset.py` | 构建 76,441 条样本集 |
 | 02 | `02_label_emotions.py` | DeepSeek 6 维情绪标注 |
+| 02b | `02b_build_stratified_relabel_plan.py` | 分层补标计划生成 |
+| 02c | `02c_merge_labeled_datasets.py` | 合并多个标注数据集 |
+| 02d | `02d_build_week_cap_expansion_plan.py` | 周-省上限扩展计划 |
+| 02e | `02e_finalize_week_cap_expansion.py` | 扩展后合并 + 质量检查 + 下游流水线 |
 | 03 | `03_validate_emotions.py` | SMP2020 外部验证 |
 | 04 | `04_aggregate_emotions.py` | 周/月/省聚合 |
 | 04b | `04b_nlp_keywords.py` | NLP 关键词提取 (jieba + TF-IDF) |
@@ -111,14 +118,14 @@ Mood_Weather_Station/
 
 每条微博标注 6 维情绪分数，总和为 1：
 
-| 情绪 | 标签 | Pilot 3000 均值 |
+| 情绪 | 标签 | Cap60 均值 (39,973 条) |
 |---|---|---:|
-| joy | 喜悦 | 0.2716 |
-| sadness | 悲伤 | 0.0977 |
-| anger | 愤怒 | 0.1024 |
-| fear | 恐惧 | 0.0371 |
-| surprise | 惊讶 | 0.0595 |
-| neutral | 中性 | 0.4317 |
+| joy | 喜悦 | 0.2683 |
+| sadness | 悲伤 | 0.0902 |
+| anger | 愤怒 | 0.0948 |
+| fear | 恐惧 | 0.0344 |
+| surprise | 惊讶 | 0.0560 |
+| neutral | 中性 | 0.4564 |
 
 验证结果：Accuracy 73.3%, Macro F1 0.662 (2000 SMP2020 样本)
 

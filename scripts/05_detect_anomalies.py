@@ -192,8 +192,8 @@ def main():
 
     # Save outputs
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    json.dump(anomalies, open(output_path, "w", encoding="utf-8"),
-              indent=2, ensure_ascii=False)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(anomalies, f, indent=2, ensure_ascii=False)
     print(f"\n[OK] Anomaly detection saved: {output_path}")
 
     # Save z-score timeseries for debugging

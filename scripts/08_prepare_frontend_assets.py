@@ -50,16 +50,19 @@ def sha256_short(path):
 
 
 def count_rows(path):
-    """Count rows in CSV (minus header) or items in JSON array"""
+    """Count rows in CSV (minus header) or items in JSON array/object"""
     ext = path.suffix.lower()
     try:
         if ext == ".csv":
             with open(path, "r", encoding="utf-8-sig") as f:
                 return max(0, sum(1 for _ in f) - 1)
         elif ext == ".json":
-            data = json.load(open(path, "r", encoding="utf-8"))
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
             if isinstance(data, list):
                 return len(data)
+            if isinstance(data, dict):
+                return len(data.get("weeks", data.get("emotions", data.get("vocabulary", data))))
             return 1
         elif ext == ".png":
             return -1  # binary, row count N/A
@@ -215,8 +218,8 @@ def main():
     # Write manifest
     manifest_path = app_public / "data" / "manifest.json"
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    json.dump(manifest, open(manifest_path, "w", encoding="utf-8"),
-              indent=2, ensure_ascii=False)
+    with open(manifest_path, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2, ensure_ascii=False)
     print(f"\n[OK] Manifest: {manifest_path}")
     print(f"  {copied} files copied, {len(errors)} errors")
 

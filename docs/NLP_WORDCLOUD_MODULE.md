@@ -14,8 +14,8 @@
 
 | 文件 | 说明 |
 |------|------|
-| `data/processed/labeled_dataset_merged_cap30.csv` | 标注后的微博数据（优先） |
-| `data/processed/labeled_dataset.csv` | 标注后的微博数据（备选） |
+| `data/processed/labeled_dataset_merged_week_cap60.csv` | 标注后的微博数据（39,973 条） |
+| `data/processed/labeled_dataset_merged_cap30.csv` | 标注后的微博数据（旧版备选） |
 | `data/processed/emotion_national_timeline.csv` | 全国情绪时序 |
 | `data/processed/anomaly_detection.json` | 异常检测结果 |
 
@@ -84,7 +84,8 @@ surge_ratio = current_week_tfidf / max(global_tfidf, 1e-6)
 ### 4.2 nlp_emotion_keywords.json
 
 按情绪维度聚合的关键词：
-- 六种情绪各 Top 20 关联关键词
+- 六种情绪各 Top 30 关联关键词
+- 关键词归属：情绪均值 >= 0.05 的所有情绪都会获得该周的关键词
 - 包含峰值周和峰值 TF-IDF
 
 ### 4.3 nlp_global_vocabulary.json
@@ -155,8 +156,8 @@ surge_ratio = current_week_tfidf / max(global_tfidf, 1e-6)
 ## 9. 运行方式
 
 ```bash
-# 在 04 聚合脚本之后运行
-python scripts/04b_nlp_keywords.py
+# 在 04 聚合脚本之后运行，传入合并后的数据集
+python scripts/04b_nlp_keywords.py --input data/processed/labeled_dataset_merged_week_cap60.csv
 
 # 之后运行 08 导出前端资产
 python scripts/08_prepare_frontend_assets.py

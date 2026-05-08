@@ -204,21 +204,25 @@ def extract_keywords_for_week(week_idx, tfidf_matrix, feature_names, week_tokens
 
 
 def compute_emotion_dominant(df, week_col, emotion_fields):
-    """Get dominant emotion per week"""
+    """Get dominant emotion per week with full score breakdown"""
     week_emotions = {}
     for week, group in df.groupby(week_col):
-        means = {k: group[k].mean() for k in emotion_fields if k in group.columns}
+        means = {k: float(group[k].mean()) for k in emotion_fields if k in group.columns}
         if means:
             sorted_emotions = sorted(means.items(), key=lambda x: x[1], reverse=True)
             week_emotions[week] = {
                 "dominant": sorted_emotions[0][0],
                 "top": [e[0] for e in sorted_emotions[:2]],
+                "means": means,
             }
     return week_emotions
 
 
+EMOTION_ATTR_THRESHOLD = 0.05
+
+
 def build_emotion_keywords(nlp_weeks, week_emotions):
-    """Aggregate keywords by emotion — assign keywords to ALL emotions in top_emotions"""
+    """Aggregate keywords by emotion — assign keywords to all emotions above threshold"""
     emotion_kw = defaultdict(list)
     emotion_word_tfidf = defaultdict(lambda: defaultdict(list))
 
@@ -226,15 +230,16 @@ def build_emotion_keywords(nlp_weeks, week_emotions):
         if week_data.get("status") != "ok":
             continue
         emo_info = week_emotions.get(week_key, {})
-        # Assign keywords to all emotions in top_emotions (not just dominant)
-        top_emotions = emo_info.get("top", [])
-        if not top_emotions:
-            top_emotions = [emo_info.get("dominant", "neutral")]
+        # Assign keywords to all emotions with mean >= threshold
+        means = emo_info.get("means", {})
+        active_emotions = [k for k, v in means.items() if v >= EMOTION_ATTR_THRESHOLD]
+        if not active_emotions:
+            active_emotions = [emo_info.get("dominant", "neutral")]
 
         for kw in week_data.get("keywords", []):
             word = kw["word"]
             tfidf = kw["tfidf"]
-            for emotion in top_emotions:
+            for emotion in active_emotions:
                 emotion_word_tfidf[emotion][word].append((tfidf, week_key))
 
     for emotion, words in emotion_word_tfidf.items():
@@ -287,6 +292,12 @@ def build_global_vocabulary(tfidf_matrix, feature_names, week_tokens_list):
 
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
+    import argparse
+
+    parser = argparse.ArgumentParser(description="NLP Keyword Extraction")
+    parser.add_argument("--input", type=str, default=None,
+                        help="Input labeled CSV path")
+    args = parser.parse_args()
 
     print("=" * 60)
     print("Script 04b: NLP Keyword Extraction")
@@ -297,19 +308,23 @@ def main():
     print(f"  Stopwords: {len(stopwords)} ({sw_source})")
 
     # Find input file
-    input_candidates = [
-        PROCESSED_DIR / "labeled_dataset_merged_cap30.csv",
-        PROCESSED_DIR / "labeled_dataset.csv",
-    ]
-    input_path = None
-    for p in input_candidates:
-        if p.exists():
-            input_path = p
-            break
-    if not input_path:
-        print("[ERROR] No labeled dataset found:")
+    if args.input:
+        input_path = Path(args.input)
+        if not input_path.is_absolute():
+            input_path = ROOT / input_path
+    else:
+        input_candidates = [
+            PROCESSED_DIR / "labeled_dataset_merged_week_cap60.csv",
+            PROCESSED_DIR / "labeled_dataset_merged_cap30.csv",
+            PROCESSED_DIR / "labeled_dataset.csv",
+        ]
+        input_path = None
         for p in input_candidates:
-            print(f"  - {p}")
+            if p.exists():
+                input_path = p
+                break
+    if not input_path or not input_path.exists():
+        print("[ERROR] No labeled dataset found.")
         sys.exit(1)
 
     print(f"  Input: {input_path}")
@@ -359,13 +374,13 @@ def main():
     # Count posts per week
     week_post_counts = df.groupby(week_col).size().to_dict()
 
-    # Extract keywords for anomaly weeks
-    print("\n[3/4] Extracting keywords for anomaly weeks...")
+    # Extract keywords for all weeks (anomaly weeks get priority in frontend)
+    print("\n[3/4] Extracting keywords for all weeks...")
     nlp_weeks = {}
     success_count = 0
     insufficient_count = 0
 
-    target_weeks = anomaly_weeks if anomaly_weeks else set(weeks_order)
+    target_weeks = set(weeks_order)
 
     for week_key in sorted(target_weeks):
         if week_key not in weeks_order:
@@ -402,11 +417,13 @@ def main():
         )[:TOP_K]
 
         emo_info = week_emotions.get(week_key, {})
+        means = emo_info.get("means", {})
+        top_emotions = sorted(means, key=means.get, reverse=True)[:3] if means else []
         nlp_weeks[week_key] = {
             "status": "ok",
             "total_posts": int(total_posts),
             "dominant_emotion": emo_info.get("dominant", "neutral"),
-            "top_emotions": emo_info.get("top", []),
+            "top_emotions": top_emotions,
             "top_keywords": top_keywords,
             "frequent_keywords": frequent_keywords,
             "surge_keywords": surge_keywords,

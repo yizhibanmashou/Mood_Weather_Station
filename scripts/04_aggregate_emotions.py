@@ -74,6 +74,7 @@ def compute_aggregations(df):
         anger_std=("anger", "std"),
         fear_std=("fear", "std"),
         surprise_std=("surprise", "std"),
+        neutral_std=("neutral", "std"),
     ).reset_index()
 
     emotion_means = [f"{k}_mean" for k in EMOTION_KEYS]
@@ -120,6 +121,7 @@ def compute_aggregations(df):
         anger_std=("anger", "std"),
         fear_std=("fear", "std"),
         surprise_std=("surprise", "std"),
+        neutral_std=("neutral", "std"),
         emotional_intensity=("neutral", lambda x: 1 - x.mean()),
     ).reset_index()
     national_weekly["dominant_emotion_key"] = (
