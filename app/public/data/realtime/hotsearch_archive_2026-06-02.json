@@ -1,0 +1,918 @@
+{
+  "fetch_time": "2026-06-02T16:35:29.015532+08:00",
+  "fetch_time_str": "2026-06-02 16:35:29",
+  "source": "UAPIS Weibo Hot Search",
+  "total_topics": 50,
+  "aggregate_emotion": {
+    "joy": 0.0681,
+    "sadness": 0.0156,
+    "anger": 0.0176,
+    "fear": 0.0002,
+    "surprise": 0.0002,
+    "neutral": 0.8983
+  },
+  "aggregate_dominant": "neutral",
+  "aggregate_dominant_cn": "中性",
+  "topics": [
+    {
+      "rank": 23,
+      "title": "于正故意挑mean的回复",
+      "hot_value": 332495,
+      "emotion": {
+        "joy": 0.000647,
+        "sadness": 0.000611,
+        "anger": 0.957177,
+        "fear": 0.00019,
+        "surprise": 0.000181,
+        "neutral": 0.041194
+      },
+      "dominant_emotion": "anger",
+      "dominant_emotion_cn": "愤怒",
+      "dominant_score": 0.957177,
+      "emotional_intensity": 0.9588,
+      "emotional_entropy": 0.1037
+    },
+    {
+      "rank": 25,
+      "title": "迪丽热巴表现力强到让人震撼",
+      "hot_value": 321874,
+      "emotion": {
+        "joy": 0.887083,
+        "sadness": 0.000279,
+        "anger": 0.000236,
+        "fear": 0.000115,
+        "surprise": 0.000114,
+        "neutral": 0.112172
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.887083,
+      "emotional_intensity": 0.8878,
+      "emotional_entropy": 0.1998
+    },
+    {
+      "rank": 15,
+      "title": "全世界最尊重上海的人",
+      "hot_value": 362438,
+      "emotion": {
+        "joy": 0.783684,
+        "sadness": 0.000919,
+        "anger": 0.000699,
+        "fear": 0.000213,
+        "surprise": 0.000202,
+        "neutral": 0.214284
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.783684,
+      "emotional_intensity": 0.7857,
+      "emotional_entropy": 0.2992
+    },
+    {
+      "rank": 13,
+      "title": "张杰真不舒服了",
+      "hot_value": 373502,
+      "emotion": {
+        "joy": 0.013897,
+        "sadness": 0.711594,
+        "anger": 0.035093,
+        "fear": 0.004441,
+        "surprise": 0.004734,
+        "neutral": 0.23024
+      },
+      "dominant_emotion": "sadness",
+      "dominant_emotion_cn": "悲伤",
+      "dominant_score": 0.711594,
+      "emotional_intensity": 0.7698,
+      "emotional_entropy": 0.4502
+    },
+    {
+      "rank": 39,
+      "title": "王皓说男乒队伍更团结了",
+      "hot_value": 235112,
+      "emotion": {
+        "joy": 0.746656,
+        "sadness": 0.000553,
+        "anger": 0.000338,
+        "fear": 0.000157,
+        "surprise": 0.00018,
+        "neutral": 0.252115
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.746656,
+      "emotional_intensity": 0.7479,
+      "emotional_entropy": 0.3211
+    },
+    {
+      "rank": 17,
+      "title": "陈粒演唱会情侣假求婚",
+      "hot_value": 354496,
+      "emotion": {
+        "joy": 0.726478,
+        "sadness": 0.000291,
+        "anger": 0.000203,
+        "fear": 8.8e-05,
+        "surprise": 7.3e-05,
+        "neutral": 0.272868
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.726478,
+      "emotional_intensity": 0.7271,
+      "emotional_entropy": 0.3305
+    },
+    {
+      "rank": 26,
+      "title": "神仙肉 陈星旭",
+      "hot_value": 278650,
+      "emotion": {
+        "joy": 0.455839,
+        "sadness": 0.000781,
+        "anger": 0.000456,
+        "fear": 0.000173,
+        "surprise": 0.000173,
+        "neutral": 0.542578
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.542578,
+      "emotional_intensity": 0.4574,
+      "emotional_entropy": 0.3918
+    },
+    {
+      "rank": 14,
+      "title": "不被爱的时候你是鹿晗也得被打码",
+      "hot_value": 371429,
+      "emotion": {
+        "joy": 0.288344,
+        "sadness": 0.002352,
+        "anger": 0.004444,
+        "fear": 0.000482,
+        "surprise": 0.0006,
+        "neutral": 0.703777
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.703777,
+      "emotional_intensity": 0.2962,
+      "emotional_entropy": 0.364
+    },
+    {
+      "rank": 41,
+      "title": "李昀锐慌了",
+      "hot_value": 231392,
+      "emotion": {
+        "joy": 0.009102,
+        "sadness": 0.131515,
+        "anger": 0.003466,
+        "fear": 0.001932,
+        "surprise": 0.001793,
+        "neutral": 0.852193
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.852193,
+      "emotional_intensity": 0.1478,
+      "emotional_entropy": 0.2729
+    },
+    {
+      "rank": 6,
+      "title": "叶一茜带森碟来浪姐集邮",
+      "hot_value": 544019,
+      "emotion": {
+        "joy": 0.078126,
+        "sadness": 0.000144,
+        "anger": 0.00015,
+        "fear": 5.1e-05,
+        "surprise": 5.2e-05,
+        "neutral": 0.921478
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.921478,
+      "emotional_intensity": 0.0785,
+      "emotional_entropy": 0.1552
+    },
+    {
+      "rank": 37,
+      "title": "青簪行也找过谢霆锋",
+      "hot_value": 245949,
+      "emotion": {
+        "joy": 0.067418,
+        "sadness": 0.000702,
+        "anger": 0.00081,
+        "fear": 0.000111,
+        "surprise": 0.000132,
+        "neutral": 0.930828
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.930828,
+      "emotional_intensity": 0.0692,
+      "emotional_entropy": 0.146
+    },
+    {
+      "rank": 18,
+      "title": "妹妹14年后破译亡兄QQ专属相册",
+      "hot_value": 351195,
+      "emotion": {
+        "joy": 0.042732,
+        "sadness": 0.002167,
+        "anger": 0.000423,
+        "fear": 0.000204,
+        "surprise": 0.000196,
+        "neutral": 0.954279
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.954279,
+      "emotional_intensity": 0.0457,
+      "emotional_entropy": 0.1113
+    },
+    {
+      "rank": 48,
+      "title": "奚梦瑶晒婚礼照片",
+      "hot_value": 219228,
+      "emotion": {
+        "joy": 0.03238,
+        "sadness": 0.000235,
+        "anger": 0.000178,
+        "fear": 7.1e-05,
+        "surprise": 5.9e-05,
+        "neutral": 0.967076
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.967076,
+      "emotional_intensity": 0.0329,
+      "emotional_entropy": 0.0827
+    },
+    {
+      "rank": 19,
+      "title": "印度男34秒摔死幼童拒捕与警方枪战",
+      "hot_value": 347400,
+      "emotion": {
+        "joy": 0.000736,
+        "sadness": 0.001074,
+        "anger": 0.022348,
+        "fear": 0.000101,
+        "surprise": 0.000107,
+        "neutral": 0.975634
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.975634,
+      "emotional_intensity": 0.0244,
+      "emotional_entropy": 0.069
+    },
+    {
+      "rank": 46,
+      "title": "icon",
+      "hot_value": 221013,
+      "emotion": {
+        "joy": 0.012307,
+        "sadness": 0.003932,
+        "anger": 0.002892,
+        "fear": 0.000664,
+        "surprise": 0.000604,
+        "neutral": 0.9796
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.9796,
+      "emotional_intensity": 0.0204,
+      "emotional_entropy": 0.0683
+    },
+    {
+      "rank": 40,
+      "title": "李思潼 你是男生不可以靠这么近",
+      "hot_value": 234617,
+      "emotion": {
+        "joy": 0.001374,
+        "sadness": 0.010668,
+        "anger": 0.001154,
+        "fear": 0.000248,
+        "surprise": 0.000206,
+        "neutral": 0.986351
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.986351,
+      "emotional_intensity": 0.0136,
+      "emotional_entropy": 0.0461
+    },
+    {
+      "rank": 47,
+      "title": "奚梦瑶世纪婚礼的最大遗憾",
+      "hot_value": 220488,
+      "emotion": {
+        "joy": 0.003275,
+        "sadness": 0.00736,
+        "anger": 0.000878,
+        "fear": 0.000301,
+        "surprise": 0.000223,
+        "neutral": 0.987963
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.987963,
+      "emotional_intensity": 0.012,
+      "emotional_entropy": 0.0432
+    },
+    {
+      "rank": 4,
+      "title": "原来老祖宗才是最懂午睡的",
+      "hot_value": 791926,
+      "emotion": {
+        "joy": 0.0047,
+        "sadness": 0.000179,
+        "anger": 0.000209,
+        "fear": 6.3e-05,
+        "surprise": 5.5e-05,
+        "neutral": 0.994794
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.994794,
+      "emotional_intensity": 0.0052,
+      "emotional_entropy": 0.0194
+    },
+    {
+      "rank": 28,
+      "title": "王楚钦接棒马龙",
+      "hot_value": 268258,
+      "emotion": {
+        "joy": 0.004876,
+        "sadness": 9e-05,
+        "anger": 0.00013,
+        "fear": 3.4e-05,
+        "surprise": 2.9e-05,
+        "neutral": 0.994841
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.994841,
+      "emotional_intensity": 0.0052,
+      "emotional_entropy": 0.0188
+    },
+    {
+      "rank": 21,
+      "title": "因为一个人没文化而祛魅",
+      "hot_value": 343245,
+      "emotion": {
+        "joy": 0.000269,
+        "sadness": 0.002613,
+        "anger": 0.001394,
+        "fear": 0.00015,
+        "surprise": 0.000114,
+        "neutral": 0.995461
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.995461,
+      "emotional_intensity": 0.0045,
+      "emotional_entropy": 0.0189
+    },
+    {
+      "rank": 10,
+      "title": "半个娱乐圈宣传翘楚",
+      "hot_value": 394175,
+      "emotion": {
+        "joy": 0.003305,
+        "sadness": 0.000207,
+        "anger": 0.000312,
+        "fear": 4e-05,
+        "surprise": 3.4e-05,
+        "neutral": 0.996101
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.996101,
+      "emotional_intensity": 0.0039,
+      "emotional_entropy": 0.0155
+    },
+    {
+      "rank": 11,
+      "title": "此沙被审判",
+      "hot_value": 388635,
+      "emotion": {
+        "joy": 0.000608,
+        "sadness": 0.00124,
+        "anger": 0.00143,
+        "fear": 0.000108,
+        "surprise": 8.6e-05,
+        "neutral": 0.996528
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.996528,
+      "emotional_intensity": 0.0035,
+      "emotional_entropy": 0.0153
+    },
+    {
+      "rank": 44,
+      "title": "翘楚漏了杨洋的云包场",
+      "hot_value": 226523,
+      "emotion": {
+        "joy": 0.00264,
+        "sadness": 0.000164,
+        "anger": 0.000512,
+        "fear": 4.5e-05,
+        "surprise": 3.7e-05,
+        "neutral": 0.996603
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.996603,
+      "emotional_intensity": 0.0034,
+      "emotional_entropy": 0.0141
+    },
+    {
+      "rank": 3,
+      "title": "还有5天高考",
+      "hot_value": 804837,
+      "emotion": {
+        "joy": 0.000522,
+        "sadness": 0.000695,
+        "anger": 0.000376,
+        "fear": 0.000107,
+        "surprise": 8.6e-05,
+        "neutral": 0.998215
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.998215,
+      "emotional_intensity": 0.0018,
+      "emotional_entropy": 0.0087
+    },
+    {
+      "rank": 12,
+      "title": "谢天宇偷看路人裙底",
+      "hot_value": 380100,
+      "emotion": {
+        "joy": 0.000971,
+        "sadness": 9.9e-05,
+        "anger": 0.000393,
+        "fear": 4.5e-05,
+        "surprise": 3.9e-05,
+        "neutral": 0.998453
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.998453,
+      "emotional_intensity": 0.0015,
+      "emotional_entropy": 0.0073
+    },
+    {
+      "rank": 8,
+      "title": "特斯拉FSD入华国内智驾扛得住吗",
+      "hot_value": 400896,
+      "emotion": {
+        "joy": 0.000953,
+        "sadness": 5.7e-05,
+        "anger": 9e-05,
+        "fear": 2.2e-05,
+        "surprise": 1.6e-05,
+        "neutral": 0.998862
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.998862,
+      "emotional_intensity": 0.0011,
+      "emotional_entropy": 0.0053
+    },
+    {
+      "rank": 43,
+      "title": "杨天真晒与虞书欣自拍照",
+      "hot_value": 231183,
+      "emotion": {
+        "joy": 0.000946,
+        "sadness": 4.3e-05,
+        "anger": 4.6e-05,
+        "fear": 1.8e-05,
+        "surprise": 1.5e-05,
+        "neutral": 0.998931
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.998931,
+      "emotional_intensity": 0.0011,
+      "emotional_entropy": 0.005
+    },
+    {
+      "rank": 32,
+      "title": "爸爸二十年前给我做的人生规划",
+      "hot_value": 267521,
+      "emotion": {
+        "joy": 0.000679,
+        "sadness": 0.000197,
+        "anger": 7.6e-05,
+        "fear": 2.7e-05,
+        "surprise": 2.3e-05,
+        "neutral": 0.998997
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.998997,
+      "emotional_intensity": 0.001,
+      "emotional_entropy": 0.005
+    },
+    {
+      "rank": 36,
+      "title": "狼队小胖挂牌",
+      "hot_value": 257229,
+      "emotion": {
+        "joy": 0.000465,
+        "sadness": 9.3e-05,
+        "anger": 0.000168,
+        "fear": 2.8e-05,
+        "surprise": 2.3e-05,
+        "neutral": 0.999223
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999223,
+      "emotional_intensity": 0.0008,
+      "emotional_entropy": 0.004
+    },
+    {
+      "rank": 38,
+      "title": "王橹杰泡泡语音",
+      "hot_value": 244350,
+      "emotion": {
+        "joy": 0.000485,
+        "sadness": 8.4e-05,
+        "anger": 9.5e-05,
+        "fear": 1.7e-05,
+        "surprise": 1.3e-05,
+        "neutral": 0.999306
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999306,
+      "emotional_intensity": 0.0007,
+      "emotional_entropy": 0.0036
+    },
+    {
+      "rank": 49,
+      "title": "父母离婚孩子压岁钱账户20多万变40元",
+      "hot_value": 218758,
+      "emotion": {
+        "joy": 0.000111,
+        "sadness": 0.000198,
+        "anger": 0.000386,
+        "fear": 2.4e-05,
+        "surprise": 2.2e-05,
+        "neutral": 0.99926
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.99926,
+      "emotional_intensity": 0.0007,
+      "emotional_entropy": 0.0039
+    },
+    {
+      "rank": 7,
+      "title": "其实人是一根香蕉",
+      "hot_value": 455194,
+      "emotion": {
+        "joy": 0.000317,
+        "sadness": 0.000107,
+        "anger": 0.000131,
+        "fear": 2.6e-05,
+        "surprise": 2.2e-05,
+        "neutral": 0.999398
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999398,
+      "emotional_intensity": 0.0006,
+      "emotional_entropy": 0.0032
+    },
+    {
+      "rank": 9,
+      "title": "糖尿病并不是单纯血糖高了",
+      "hot_value": 400305,
+      "emotion": {
+        "joy": 0.000154,
+        "sadness": 0.000152,
+        "anger": 0.000113,
+        "fear": 3.6e-05,
+        "surprise": 2.6e-05,
+        "neutral": 0.999519
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999519,
+      "emotional_intensity": 0.0005,
+      "emotional_entropy": 0.0027
+    },
+    {
+      "rank": 35,
+      "title": "上班最大意义不是拿点工资",
+      "hot_value": 261314,
+      "emotion": {
+        "joy": 0.000103,
+        "sadness": 0.000172,
+        "anger": 0.000164,
+        "fear": 3.1e-05,
+        "surprise": 2.4e-05,
+        "neutral": 0.999506
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999506,
+      "emotional_intensity": 0.0005,
+      "emotional_entropy": 0.0028
+    },
+    {
+      "rank": 22,
+      "title": "王者荣耀世界制作人离职",
+      "hot_value": 338184,
+      "emotion": {
+        "joy": 5.7e-05,
+        "sadness": 0.000152,
+        "anger": 0.000152,
+        "fear": 2.2e-05,
+        "surprise": 1.3e-05,
+        "neutral": 0.999604
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999604,
+      "emotional_intensity": 0.0004,
+      "emotional_entropy": 0.0022
+    },
+    {
+      "rank": 30,
+      "title": "挪威深海发现载有中国瓷器的沉船",
+      "hot_value": 267917,
+      "emotion": {
+        "joy": 0.000241,
+        "sadness": 5.4e-05,
+        "anger": 5.8e-05,
+        "fear": 1.3e-05,
+        "surprise": 1.2e-05,
+        "neutral": 0.999622
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999622,
+      "emotional_intensity": 0.0004,
+      "emotional_entropy": 0.0021
+    },
+    {
+      "rank": 31,
+      "title": "原来有的演唱会按身份证分位置",
+      "hot_value": 267740,
+      "emotion": {
+        "joy": 0.000132,
+        "sadness": 6.9e-05,
+        "anger": 0.000132,
+        "fear": 1.8e-05,
+        "surprise": 1.7e-05,
+        "neutral": 0.999631
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999631,
+      "emotional_intensity": 0.0004,
+      "emotional_entropy": 0.0021
+    },
+    {
+      "rank": 45,
+      "title": "乒乓世界",
+      "hot_value": 223720,
+      "emotion": {
+        "joy": 0.000148,
+        "sadness": 7.4e-05,
+        "anger": 0.000103,
+        "fear": 2.1e-05,
+        "surprise": 1.7e-05,
+        "neutral": 0.999636
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999636,
+      "emotional_intensity": 0.0004,
+      "emotional_entropy": 0.0021
+    },
+    {
+      "rank": 1,
+      "title": "国乒男队队长王楚钦",
+      "hot_value": 2644226,
+      "emotion": {
+        "joy": 0.000167,
+        "sadness": 4.3e-05,
+        "anger": 4.9e-05,
+        "fear": 1.2e-05,
+        "surprise": 1.1e-05,
+        "neutral": 0.999719
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999719,
+      "emotional_intensity": 0.0003,
+      "emotional_entropy": 0.0016
+    },
+    {
+      "rank": 29,
+      "title": "中国一汽成为大冬会官方合作伙伴",
+      "hot_value": 268135,
+      "emotion": {
+        "joy": 0.000168,
+        "sadness": 3e-05,
+        "anger": 4e-05,
+        "fear": 1.1e-05,
+        "surprise": 8e-06,
+        "neutral": 0.999743
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999743,
+      "emotional_intensity": 0.0003,
+      "emotional_entropy": 0.0015
+    },
+    {
+      "rank": 50,
+      "title": "瑞幸回应HeeloKitty",
+      "hot_value": 217939,
+      "emotion": {
+        "joy": 9.8e-05,
+        "sadness": 7.9e-05,
+        "anger": 0.000127,
+        "fear": 2.4e-05,
+        "surprise": 2.2e-05,
+        "neutral": 0.99965
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.99965,
+      "emotional_intensity": 0.0003,
+      "emotional_entropy": 0.002
+    },
+    {
+      "rank": 2,
+      "title": "马龙结束12年队长任期",
+      "hot_value": 1046656,
+      "emotion": {
+        "joy": 0.00014,
+        "sadness": 3.5e-05,
+        "anger": 3.7e-05,
+        "fear": 8e-06,
+        "surprise": 8e-06,
+        "neutral": 0.999772
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999772,
+      "emotional_intensity": 0.0002,
+      "emotional_entropy": 0.0013
+    },
+    {
+      "rank": 16,
+      "title": "池昌旭涉嫌逃税",
+      "hot_value": 356756,
+      "emotion": {
+        "joy": 2.7e-05,
+        "sadness": 4.4e-05,
+        "anger": 0.000108,
+        "fear": 1.3e-05,
+        "surprise": 1.1e-05,
+        "neutral": 0.999797
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999797,
+      "emotional_intensity": 0.0002,
+      "emotional_entropy": 0.0012
+    },
+    {
+      "rank": 20,
+      "title": "财政局回应一公务员被指脚踏两条船",
+      "hot_value": 344604,
+      "emotion": {
+        "joy": 2.8e-05,
+        "sadness": 3.2e-05,
+        "anger": 8.1e-05,
+        "fear": 1.1e-05,
+        "surprise": 9e-06,
+        "neutral": 0.999839
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999839,
+      "emotional_intensity": 0.0002,
+      "emotional_entropy": 0.001
+    },
+    {
+      "rank": 24,
+      "title": "梁靖崑任国乒男队副队长",
+      "hot_value": 332034,
+      "emotion": {
+        "joy": 8.7e-05,
+        "sadness": 3.1e-05,
+        "anger": 5e-05,
+        "fear": 1.3e-05,
+        "surprise": 1.1e-05,
+        "neutral": 0.999808
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999808,
+      "emotional_intensity": 0.0002,
+      "emotional_entropy": 0.0012
+    },
+    {
+      "rank": 33,
+      "title": "严浩翔的安全带不是P的",
+      "hot_value": 267366,
+      "emotion": {
+        "joy": 4e-05,
+        "sadness": 5.2e-05,
+        "anger": 7.8e-05,
+        "fear": 1.6e-05,
+        "surprise": 1.4e-05,
+        "neutral": 0.999801
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999801,
+      "emotional_intensity": 0.0002,
+      "emotional_entropy": 0.0012
+    },
+    {
+      "rank": 34,
+      "title": "田曦薇素颜染发",
+      "hot_value": 267335,
+      "emotion": {
+        "joy": 0.000148,
+        "sadness": 2.3e-05,
+        "anger": 3.4e-05,
+        "fear": 8e-06,
+        "surprise": 6e-06,
+        "neutral": 0.999781
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999781,
+      "emotional_intensity": 0.0002,
+      "emotional_entropy": 0.0013
+    },
+    {
+      "rank": 5,
+      "title": "建议爬山不要买白色雨衣",
+      "hot_value": 750896,
+      "emotion": {
+        "joy": 4.8e-05,
+        "sadness": 2.8e-05,
+        "anger": 3.9e-05,
+        "fear": 1e-05,
+        "surprise": 8e-06,
+        "neutral": 0.999867
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999867,
+      "emotional_intensity": 0.0001,
+      "emotional_entropy": 0.0008
+    },
+    {
+      "rank": 27,
+      "title": "财政部下达999亿育儿补贴补助资金",
+      "hot_value": 268387,
+      "emotion": {
+        "joy": 1.8e-05,
+        "sadness": 2e-05,
+        "anger": 4.6e-05,
+        "fear": 9e-06,
+        "surprise": 7e-06,
+        "neutral": 0.999901
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999901,
+      "emotional_intensity": 0.0001,
+      "emotional_entropy": 0.0006
+    },
+    {
+      "rank": 42,
+      "title": "2026KPL夏季转会期",
+      "hot_value": 231216,
+      "emotion": {
+        "joy": 2.3e-05,
+        "sadness": 3.8e-05,
+        "anger": 4.5e-05,
+        "fear": 1e-05,
+        "surprise": 8e-06,
+        "neutral": 0.999876
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.999876,
+      "emotional_intensity": 0.0001,
+      "emotional_entropy": 0.0008
+    }
+  ]
+}

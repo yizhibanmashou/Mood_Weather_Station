@@ -1,0 +1,918 @@
+{
+  "fetch_time": "2026-06-08T14:25:37.998896+08:00",
+  "fetch_time_str": "2026-06-08 14:25:37",
+  "source": "UAPIS Weibo Hot Search",
+  "total_topics": 50,
+  "aggregate_emotion": {
+    "joy": 0.1383,
+    "sadness": 0.0727,
+    "anger": 0.0359,
+    "fear": 0.0087,
+    "surprise": 0.0286,
+    "neutral": 0.7159
+  },
+  "aggregate_dominant": "neutral",
+  "aggregate_dominant_cn": "中性",
+  "topics": [
+    {
+      "rank": 14,
+      "title": "物理一卷考哭了",
+      "hot_value": 789900,
+      "emotion": {
+        "joy": 0.040776,
+        "sadness": 0.715109,
+        "anger": 0.01656,
+        "fear": 0.008887,
+        "surprise": 0.022503,
+        "neutral": 0.196164
+      },
+      "dominant_emotion": "sadness",
+      "dominant_emotion_cn": "悲伤",
+      "dominant_score": 0.715109,
+      "emotional_intensity": 0.8038,
+      "emotional_entropy": 0.4939
+    },
+    {
+      "rank": 25,
+      "title": "张慧雯原来是哭着跳完的",
+      "hot_value": 484353,
+      "emotion": {
+        "joy": 0.084418,
+        "sadness": 0.657521,
+        "anger": 0.018742,
+        "fear": 0.008996,
+        "surprise": 0.028734,
+        "neutral": 0.201589
+      },
+      "dominant_emotion": "sadness",
+      "dominant_emotion_cn": "悲伤",
+      "dominant_score": 0.657521,
+      "emotional_intensity": 0.7984,
+      "emotional_entropy": 0.5727
+    },
+    {
+      "rank": 45,
+      "title": "听到讨厌的人过生日就这态度",
+      "hot_value": 304558,
+      "emotion": {
+        "joy": 0.039769,
+        "sadness": 0.16779,
+        "anger": 0.474349,
+        "fear": 0.00826,
+        "surprise": 0.02765,
+        "neutral": 0.282183
+      },
+      "dominant_emotion": "anger",
+      "dominant_emotion_cn": "愤怒",
+      "dominant_score": 0.474349,
+      "emotional_intensity": 0.7178,
+      "emotional_entropy": 0.7129
+    },
+    {
+      "rank": 11,
+      "title": "33岁已婚男猥亵强奸12岁少女",
+      "hot_value": 806129,
+      "emotion": {
+        "joy": 0.003478,
+        "sadness": 0.222858,
+        "anger": 0.39923,
+        "fear": 0.038538,
+        "surprise": 0.029904,
+        "neutral": 0.305993
+      },
+      "dominant_emotion": "anger",
+      "dominant_emotion_cn": "愤怒",
+      "dominant_score": 0.39923,
+      "emotional_intensity": 0.694,
+      "emotional_entropy": 0.7331
+    },
+    {
+      "rank": 7,
+      "title": "李思潼的第一个红毯要来了",
+      "hot_value": 827745,
+      "emotion": {
+        "joy": 0.606539,
+        "sadness": 0.007587,
+        "anger": 0.001827,
+        "fear": 0.00137,
+        "surprise": 0.064456,
+        "neutral": 0.318221
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.606539,
+      "emotional_intensity": 0.6818,
+      "emotional_entropy": 0.5034
+    },
+    {
+      "rank": 50,
+      "title": "JackeyLove大家好才是真的好",
+      "hot_value": 271288,
+      "emotion": {
+        "joy": 0.569318,
+        "sadness": 0.036728,
+        "anger": 0.005724,
+        "fear": 0.004884,
+        "surprise": 0.029702,
+        "neutral": 0.353644
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.569318,
+      "emotional_intensity": 0.6464,
+      "emotional_entropy": 0.5412
+    },
+    {
+      "rank": 20,
+      "title": "考生飞奔扑进爸爸怀里直呼物理简单",
+      "hot_value": 489247,
+      "emotion": {
+        "joy": 0.554237,
+        "sadness": 0.013391,
+        "anger": 0.002432,
+        "fear": 0.002116,
+        "surprise": 0.063702,
+        "neutral": 0.364121
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.554237,
+      "emotional_intensity": 0.6359,
+      "emotional_entropy": 0.5334
+    },
+    {
+      "rank": 42,
+      "title": "家属披露49岁船员货船上失联详情",
+      "hot_value": 317327,
+      "emotion": {
+        "joy": 0.005527,
+        "sadness": 0.475992,
+        "anger": 0.035986,
+        "fear": 0.054171,
+        "surprise": 0.046489,
+        "neutral": 0.381836
+      },
+      "dominant_emotion": "sadness",
+      "dominant_emotion_cn": "悲伤",
+      "dominant_score": 0.475992,
+      "emotional_intensity": 0.6182,
+      "emotional_entropy": 0.653
+    },
+    {
+      "rank": 28,
+      "title": "王一博吴磊李现王星越 开个旅综吧",
+      "hot_value": 480976,
+      "emotion": {
+        "joy": 0.521418,
+        "sadness": 0.011567,
+        "anger": 0.005423,
+        "fear": 0.002547,
+        "surprise": 0.0585,
+        "neutral": 0.400544
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.521418,
+      "emotional_intensity": 0.5995,
+      "emotional_entropy": 0.5398
+    },
+    {
+      "rank": 13,
+      "title": "霍思燕爱犬在意大利夺冠",
+      "hot_value": 795922,
+      "emotion": {
+        "joy": 0.539307,
+        "sadness": 0.005536,
+        "anger": 0.001777,
+        "fear": 0.001552,
+        "surprise": 0.047506,
+        "neutral": 0.404322
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.539307,
+      "emotional_intensity": 0.5957,
+      "emotional_entropy": 0.4989
+    },
+    {
+      "rank": 35,
+      "title": "张月直接离场了",
+      "hot_value": 455197,
+      "emotion": {
+        "joy": 0.023789,
+        "sadness": 0.348843,
+        "anger": 0.130129,
+        "fear": 0.016571,
+        "surprise": 0.052592,
+        "neutral": 0.428076
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.428076,
+      "emotional_intensity": 0.5719,
+      "emotional_entropy": 0.7299
+    },
+    {
+      "rank": 24,
+      "title": "奚梦瑶婚礼后去看法网",
+      "hot_value": 484803,
+      "emotion": {
+        "joy": 0.484255,
+        "sadness": 0.009642,
+        "anger": 0.002195,
+        "fear": 0.00131,
+        "surprise": 0.04665,
+        "neutral": 0.455947
+      },
+      "dominant_emotion": "joy",
+      "dominant_emotion_cn": "喜悦",
+      "dominant_score": 0.484255,
+      "emotional_intensity": 0.5441,
+      "emotional_entropy": 0.513
+    },
+    {
+      "rank": 12,
+      "title": "儿子涉嫌吃空饷医院院长放弃人才考察",
+      "hot_value": 798947,
+      "emotion": {
+        "joy": 0.007003,
+        "sadness": 0.188442,
+        "anger": 0.293503,
+        "fear": 0.017722,
+        "surprise": 0.030811,
+        "neutral": 0.462518
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.462518,
+      "emotional_intensity": 0.5375,
+      "emotional_entropy": 0.6945
+    },
+    {
+      "rank": 41,
+      "title": "耀眼但凡提早一天播",
+      "hot_value": 325496,
+      "emotion": {
+        "joy": 0.396331,
+        "sadness": 0.015782,
+        "anger": 0.003528,
+        "fear": 0.004077,
+        "surprise": 0.042783,
+        "neutral": 0.537499
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.537499,
+      "emotional_intensity": 0.4625,
+      "emotional_entropy": 0.5264
+    },
+    {
+      "rank": 33,
+      "title": "为穿旗袍送考妈妈狂瘦22斤",
+      "hot_value": 475926,
+      "emotion": {
+        "joy": 0.317389,
+        "sadness": 0.025313,
+        "anger": 0.002997,
+        "fear": 0.002054,
+        "surprise": 0.027766,
+        "neutral": 0.624481
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.624481,
+      "emotional_intensity": 0.3755,
+      "emotional_entropy": 0.4917
+    },
+    {
+      "rank": 30,
+      "title": "现在的年轻人竞争压力太大",
+      "hot_value": 478977,
+      "emotion": {
+        "joy": 0.048397,
+        "sadness": 0.189804,
+        "anger": 0.044688,
+        "fear": 0.061119,
+        "surprise": 0.022045,
+        "neutral": 0.633947
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.633947,
+      "emotional_intensity": 0.3661,
+      "emotional_entropy": 0.6389
+    },
+    {
+      "rank": 44,
+      "title": "麦琳带货口条好清晰",
+      "hot_value": 306752,
+      "emotion": {
+        "joy": 0.305958,
+        "sadness": 0.005558,
+        "anger": 0.002715,
+        "fear": 0.002266,
+        "surprise": 0.021672,
+        "neutral": 0.661831
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.661831,
+      "emotional_intensity": 0.3382,
+      "emotional_entropy": 0.4338
+    },
+    {
+      "rank": 3,
+      "title": "中国同时集齐造船业3颗明珠",
+      "hot_value": 1173755,
+      "emotion": {
+        "joy": 0.299441,
+        "sadness": 0.003896,
+        "anger": 0.001471,
+        "fear": 0.001851,
+        "surprise": 0.021187,
+        "neutral": 0.672153
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.672153,
+      "emotional_intensity": 0.3278,
+      "emotional_entropy": 0.42
+    },
+    {
+      "rank": 49,
+      "title": "者来女力挺张慧雯代斯",
+      "hot_value": 275028,
+      "emotion": {
+        "joy": 0.221428,
+        "sadness": 0.007424,
+        "anger": 0.03742,
+        "fear": 0.002551,
+        "surprise": 0.034099,
+        "neutral": 0.697079
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.697079,
+      "emotional_intensity": 0.3029,
+      "emotional_entropy": 0.4884
+    },
+    {
+      "rank": 38,
+      "title": "洪洋杨紫李现是北影的同一届同学",
+      "hot_value": 382501,
+      "emotion": {
+        "joy": 0.237773,
+        "sadness": 0.031203,
+        "anger": 0.008226,
+        "fear": 0.002967,
+        "surprise": 0.01798,
+        "neutral": 0.701852
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.701852,
+      "emotional_intensity": 0.2981,
+      "emotional_entropy": 0.4617
+    },
+    {
+      "rank": 19,
+      "title": "才知道万萋萋和林有有都是张月",
+      "hot_value": 489918,
+      "emotion": {
+        "joy": 0.134971,
+        "sadness": 0.093377,
+        "anger": 0.018746,
+        "fear": 0.005297,
+        "surprise": 0.044958,
+        "neutral": 0.702651
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.702651,
+      "emotional_intensity": 0.2973,
+      "emotional_entropy": 0.5478
+    },
+    {
+      "rank": 17,
+      "title": "相信什么就会吸引什么",
+      "hot_value": 492093,
+      "emotion": {
+        "joy": 0.21808,
+        "sadness": 0.015244,
+        "anger": 0.008101,
+        "fear": 0.006555,
+        "surprise": 0.035938,
+        "neutral": 0.716083
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.716083,
+      "emotional_intensity": 0.2839,
+      "emotional_entropy": 0.4613
+    },
+    {
+      "rank": 5,
+      "title": "去面试被公司留下吃午饭了",
+      "hot_value": 1003174,
+      "emotion": {
+        "joy": 0.066919,
+        "sadness": 0.087509,
+        "anger": 0.03976,
+        "fear": 0.01134,
+        "surprise": 0.065698,
+        "neutral": 0.728773
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.728773,
+      "emotional_intensity": 0.2712,
+      "emotional_entropy": 0.5484
+    },
+    {
+      "rank": 34,
+      "title": "王源裸上身淋浴戏",
+      "hot_value": 475194,
+      "emotion": {
+        "joy": 0.196037,
+        "sadness": 0.016473,
+        "anger": 0.006853,
+        "fear": 0.004631,
+        "surprise": 0.040441,
+        "neutral": 0.735565
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.735565,
+      "emotional_intensity": 0.2644,
+      "emotional_entropy": 0.4475
+    },
+    {
+      "rank": 37,
+      "title": "粉丝怎么认出王一博的",
+      "hot_value": 403707,
+      "emotion": {
+        "joy": 0.111192,
+        "sadness": 0.014524,
+        "anger": 0.021717,
+        "fear": 0.005214,
+        "surprise": 0.078758,
+        "neutral": 0.768595
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.768595,
+      "emotional_intensity": 0.2314,
+      "emotional_entropy": 0.4569
+    },
+    {
+      "rank": 48,
+      "title": "曾沛慈团 心引力",
+      "hot_value": 289438,
+      "emotion": {
+        "joy": 0.169864,
+        "sadness": 0.005576,
+        "anger": 0.002802,
+        "fear": 0.002636,
+        "surprise": 0.014314,
+        "neutral": 0.804807
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.804807,
+      "emotional_intensity": 0.1952,
+      "emotional_entropy": 0.3336
+    },
+    {
+      "rank": 2,
+      "title": "跑男",
+      "hot_value": 1266226,
+      "emotion": {
+        "joy": 0.107323,
+        "sadness": 0.021314,
+        "anger": 0.008865,
+        "fear": 0.009267,
+        "surprise": 0.034067,
+        "neutral": 0.819164
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.819164,
+      "emotional_intensity": 0.1808,
+      "emotional_entropy": 0.3825
+    },
+    {
+      "rank": 43,
+      "title": "高圆圆穿搭还是杨桃那味儿",
+      "hot_value": 313047,
+      "emotion": {
+        "joy": 0.153412,
+        "sadness": 0.007858,
+        "anger": 0.003653,
+        "fear": 0.002791,
+        "surprise": 0.012235,
+        "neutral": 0.820052
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.820052,
+      "emotional_intensity": 0.1799,
+      "emotional_entropy": 0.3232
+    },
+    {
+      "rank": 32,
+      "title": "梁实以为有2小时其实只有75分钟",
+      "hot_value": 476493,
+      "emotion": {
+        "joy": 0.036999,
+        "sadness": 0.029001,
+        "anger": 0.019709,
+        "fear": 0.011558,
+        "surprise": 0.044291,
+        "neutral": 0.858442
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.858442,
+      "emotional_intensity": 0.1416,
+      "emotional_entropy": 0.3475
+    },
+    {
+      "rank": 22,
+      "title": "金价",
+      "hot_value": 486800,
+      "emotion": {
+        "joy": 0.036022,
+        "sadness": 0.027751,
+        "anger": 0.014166,
+        "fear": 0.022982,
+        "surprise": 0.026617,
+        "neutral": 0.872461
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.872461,
+      "emotional_intensity": 0.1275,
+      "emotional_entropy": 0.3247
+    },
+    {
+      "rank": 23,
+      "title": "朱珠法网曝光vivo新折叠",
+      "hot_value": 486068,
+      "emotion": {
+        "joy": 0.078737,
+        "sadness": 0.004121,
+        "anger": 0.004182,
+        "fear": 0.002595,
+        "surprise": 0.034456,
+        "neutral": 0.875909
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.875909,
+      "emotional_intensity": 0.1241,
+      "emotional_entropy": 0.2753
+    },
+    {
+      "rank": 36,
+      "title": "全球股市强震",
+      "hot_value": 448856,
+      "emotion": {
+        "joy": 0.009906,
+        "sadness": 0.026342,
+        "anger": 0.009215,
+        "fear": 0.041439,
+        "surprise": 0.027054,
+        "neutral": 0.886044
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.886044,
+      "emotional_intensity": 0.114,
+      "emotional_entropy": 0.291
+    },
+    {
+      "rank": 8,
+      "title": "金正恩和夫人到机场迎接",
+      "hot_value": 823392,
+      "emotion": {
+        "joy": 0.068619,
+        "sadness": 0.004817,
+        "anger": 0.002586,
+        "fear": 0.003445,
+        "surprise": 0.020607,
+        "neutral": 0.899926
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.899926,
+      "emotional_intensity": 0.1001,
+      "emotional_entropy": 0.2341
+    },
+    {
+      "rank": 1,
+      "title": "朝方举行盛大欢迎仪式",
+      "hot_value": 1275341,
+      "emotion": {
+        "joy": 0.062258,
+        "sadness": 0.003876,
+        "anger": 0.005768,
+        "fear": 0.00302,
+        "surprise": 0.017659,
+        "neutral": 0.907419
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.907419,
+      "emotional_intensity": 0.0926,
+      "emotional_entropy": 0.2238
+    },
+    {
+      "rank": 31,
+      "title": "朝方在机场热情迎接",
+      "hot_value": 477865,
+      "emotion": {
+        "joy": 0.057528,
+        "sadness": 0.003405,
+        "anger": 0.003955,
+        "fear": 0.00288,
+        "surprise": 0.012638,
+        "neutral": 0.919594
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.919594,
+      "emotional_intensity": 0.0804,
+      "emotional_entropy": 0.1979
+    },
+    {
+      "rank": 15,
+      "title": "曝今年跑男收尾款有KPI要求",
+      "hot_value": 581153,
+      "emotion": {
+        "joy": 0.014254,
+        "sadness": 0.01849,
+        "anger": 0.027721,
+        "fear": 0.005357,
+        "surprise": 0.014503,
+        "neutral": 0.919675
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.919675,
+      "emotional_intensity": 0.0803,
+      "emotional_entropy": 0.2234
+    },
+    {
+      "rank": 46,
+      "title": "淡淡四公排名",
+      "hot_value": 296396,
+      "emotion": {
+        "joy": 0.036608,
+        "sadness": 0.013093,
+        "anger": 0.009846,
+        "fear": 0.004926,
+        "surprise": 0.015868,
+        "neutral": 0.919659
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.919659,
+      "emotional_intensity": 0.0803,
+      "emotional_entropy": 0.2189
+    },
+    {
+      "rank": 27,
+      "title": "金秀贤重启活动",
+      "hot_value": 482184,
+      "emotion": {
+        "joy": 0.05337,
+        "sadness": 0.004584,
+        "anger": 0.002597,
+        "fear": 0.002387,
+        "surprise": 0.01423,
+        "neutral": 0.922833
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.922833,
+      "emotional_intensity": 0.0772,
+      "emotional_entropy": 0.1929
+    },
+    {
+      "rank": 47,
+      "title": "Gemini 美国大豆包",
+      "hot_value": 291333,
+      "emotion": {
+        "joy": 0.048087,
+        "sadness": 0.004602,
+        "anger": 0.002848,
+        "fear": 0.003859,
+        "surprise": 0.015587,
+        "neutral": 0.925018
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.925018,
+      "emotional_intensity": 0.075,
+      "emotional_entropy": 0.193
+    },
+    {
+      "rank": 10,
+      "title": "世界杯",
+      "hot_value": 809608,
+      "emotion": {
+        "joy": 0.033346,
+        "sadness": 0.011714,
+        "anger": 0.003979,
+        "fear": 0.006547,
+        "surprise": 0.017805,
+        "neutral": 0.926608
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.926608,
+      "emotional_intensity": 0.0734,
+      "emotional_entropy": 0.2025
+    },
+    {
+      "rank": 9,
+      "title": "新能源车变胖让老司机都犯愁",
+      "hot_value": 819552,
+      "emotion": {
+        "joy": 0.036571,
+        "sadness": 0.014885,
+        "anger": 0.004621,
+        "fear": 0.005194,
+        "surprise": 0.00944,
+        "neutral": 0.929288
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.929288,
+      "emotional_intensity": 0.0707,
+      "emotional_entropy": 0.1942
+    },
+    {
+      "rank": 40,
+      "title": "历史二卷 盲人摸象",
+      "hot_value": 325684,
+      "emotion": {
+        "joy": 0.038875,
+        "sadness": 0.009111,
+        "anger": 0.003356,
+        "fear": 0.003337,
+        "surprise": 0.0142,
+        "neutral": 0.931122
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.931122,
+      "emotional_intensity": 0.0689,
+      "emotional_entropy": 0.1864
+    },
+    {
+      "rank": 4,
+      "title": "曝跑男文旅宣传费850万",
+      "hot_value": 1011488,
+      "emotion": {
+        "joy": 0.018741,
+        "sadness": 0.008894,
+        "anger": 0.01395,
+        "fear": 0.003608,
+        "surprise": 0.017528,
+        "neutral": 0.937279
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.937279,
+      "emotional_intensity": 0.0627,
+      "emotional_entropy": 0.1831
+    },
+    {
+      "rank": 29,
+      "title": "苹果WWDC26参会礼品曝光",
+      "hot_value": 480327,
+      "emotion": {
+        "joy": 0.035124,
+        "sadness": 0.001553,
+        "anger": 0.001526,
+        "fear": 0.001614,
+        "surprise": 0.013552,
+        "neutral": 0.946632
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.946632,
+      "emotional_intensity": 0.0534,
+      "emotional_entropy": 0.1441
+    },
+    {
+      "rank": 18,
+      "title": "高考历史",
+      "hot_value": 490917,
+      "emotion": {
+        "joy": 0.011106,
+        "sadness": 0.010172,
+        "anger": 0.004107,
+        "fear": 0.00627,
+        "surprise": 0.006078,
+        "neutral": 0.962266
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.962266,
+      "emotional_intensity": 0.0377,
+      "emotional_entropy": 0.1223
+    },
+    {
+      "rank": 16,
+      "title": "A股行情",
+      "hot_value": 494407,
+      "emotion": {
+        "joy": 0.013749,
+        "sadness": 0.006688,
+        "anger": 0.003468,
+        "fear": 0.006736,
+        "surprise": 0.00593,
+        "neutral": 0.963429
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.963429,
+      "emotional_intensity": 0.0366,
+      "emotional_entropy": 0.1184
+    },
+    {
+      "rank": 39,
+      "title": "登贝莱要求姆巴佩多防守",
+      "hot_value": 353533,
+      "emotion": {
+        "joy": 0.007902,
+        "sadness": 0.004993,
+        "anger": 0.004422,
+        "fear": 0.008814,
+        "surprise": 0.009693,
+        "neutral": 0.964174
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.964174,
+      "emotional_intensity": 0.0358,
+      "emotional_entropy": 0.1175
+    },
+    {
+      "rank": 21,
+      "title": "扬州连夜查处问题一次性牙刷企业",
+      "hot_value": 488398,
+      "emotion": {
+        "joy": 0.004939,
+        "sadness": 0.005843,
+        "anger": 0.009171,
+        "fear": 0.005834,
+        "surprise": 0.005209,
+        "neutral": 0.969004
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.969004,
+      "emotional_intensity": 0.031,
+      "emotional_entropy": 0.1045
+    },
+    {
+      "rank": 26,
+      "title": "2026KPL夏季赛大名单",
+      "hot_value": 483329,
+      "emotion": {
+        "joy": 0.006482,
+        "sadness": 0.004897,
+        "anger": 0.002104,
+        "fear": 0.004398,
+        "surprise": 0.007824,
+        "neutral": 0.974295
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.974295,
+      "emotional_intensity": 0.0257,
+      "emotional_entropy": 0.0887
+    },
+    {
+      "rank": 6,
+      "title": "高考物理 选拔牛顿接班人",
+      "hot_value": 837924,
+      "emotion": {
+        "joy": 0.011035,
+        "sadness": 0.002925,
+        "anger": 0.001817,
+        "fear": 0.002326,
+        "surprise": 0.004795,
+        "neutral": 0.977101
+      },
+      "dominant_emotion": "neutral",
+      "dominant_emotion_cn": "中性",
+      "dominant_score": 0.977101,
+      "emotional_intensity": 0.0229,
+      "emotional_entropy": 0.0785
+    }
+  ]
+}

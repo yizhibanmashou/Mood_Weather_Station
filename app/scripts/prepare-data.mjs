@@ -4,9 +4,10 @@ import Papa from "papaparse";
 
 const APP_ROOT = process.cwd();
 const REPO_ROOT = path.resolve(APP_ROOT, "..");
-const LABELED_CSV = path.join(REPO_ROOT, "data", "processed", "labeled_dataset.csv");
+const LABELED_CSV = path.join(REPO_ROOT, "data", "processed", "labeled_dataset_merged_week_cap60.csv");
 const PROCESSED_PUBLIC = path.join(APP_ROOT, "public", "data", "processed");
 const GEO_PUBLIC = path.join(APP_ROOT, "public", "data", "geo");
+const HISTORICAL_END_WEEK = "2020-W53";
 
 const EMOTIONS = ["joy", "sadness", "anger", "fear", "surprise", "neutral"];
 
@@ -108,14 +109,15 @@ function writePostExamples() {
   for (const row of parsed.data) {
     const province = String(row.province ?? "").trim();
     const content = String(row.content_clean ?? "").trim();
-    if (!province || !content) continue;
+    const dateWeek = String(row.date_week ?? "").trim();
+    if (!province || !content || !dateWeek || dateWeek > HISTORICAL_END_WEEK) continue;
 
     provinces[province] ??= {};
     for (const emotion of EMOTIONS) {
       provinces[province][emotion] ??= [];
       provinces[province][emotion].push({
         post_id: String(row.post_id ?? ""),
-        date_week: String(row.date_week ?? ""),
+        date_week: dateWeek,
         date_month: String(row.date_month ?? ""),
         province,
         content,
@@ -135,7 +137,8 @@ function writePostExamples() {
 
   const out = {
     generated_at: new Date().toISOString(),
-    source: "data/processed/labeled_dataset.csv",
+    source: "data/processed/labeled_dataset_merged_week_cap60.csv",
+    historical_end_week: HISTORICAL_END_WEEK,
     emotions: EMOTIONS,
     provinces
   };

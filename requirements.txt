@@ -4,10 +4,11 @@ scikit-learn
 scipy
 jieba
 snownlp
-datasets
-openpyxl
 wordcloud
 matplotlib
 seaborn
 openai
 python-dotenv
+torch
+transformers
+requests

@@ -1,0 +1,103 @@
+.wrapper {
+  width: 100%;
+  padding: 0 clamp(20px, 4vw, 56px);
+  margin-top: -4px;
+  margin-bottom: 2px;
+}
+
+.track {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: flex-end;
+  user-select: none;
+}
+
+.trackLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border);
+  opacity: 0.5;
+}
+
+.periods {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  height: 3px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.periodSegment {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  opacity: 0.25;
+  border-radius: 2px;
+}
+
+.viewport {
+  position: absolute;
+  bottom: 4px;
+  height: 16px;
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  background: var(--accent-soft);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.viewportHandle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+.marker {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.markerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  border: 2px solid var(--surface);
+  z-index: 3;
+}
+
+.markerLabel {
+  font-size: 9px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+
+.markerSublabel {
+  font-size: 8px;
+  color: var(--text-muted);
+  opacity: 0.6;
+  white-space: nowrap;
+  margin-top: -1px;
+}

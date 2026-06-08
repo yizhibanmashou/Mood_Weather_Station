@@ -1,45 +1,45 @@
 {
-  "generated_at": "2026-05-08T08:11:11.960120",
+  "generated_at": "2026-06-04T16:09:52.749119",
   "files": [
     {
       "path": "data/processed/emotion_panel_weekly.csv",
       "source": "data\\processed\\emotion_panel_weekly.csv",
-      "hash": "175c85c305b1",
-      "row_count": 1888,
-      "size_bytes": 604022
+      "hash": "d01c19621d21",
+      "row_count": 1958,
+      "size_bytes": 627705
     },
     {
       "path": "data/processed/emotion_panel_monthly.csv",
       "source": "data\\processed\\emotion_panel_monthly.csv",
-      "hash": "cf483de6ddf4",
-      "row_count": 442,
-      "size_bytes": 99743
+      "hash": "95d49a9abe74",
+      "row_count": 510,
+      "size_bytes": 114118
     },
     {
       "path": "data/processed/emotion_national_timeline.csv",
       "source": "data\\processed\\emotion_national_timeline.csv",
-      "hash": "8c525ea40b91",
-      "row_count": 58,
-      "size_bytes": 18735
+      "hash": "411265a35b93",
+      "row_count": 61,
+      "size_bytes": 19675
     },
     {
       "path": "data/processed/province_emotion_vectors.csv",
       "source": "data\\processed\\province_emotion_vectors.csv",
-      "hash": "95810366992b",
+      "hash": "57568c9b34a5",
       "row_count": 34,
-      "size_bytes": 6662
+      "size_bytes": 6682
     },
     {
       "path": "data/processed/anomaly_detection.json",
       "source": "data\\processed\\anomaly_detection.json",
-      "hash": "4cfd2128fdfe",
-      "row_count": 19,
-      "size_bytes": 13273
+      "hash": "a901a606a1da",
+      "row_count": 22,
+      "size_bytes": 14156
     },
     {
       "path": "data/processed/cluster_labels.csv",
       "source": "data\\processed\\cluster_labels.csv",
-      "hash": "9360cd380ad5",
+      "hash": "9b664b779540",
       "row_count": 34,
       "size_bytes": 546
     },
@@ -53,44 +53,44 @@
     {
       "path": "data/processed/nlp_keywords_by_week.json",
       "source": "data\\processed\\nlp_keywords_by_week.json",
-      "hash": "2945a67e2585",
-      "row_count": 58,
-      "size_bytes": 2057834
+      "hash": "a3a362658820",
+      "row_count": 61,
+      "size_bytes": 2131167
     },
     {
       "path": "data/processed/nlp_emotion_keywords.json",
       "source": "data\\processed\\nlp_emotion_keywords.json",
-      "hash": "7b4237416fcf",
+      "hash": "7a996dddb1fd",
       "row_count": 6,
-      "size_bytes": 25717
+      "size_bytes": 25673
     },
     {
       "path": "data/processed/nlp_global_vocabulary.json",
       "source": "data\\processed\\nlp_global_vocabulary.json",
-      "hash": "1b6ac1227ecb",
+      "hash": "d69d32b62831",
       "row_count": 5000,
-      "size_bytes": 739173
+      "size_bytes": 739169
     },
     {
       "path": "analysis\\wordclouds\\national_peak_fear.png",
       "source": "analysis\\wordclouds\\national_peak_fear.png",
       "hash": "",
       "row_count": "N/A (image)",
-      "size_bytes": 202259
+      "size_bytes": 190887
     },
     {
       "path": "analysis\\wordclouds\\national_peak_joy.png",
       "source": "analysis\\wordclouds\\national_peak_joy.png",
       "hash": "",
       "row_count": "N/A (image)",
-      "size_bytes": 196762
+      "size_bytes": 124571
     },
     {
       "path": "analysis\\wordclouds\\province_上海.png",
       "source": "analysis\\wordclouds\\province_上海.png",
       "hash": "",
       "row_count": "N/A (image)",
-      "size_bytes": 158217
+      "size_bytes": 149260
     },
     {
       "path": "analysis\\wordclouds\\province_云南.png",
@@ -104,7 +104,7 @@
       "source": "analysis\\wordclouds\\province_北京.png",
       "hash": "",
       "row_count": "N/A (image)",
-      "size_bytes": 157108
+      "size_bytes": 150964
     },
     {
       "path": "analysis\\wordclouds\\province_四川.png",
@@ -125,14 +125,14 @@
       "source": "analysis\\wordclouds\\province_广东.png",
       "hash": "",
       "row_count": "N/A (image)",
-      "size_bytes": 158786
+      "size_bytes": 148536
     },
     {
       "path": "analysis\\wordclouds\\province_江苏.png",
       "source": "analysis\\wordclouds\\province_江苏.png",
       "hash": "",
       "row_count": "N/A (image)",
-      "size_bytes": 157088
+      "size_bytes": 159978
     },
     {
       "path": "analysis\\wordclouds\\province_河南.png",
@@ -146,7 +146,14 @@
       "source": "analysis\\wordclouds\\province_浙江.png",
       "hash": "",
       "row_count": "N/A (image)",
-      "size_bytes": 157971
+      "size_bytes": 147431
+    },
+    {
+      "path": "analysis\\wordclouds\\province_湖北.png",
+      "source": "analysis\\wordclouds\\province_湖北.png",
+      "hash": "",
+      "row_count": "N/A (image)",
+      "size_bytes": 158541
     },
     {
       "path": "analysis\\wordclouds\\province_湖南.png",

@@ -1,0 +1,46 @@
+﻿============================================================
+1. PROVINCE CLUSTERING
+============================================================
+
+Cluster 0 (7 provinces): 上海, 广东, 新疆, 江苏, 浙江, 湖北, 澳门
+  Dominant emotion: 中性 (neutral=0.4375)
+  Means: {'喜悦': np.float64(0.2585), '悲伤': np.float64(0.0953), '愤怒': np.float64(0.1076), '恐惧': np.float64(0.0385), '惊讶': np.float64(0.0626), '中性': np.float64(0.4375)}
+  Avg intensity: 0.5625
+python.exe : Traceback (most recent call last):
+At line:1 char:1
++ & "D:\anaconda\envs\emotion_xpu\python.exe" "D:\大学资料\大二\数据挖掘\Mood_Wea ..
+.
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call  
+   last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\anaconda\envs\emotion_xpu\Lib\site-packages\pandas\core\indexes
+\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngi
+ne.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngi
+ne.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._li
+bs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._li
+bs.hashtable.PyObjectHashTable.get_item
+KeyError: 'total_posts_all'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\��ѧ����\���\�����ھ�\Mood_Weather_Station\paper\extract_data.py"
+, line 32, in <module>
+    print(f"  Total posts: {group['total_posts_all'].sum():,}")
+                            ~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda\envs\emotion_xpu\Lib\site-packages\pandas\core\frame.p
+y", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda\envs\emotion_xpu\Lib\site-packages\pandas\core\indexes
+\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'total_posts_all'

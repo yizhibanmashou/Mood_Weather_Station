@@ -1,0 +1,198 @@
+{
+  "generated_at": "2026-06-08T14:40:15.579392+08:00",
+  "purpose": "Realtime hotsearch report snapshots for presentation",
+  "snapshot_count": 2,
+  "snapshots": [
+    {
+      "path": "app/public/data/realtime/hotsearch_archive_2026-06-02.json",
+      "date": "2026-06-02",
+      "fetch_time_str": "2026-06-02 16:35:29",
+      "source": "UAPIS Weibo Hot Search",
+      "total_topics": 50,
+      "aggregate_emotion": {
+        "joy": 0.0681,
+        "sadness": 0.0156,
+        "anger": 0.0176,
+        "fear": 0.0002,
+        "surprise": 0.0002,
+        "neutral": 0.8983
+      },
+      "aggregate_dominant": "neutral",
+      "dominant_topic_counts": {
+        "anger": 1,
+        "joy": 4,
+        "sadness": 1,
+        "neutral": 44
+      },
+      "emotional_topic_count": 9,
+      "top_emotional_topics": [
+        {
+          "rank": 23,
+          "title": "于正故意挑mean的回复",
+          "hot_value": 332495,
+          "dominant_emotion": "anger",
+          "dominant_emotion_cn": "愤怒",
+          "emotional_intensity": 0.9588
+        },
+        {
+          "rank": 25,
+          "title": "迪丽热巴表现力强到让人震撼",
+          "hot_value": 321874,
+          "dominant_emotion": "joy",
+          "dominant_emotion_cn": "喜悦",
+          "emotional_intensity": 0.8878
+        },
+        {
+          "rank": 15,
+          "title": "全世界最尊重上海的人",
+          "hot_value": 362438,
+          "dominant_emotion": "joy",
+          "dominant_emotion_cn": "喜悦",
+          "emotional_intensity": 0.7857
+        },
+        {
+          "rank": 13,
+          "title": "张杰真不舒服了",
+          "hot_value": 373502,
+          "dominant_emotion": "sadness",
+          "dominant_emotion_cn": "悲伤",
+          "emotional_intensity": 0.7698
+        },
+        {
+          "rank": 39,
+          "title": "王皓说男乒队伍更团结了",
+          "hot_value": 235112,
+          "dominant_emotion": "joy",
+          "dominant_emotion_cn": "喜悦",
+          "emotional_intensity": 0.7479
+        },
+        {
+          "rank": 17,
+          "title": "陈粒演唱会情侣假求婚",
+          "hot_value": 354496,
+          "dominant_emotion": "joy",
+          "dominant_emotion_cn": "喜悦",
+          "emotional_intensity": 0.7271
+        },
+        {
+          "rank": 26,
+          "title": "神仙肉 陈星旭",
+          "hot_value": 278650,
+          "dominant_emotion": "neutral",
+          "dominant_emotion_cn": "中性",
+          "emotional_intensity": 0.4574
+        },
+        {
+          "rank": 14,
+          "title": "不被爱的时候你是鹿晗也得被打码",
+          "hot_value": 371429,
+          "dominant_emotion": "neutral",
+          "dominant_emotion_cn": "中性",
+          "emotional_intensity": 0.2962
+        }
+      ]
+    },
+    {
+      "path": "app/public/data/realtime/hotsearch_latest.json",
+      "date": "2026-06-08",
+      "fetch_time_str": "2026-06-08 14:25:37",
+      "source": "UAPIS Weibo Hot Search",
+      "total_topics": 50,
+      "aggregate_emotion": {
+        "joy": 0.1383,
+        "sadness": 0.0727,
+        "anger": 0.0359,
+        "fear": 0.0087,
+        "surprise": 0.0286,
+        "neutral": 0.7159
+      },
+      "aggregate_dominant": "neutral",
+      "dominant_topic_counts": {
+        "sadness": 3,
+        "anger": 2,
+        "joy": 6,
+        "neutral": 39
+      },
+      "emotional_topic_count": 33,
+      "top_emotional_topics": [
+        {
+          "rank": 14,
+          "title": "物理一卷考哭了",
+          "hot_value": 789900,
+          "dominant_emotion": "sadness",
+          "dominant_emotion_cn": "悲伤",
+          "emotional_intensity": 0.8038
+        },
+        {
+          "rank": 25,
+          "title": "张慧雯原来是哭着跳完的",
+          "hot_value": 484353,
+          "dominant_emotion": "sadness",
+          "dominant_emotion_cn": "悲伤",
+          "emotional_intensity": 0.7984
+        },
+        {
+          "rank": 45,
+          "title": "听到讨厌的人过生日就这态度",
+          "hot_value": 304558,
+          "dominant_emotion": "anger",
+          "dominant_emotion_cn": "愤怒",
+          "emotional_intensity": 0.7178
+        },
+        {
+          "rank": 11,
+          "title": "33岁已婚男猥亵强奸12岁少女",
+          "hot_value": 806129,
+          "dominant_emotion": "anger",
+          "dominant_emotion_cn": "愤怒",
+          "emotional_intensity": 0.694
+        },
+        {
+          "rank": 7,
+          "title": "李思潼的第一个红毯要来了",
+          "hot_value": 827745,
+          "dominant_emotion": "joy",
+          "dominant_emotion_cn": "喜悦",
+          "emotional_intensity": 0.6818
+        },
+        {
+          "rank": 50,
+          "title": "JackeyLove大家好才是真的好",
+          "hot_value": 271288,
+          "dominant_emotion": "joy",
+          "dominant_emotion_cn": "喜悦",
+          "emotional_intensity": 0.6464
+        },
+        {
+          "rank": 20,
+          "title": "考生飞奔扑进爸爸怀里直呼物理简单",
+          "hot_value": 489247,
+          "dominant_emotion": "joy",
+          "dominant_emotion_cn": "喜悦",
+          "emotional_intensity": 0.6359
+        },
+        {
+          "rank": 42,
+          "title": "家属披露49岁船员货船上失联详情",
+          "hot_value": 317327,
+          "dominant_emotion": "sadness",
+          "dominant_emotion_cn": "悲伤",
+          "emotional_intensity": 0.6182
+        }
+      ]
+    }
+  ],
+  "change_from_first_to_latest": {
+    "joy": 0.0702,
+    "sadness": 0.0571,
+    "anger": 0.0183,
+    "fear": 0.0085,
+    "surprise": 0.0284,
+    "neutral": -0.1824
+  },
+  "notes": [
+    "6 月 2 日快照作为历史对照保留；6 月 8 日快照由 scripts/17_hotsearch_live.py 重新采集生成。",
+    "实时热搜仅使用 UAPIS 聚合榜单标题，不抓取用户帖子内容。",
+    "热搜标题与微博正文存在 domain shift，整体中性占比偏高，应作为实时概念验证展示。"
+  ]
+}

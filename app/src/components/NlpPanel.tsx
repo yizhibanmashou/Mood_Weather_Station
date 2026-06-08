@@ -126,13 +126,13 @@ export function NlpPanel({ weekKey, emotion, nlpData, emotionKeywords, onKeyword
         <div className={styles.controls}>
           <div className={styles.segmented}>
             <button className={keywordMode === "top" ? styles.activeBtn : ""} onClick={() => setKeywordMode("top")}>
-              高频词
+              代表词
             </button>
             <button className={keywordMode === "surge" ? styles.activeBtn : ""} onClick={() => setKeywordMode("surge")}>
               飙升词
             </button>
             <button className={keywordMode === "frequent" ? styles.activeBtn : ""} onClick={() => setKeywordMode("frequent")}>
-              全部词
+              高频词
             </button>
           </div>
           <div className={styles.segmented}>

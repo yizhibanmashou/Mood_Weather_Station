@@ -1,17 +1,15 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Skeleton } from "./components/StateViews";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import { TimeAxis } from "./components/TimeAxis";
 import { useMoodData } from "./hooks/useMoodData";
-import { ClusterAnalysis } from "./pages/ClusterAnalysis";
-import { Dashboard } from "./pages/Dashboard";
-import { EventTimeline } from "./pages/EventTimeline";
-import { ProvinceDetail } from "./pages/ProvinceDetail";
 import { applyTheme, DEFAULT_THEME, THEME_META, type ThemePreset } from "./theme";
-import { spring, pageVariants, hoverScale } from "./utils/motionPresets";
+import { spring, pageVariants } from "./utils/motionPresets";
 import styles from "./App.module.css";
 
 type PageKey = "dashboard" | "province" | "cluster" | "events";
+type DataMode = "historical" | "realtime";
 
 const pages: Array<{ key: PageKey; label: string; sub: string }> = [
   { key: "dashboard", label: "全国总览", sub: "Dashboard" },
@@ -22,7 +20,14 @@ const pages: Array<{ key: PageKey; label: string; sub: string }> = [
 
 const THEME_PRESETS: ThemePreset[] = ["warmIvory", "paperBeige", "softDataBlue"];
 
+const Dashboard = lazy(() => import("./pages/Dashboard").then((m) => ({ default: m.Dashboard })));
+const ProvinceDetail = lazy(() => import("./pages/ProvinceDetail").then((m) => ({ default: m.ProvinceDetail })));
+const ClusterAnalysis = lazy(() => import("./pages/ClusterAnalysis").then((m) => ({ default: m.ClusterAnalysis })));
+const EventTimeline = lazy(() => import("./pages/EventTimeline").then((m) => ({ default: m.EventTimeline })));
+const RealtimeDashboard = lazy(() => import("./pages/RealtimeDashboard").then((m) => ({ default: m.RealtimeDashboard })));
+
 export default function App() {
+  const [dataMode, setDataMode] = useState<DataMode>("historical");
   const [page, setPage] = useState<PageKey>("dashboard");
   const [selectedProvince, setSelectedProvince] = useState<string>("");
   const [theme, setTheme] = useState<ThemePreset>(() => {
@@ -38,11 +43,39 @@ export default function App() {
 
   const handleProvinceSelect = useCallback((province: string) => {
     setSelectedProvince(province);
+    setDataMode("historical");
     setPage("province");
   }, []);
 
+  // Compute data time range for the timeline
+  const timeAxisProps = useMemo(() => {
+    if (!data?.nationalWeeks?.length) return null;
+    const weeks = data.nationalWeeks.map((w) => w.date_week).filter(Boolean).sort();
+    const start = weeks[0];
+    const end = weeks[weeks.length - 1];
+    if (!start || !end) return null;
+
+    const markers: { position: number; label: string; sublabel: string; color?: string }[] = [
+      { position: 0, label: start, sublabel: "数据起点" },
+    ];
+    // Add COVID-19 milestones if within range
+    if (start <= "2020-W04" && end >= "2020-W04") {
+      const covPos = 0.1; // approximate position
+      markers.push({ position: covPos, label: "2020-W04", sublabel: "武汉封城", color: "var(--emotion-fear)" });
+    }
+    if (start <= "2020-W12" && end >= "2020-W12") {
+      markers.push({ position: 0.25, label: "2020-W12", sublabel: "管控期", color: "var(--emotion-sadness)" });
+    }
+    markers.push({ position: 1, label: end, sublabel: "最新数据", color: "var(--accent)" });
+
+    return { fullRange: [start, end] as [string, string], markers };
+  }, [data]);
+
   const content = useMemo(() => {
     if (!data) return null;
+    if (dataMode === "realtime") {
+      return <RealtimeDashboard snapshot={data.realtime} />;
+    }
     switch (page) {
       case "province":
         return <ProvinceDetail data={data} initialProvince={selectedProvince} />;
@@ -54,7 +87,7 @@ export default function App() {
       default:
         return <Dashboard data={data} onProvinceSelect={handleProvinceSelect} />;
     }
-  }, [data, page, selectedProvince]);
+  }, [data, dataMode, page, selectedProvince]);
 
   return (
     <div className={styles.app}>
@@ -71,8 +104,11 @@ export default function App() {
           {pages.map((item) => (
             <motion.button
               key={item.key}
-              className={page === item.key ? styles.active : ""}
-              onClick={() => setPage(item.key)}
+              className={dataMode === "historical" && page === item.key ? styles.active : ""}
+              onClick={() => {
+                setDataMode("historical");
+                setPage(item.key);
+              }}
               type="button"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -83,6 +119,28 @@ export default function App() {
             </motion.button>
           ))}
         </nav>
+        <div className={styles.modeSwitcher} aria-label="数据模式切换">
+          <motion.button
+            className={dataMode === "historical" ? styles.activeMode : ""}
+            onClick={() => setDataMode("historical")}
+            type="button"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            transition={spring}
+          >
+            历史数据
+          </motion.button>
+          <motion.button
+            className={dataMode === "realtime" ? styles.activeMode : ""}
+            onClick={() => setDataMode("realtime")}
+            type="button"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            transition={spring}
+          >
+            实时热搜
+          </motion.button>
+        </div>
         <div className={styles.themeSwitcher}>
           {THEME_PRESETS.map((preset) => (
             <motion.button
@@ -98,6 +156,10 @@ export default function App() {
           ))}
         </div>
       </header>
+
+      {dataMode === "historical" && timeAxisProps && data && (
+        <TimeAxis fullRange={timeAxisProps.fullRange} markers={timeAxisProps.markers} />
+      )}
 
       <main className={styles.main}>
         {loading ? (
@@ -120,7 +182,9 @@ export default function App() {
                 animate="animate"
                 exit="exit"
               >
-                {content}
+                <Suspense fallback={<Skeleton rows={4} />}>
+                  {content}
+                </Suspense>
               </motion.div>
             </AnimatePresence>
           </ErrorBoundary>

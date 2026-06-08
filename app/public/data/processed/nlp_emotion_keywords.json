@@ -1,1099 +1,1099 @@
 {
   "meta": {
-    "generated_at": "2026-05-08T08:10:56.766522",
+    "generated_at": "2026-06-04T16:09:17.940400",
     "method": "emotion_weighted_keyword_tfidf"
   },
   "emotions": {
     "joy": [
       {
         "word": "天通",
-        "avg_tfidf": 0.8695,
+        "avg_tfidf": 0.8635,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.8695
-      },
-      {
-        "word": "表彰大会",
-        "avg_tfidf": 0.5495,
-        "peak_week": "2020-W37",
-        "peak_tfidf": 0.5495
+        "peak_tfidf": 0.8635
       },
       {
         "word": "急先锋",
-        "avg_tfidf": 0.5357,
+        "avg_tfidf": 0.5152,
         "peak_week": "2020-W36",
-        "peak_tfidf": 0.5357
+        "peak_tfidf": 0.5152
       },
       {
-        "word": "行者",
-        "avg_tfidf": 0.4678,
-        "peak_week": "2020-W38",
-        "peak_tfidf": 0.7791
+        "word": "打卡",
+        "avg_tfidf": 0.5099,
+        "peak_week": "2020-W07",
+        "peak_tfidf": 0.563
+      },
+      {
+        "word": "表彰大会",
+        "avg_tfidf": 0.4774,
+        "peak_week": "2020-W37",
+        "peak_tfidf": 0.4774
+      },
+      {
+        "word": "交钱",
+        "avg_tfidf": 0.4562,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4562
+      },
+      {
+        "word": "女排",
+        "avg_tfidf": 0.423,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.423
+      },
+      {
+        "word": "法网",
+        "avg_tfidf": 0.4218,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4218
+      },
+      {
+        "word": "内鬼",
+        "avg_tfidf": 0.4194,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.4194
       },
       {
         "word": "郴州",
-        "avg_tfidf": 0.4344,
+        "avg_tfidf": 0.4134,
         "peak_week": "2020-W44",
-        "peak_tfidf": 0.7162
+        "peak_tfidf": 0.7035
       },
       {
-        "word": "第一夫人",
-        "avg_tfidf": 0.4165,
-        "peak_week": "2020-W40",
-        "peak_tfidf": 0.4165
+        "word": "饭量",
+        "avg_tfidf": 0.4075,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4075
       },
       {
         "word": "鲍某明",
-        "avg_tfidf": 0.4132,
+        "avg_tfidf": 0.3909,
         "peak_week": "2020-W18",
-        "peak_tfidf": 0.4132
+        "peak_tfidf": 0.3909
+      },
+      {
+        "word": "第一夫人",
+        "avg_tfidf": 0.3823,
+        "peak_week": "2020-W40",
+        "peak_tfidf": 0.3823
+      },
+      {
+        "word": "辅警",
+        "avg_tfidf": 0.3787,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.3787
       },
       {
         "word": "梁小霞",
-        "avg_tfidf": 0.4046,
+        "avg_tfidf": 0.3767,
         "peak_week": "2020-W22",
-        "peak_tfidf": 0.4046
+        "peak_tfidf": 0.3767
       },
       {
         "word": "时尚",
-        "avg_tfidf": 0.3809,
+        "avg_tfidf": 0.3669,
         "peak_week": "2020-W49",
-        "peak_tfidf": 0.3809
+        "peak_tfidf": 0.3669
       },
       {
-        "word": "面包店",
-        "avg_tfidf": 0.3625,
-        "peak_week": "2020-W33",
-        "peak_tfidf": 0.3625
-      },
-      {
-        "word": "徐帆",
-        "avg_tfidf": 0.3618,
-        "peak_week": "2020-W39",
-        "peak_tfidf": 0.3618
-      },
-      {
-        "word": "以待",
-        "avg_tfidf": 0.3482,
-        "peak_week": "2020-W10",
-        "peak_tfidf": 0.3482
+        "word": "行者",
+        "avg_tfidf": 0.3664,
+        "peak_week": "2020-W38",
+        "peak_tfidf": 0.5904
       },
       {
         "word": "减肥",
-        "avg_tfidf": 0.3479,
+        "avg_tfidf": 0.3535,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.3479
+        "peak_tfidf": 0.3535
+      },
+      {
+        "word": "面包店",
+        "avg_tfidf": 0.3446,
+        "peak_week": "2020-W33",
+        "peak_tfidf": 0.3446
       },
       {
         "word": "海鲜城",
-        "avg_tfidf": 0.3451,
+        "avg_tfidf": 0.3381,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.3451
+        "peak_tfidf": 0.3381
       },
       {
-        "word": "聋人",
-        "avg_tfidf": 0.3349,
-        "peak_week": "2020-W25",
-        "peak_tfidf": 0.3349
+        "word": "以待",
+        "avg_tfidf": 0.3255,
+        "peak_week": "2020-W10",
+        "peak_tfidf": 0.3255
       },
       {
-        "word": "已婚",
-        "avg_tfidf": 0.3222,
-        "peak_week": "2019-W52",
-        "peak_tfidf": 0.3222
-      },
-      {
-        "word": "蜜蜂",
-        "avg_tfidf": 0.3206,
-        "peak_week": "2020-W09",
-        "peak_tfidf": 0.3206
-      },
-      {
-        "word": "电影院",
-        "avg_tfidf": 0.3193,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.674
+        "word": "徐帆",
+        "avg_tfidf": 0.3217,
+        "peak_week": "2020-W39",
+        "peak_tfidf": 0.3217
       },
       {
         "word": "非政府",
-        "avg_tfidf": 0.3181,
+        "avg_tfidf": 0.3141,
         "peak_week": "2019-W49",
-        "peak_tfidf": 0.3181
+        "peak_tfidf": 0.3141
       },
       {
-        "word": "于鑫慧",
-        "avg_tfidf": 0.3152,
-        "peak_week": "2020-W42",
-        "peak_tfidf": 0.3152
-      },
-      {
-        "word": "阿钭",
-        "avg_tfidf": 0.3121,
-        "peak_week": "2020-W27",
-        "peak_tfidf": 0.3121
-      },
-      {
-        "word": "严禁",
-        "avg_tfidf": 0.31,
-        "peak_week": "2020-W05",
-        "peak_tfidf": 0.31
+        "word": "聋人",
+        "avg_tfidf": 0.3075,
+        "peak_week": "2020-W25",
+        "peak_tfidf": 0.3075
       },
       {
         "word": "清明",
-        "avg_tfidf": 0.3058,
+        "avg_tfidf": 0.3047,
         "peak_week": "2020-W14",
-        "peak_tfidf": 0.3058
+        "peak_tfidf": 0.3047
+      },
+      {
+        "word": "电影院",
+        "avg_tfidf": 0.3034,
+        "peak_week": "2020-W29",
+        "peak_tfidf": 0.6409
+      },
+      {
+        "word": "已婚",
+        "avg_tfidf": 0.303,
+        "peak_week": "2019-W52",
+        "peak_tfidf": 0.303
+      },
+      {
+        "word": "于鑫慧",
+        "avg_tfidf": 0.3026,
+        "peak_week": "2020-W42",
+        "peak_tfidf": 0.3026
       },
       {
         "word": "法医",
-        "avg_tfidf": 0.3017,
+        "avg_tfidf": 0.2998,
         "peak_week": "2019-W50",
-        "peak_tfidf": 0.401
+        "peak_tfidf": 0.3991
       },
       {
-        "word": "警察故事",
-        "avg_tfidf": 0.2967,
-        "peak_week": "2020-W46",
-        "peak_tfidf": 0.4551
+        "word": "严禁",
+        "avg_tfidf": 0.2963,
+        "peak_week": "2020-W05",
+        "peak_tfidf": 0.2963
       },
       {
-        "word": "新发",
-        "avg_tfidf": 0.2964,
-        "peak_week": "2020-W24",
-        "peak_tfidf": 0.4395
-      },
-      {
-        "word": "小熊",
-        "avg_tfidf": 0.2919,
-        "peak_week": "2020-W30",
-        "peak_tfidf": 0.5096
-      },
-      {
-        "word": "电影局",
-        "avg_tfidf": 0.2881,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.2881
-      },
-      {
-        "word": "醒脑",
-        "avg_tfidf": 0.2861,
-        "peak_week": "2020-W01",
-        "peak_tfidf": 0.2861
-      },
-      {
-        "word": "负压",
-        "avg_tfidf": 0.2857,
-        "peak_week": "2020-W08",
-        "peak_tfidf": 0.3531
+        "word": "阿钭",
+        "avg_tfidf": 0.2936,
+        "peak_week": "2020-W27",
+        "peak_tfidf": 0.2936
       }
     ],
     "sadness": [
       {
         "word": "天通",
-        "avg_tfidf": 0.8695,
+        "avg_tfidf": 0.8635,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.8695
-      },
-      {
-        "word": "表彰大会",
-        "avg_tfidf": 0.5495,
-        "peak_week": "2020-W37",
-        "peak_tfidf": 0.5495
+        "peak_tfidf": 0.8635
       },
       {
         "word": "急先锋",
-        "avg_tfidf": 0.5357,
+        "avg_tfidf": 0.5152,
         "peak_week": "2020-W36",
-        "peak_tfidf": 0.5357
+        "peak_tfidf": 0.5152
       },
       {
-        "word": "行者",
-        "avg_tfidf": 0.4678,
-        "peak_week": "2020-W38",
-        "peak_tfidf": 0.7791
+        "word": "打卡",
+        "avg_tfidf": 0.5099,
+        "peak_week": "2020-W07",
+        "peak_tfidf": 0.563
+      },
+      {
+        "word": "表彰大会",
+        "avg_tfidf": 0.4774,
+        "peak_week": "2020-W37",
+        "peak_tfidf": 0.4774
+      },
+      {
+        "word": "交钱",
+        "avg_tfidf": 0.4562,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4562
+      },
+      {
+        "word": "女排",
+        "avg_tfidf": 0.423,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.423
+      },
+      {
+        "word": "法网",
+        "avg_tfidf": 0.4218,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4218
+      },
+      {
+        "word": "内鬼",
+        "avg_tfidf": 0.4194,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.4194
       },
       {
         "word": "郴州",
-        "avg_tfidf": 0.4344,
+        "avg_tfidf": 0.4134,
         "peak_week": "2020-W44",
-        "peak_tfidf": 0.7162
+        "peak_tfidf": 0.7035
       },
       {
-        "word": "第一夫人",
-        "avg_tfidf": 0.4165,
-        "peak_week": "2020-W40",
-        "peak_tfidf": 0.4165
+        "word": "饭量",
+        "avg_tfidf": 0.4075,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4075
       },
       {
         "word": "鲍某明",
-        "avg_tfidf": 0.4132,
+        "avg_tfidf": 0.3909,
         "peak_week": "2020-W18",
-        "peak_tfidf": 0.4132
+        "peak_tfidf": 0.3909
+      },
+      {
+        "word": "第一夫人",
+        "avg_tfidf": 0.3823,
+        "peak_week": "2020-W40",
+        "peak_tfidf": 0.3823
+      },
+      {
+        "word": "辅警",
+        "avg_tfidf": 0.3787,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.3787
       },
       {
         "word": "梁小霞",
-        "avg_tfidf": 0.4046,
+        "avg_tfidf": 0.3767,
         "peak_week": "2020-W22",
-        "peak_tfidf": 0.4046
+        "peak_tfidf": 0.3767
       },
       {
         "word": "时尚",
-        "avg_tfidf": 0.3809,
+        "avg_tfidf": 0.3669,
         "peak_week": "2020-W49",
-        "peak_tfidf": 0.3809
+        "peak_tfidf": 0.3669
       },
       {
-        "word": "面包店",
-        "avg_tfidf": 0.3625,
-        "peak_week": "2020-W33",
-        "peak_tfidf": 0.3625
-      },
-      {
-        "word": "徐帆",
-        "avg_tfidf": 0.3618,
-        "peak_week": "2020-W39",
-        "peak_tfidf": 0.3618
-      },
-      {
-        "word": "以待",
-        "avg_tfidf": 0.3482,
-        "peak_week": "2020-W10",
-        "peak_tfidf": 0.3482
+        "word": "行者",
+        "avg_tfidf": 0.3664,
+        "peak_week": "2020-W38",
+        "peak_tfidf": 0.5904
       },
       {
         "word": "减肥",
-        "avg_tfidf": 0.3479,
+        "avg_tfidf": 0.3535,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.3479
+        "peak_tfidf": 0.3535
+      },
+      {
+        "word": "面包店",
+        "avg_tfidf": 0.3446,
+        "peak_week": "2020-W33",
+        "peak_tfidf": 0.3446
       },
       {
         "word": "海鲜城",
-        "avg_tfidf": 0.3451,
+        "avg_tfidf": 0.3381,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.3451
+        "peak_tfidf": 0.3381
       },
       {
-        "word": "聋人",
-        "avg_tfidf": 0.3349,
-        "peak_week": "2020-W25",
-        "peak_tfidf": 0.3349
+        "word": "以待",
+        "avg_tfidf": 0.3255,
+        "peak_week": "2020-W10",
+        "peak_tfidf": 0.3255
       },
       {
-        "word": "已婚",
-        "avg_tfidf": 0.3222,
-        "peak_week": "2019-W52",
-        "peak_tfidf": 0.3222
-      },
-      {
-        "word": "蜜蜂",
-        "avg_tfidf": 0.3206,
-        "peak_week": "2020-W09",
-        "peak_tfidf": 0.3206
-      },
-      {
-        "word": "电影院",
-        "avg_tfidf": 0.3193,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.674
+        "word": "徐帆",
+        "avg_tfidf": 0.3217,
+        "peak_week": "2020-W39",
+        "peak_tfidf": 0.3217
       },
       {
         "word": "非政府",
-        "avg_tfidf": 0.3181,
+        "avg_tfidf": 0.3141,
         "peak_week": "2019-W49",
-        "peak_tfidf": 0.3181
+        "peak_tfidf": 0.3141
       },
       {
-        "word": "于鑫慧",
-        "avg_tfidf": 0.3152,
-        "peak_week": "2020-W42",
-        "peak_tfidf": 0.3152
-      },
-      {
-        "word": "阿钭",
-        "avg_tfidf": 0.3121,
-        "peak_week": "2020-W27",
-        "peak_tfidf": 0.3121
-      },
-      {
-        "word": "严禁",
-        "avg_tfidf": 0.31,
-        "peak_week": "2020-W05",
-        "peak_tfidf": 0.31
+        "word": "聋人",
+        "avg_tfidf": 0.3075,
+        "peak_week": "2020-W25",
+        "peak_tfidf": 0.3075
       },
       {
         "word": "清明",
-        "avg_tfidf": 0.3058,
+        "avg_tfidf": 0.3047,
         "peak_week": "2020-W14",
-        "peak_tfidf": 0.3058
+        "peak_tfidf": 0.3047
       },
       {
-        "word": "警察故事",
-        "avg_tfidf": 0.2967,
-        "peak_week": "2020-W46",
-        "peak_tfidf": 0.4551
+        "word": "电影院",
+        "avg_tfidf": 0.3034,
+        "peak_week": "2020-W29",
+        "peak_tfidf": 0.6409
       },
       {
-        "word": "新发",
-        "avg_tfidf": 0.2964,
-        "peak_week": "2020-W24",
-        "peak_tfidf": 0.4395
+        "word": "已婚",
+        "avg_tfidf": 0.303,
+        "peak_week": "2019-W52",
+        "peak_tfidf": 0.303
+      },
+      {
+        "word": "于鑫慧",
+        "avg_tfidf": 0.3026,
+        "peak_week": "2020-W42",
+        "peak_tfidf": 0.3026
+      },
+      {
+        "word": "严禁",
+        "avg_tfidf": 0.2963,
+        "peak_week": "2020-W05",
+        "peak_tfidf": 0.2963
+      },
+      {
+        "word": "阿钭",
+        "avg_tfidf": 0.2936,
+        "peak_week": "2020-W27",
+        "peak_tfidf": 0.2936
       },
       {
         "word": "小熊",
-        "avg_tfidf": 0.2919,
+        "avg_tfidf": 0.2841,
         "peak_week": "2020-W30",
-        "peak_tfidf": 0.5096
-      },
-      {
-        "word": "电影局",
-        "avg_tfidf": 0.2881,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.2881
-      },
-      {
-        "word": "醒脑",
-        "avg_tfidf": 0.2861,
-        "peak_week": "2020-W01",
-        "peak_tfidf": 0.2861
-      },
-      {
-        "word": "负压",
-        "avg_tfidf": 0.2857,
-        "peak_week": "2020-W08",
-        "peak_tfidf": 0.3531
-      },
-      {
-        "word": "不计成本",
-        "avg_tfidf": 0.2817,
-        "peak_week": "2020-W31",
-        "peak_tfidf": 0.2817
+        "peak_tfidf": 0.4988
       }
     ],
     "anger": [
       {
         "word": "天通",
-        "avg_tfidf": 0.8695,
+        "avg_tfidf": 0.8635,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.8695
+        "peak_tfidf": 0.8635
       },
       {
         "word": "急先锋",
-        "avg_tfidf": 0.5357,
+        "avg_tfidf": 0.5152,
         "peak_week": "2020-W36",
-        "peak_tfidf": 0.5357
+        "peak_tfidf": 0.5152
+      },
+      {
+        "word": "打卡",
+        "avg_tfidf": 0.5099,
+        "peak_week": "2020-W07",
+        "peak_tfidf": 0.563
+      },
+      {
+        "word": "交钱",
+        "avg_tfidf": 0.4562,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4562
       },
       {
         "word": "郴州",
-        "avg_tfidf": 0.4707,
+        "avg_tfidf": 0.4542,
         "peak_week": "2020-W44",
-        "peak_tfidf": 0.7162
+        "peak_tfidf": 0.7035
       },
       {
-        "word": "行者",
-        "avg_tfidf": 0.4678,
-        "peak_week": "2020-W38",
-        "peak_tfidf": 0.7791
+        "word": "女排",
+        "avg_tfidf": 0.423,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.423
       },
       {
-        "word": "第一夫人",
-        "avg_tfidf": 0.4165,
-        "peak_week": "2020-W40",
-        "peak_tfidf": 0.4165
+        "word": "法网",
+        "avg_tfidf": 0.4218,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4218
+      },
+      {
+        "word": "内鬼",
+        "avg_tfidf": 0.4194,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.4194
+      },
+      {
+        "word": "饭量",
+        "avg_tfidf": 0.4075,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4075
       },
       {
         "word": "鲍某明",
-        "avg_tfidf": 0.4132,
+        "avg_tfidf": 0.3909,
         "peak_week": "2020-W18",
-        "peak_tfidf": 0.4132
+        "peak_tfidf": 0.3909
+      },
+      {
+        "word": "第一夫人",
+        "avg_tfidf": 0.3823,
+        "peak_week": "2020-W40",
+        "peak_tfidf": 0.3823
+      },
+      {
+        "word": "辅警",
+        "avg_tfidf": 0.3787,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.3787
       },
       {
         "word": "梁小霞",
-        "avg_tfidf": 0.4046,
+        "avg_tfidf": 0.3767,
         "peak_week": "2020-W22",
-        "peak_tfidf": 0.4046
+        "peak_tfidf": 0.3767
       },
       {
         "word": "时尚",
-        "avg_tfidf": 0.3809,
+        "avg_tfidf": 0.3669,
         "peak_week": "2020-W49",
-        "peak_tfidf": 0.3809
+        "peak_tfidf": 0.3669
       },
       {
-        "word": "面包店",
-        "avg_tfidf": 0.3625,
-        "peak_week": "2020-W33",
-        "peak_tfidf": 0.3625
-      },
-      {
-        "word": "徐帆",
-        "avg_tfidf": 0.3618,
-        "peak_week": "2020-W39",
-        "peak_tfidf": 0.3618
-      },
-      {
-        "word": "以待",
-        "avg_tfidf": 0.3482,
-        "peak_week": "2020-W10",
-        "peak_tfidf": 0.3482
+        "word": "行者",
+        "avg_tfidf": 0.3664,
+        "peak_week": "2020-W38",
+        "peak_tfidf": 0.5904
       },
       {
         "word": "减肥",
-        "avg_tfidf": 0.3479,
+        "avg_tfidf": 0.3535,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.3479
+        "peak_tfidf": 0.3535
       },
       {
-        "word": "聋人",
-        "avg_tfidf": 0.3349,
-        "peak_week": "2020-W25",
-        "peak_tfidf": 0.3349
+        "word": "面包店",
+        "avg_tfidf": 0.3446,
+        "peak_week": "2020-W33",
+        "peak_tfidf": 0.3446
       },
       {
-        "word": "已婚",
-        "avg_tfidf": 0.3222,
-        "peak_week": "2019-W52",
-        "peak_tfidf": 0.3222
+        "word": "以待",
+        "avg_tfidf": 0.3255,
+        "peak_week": "2020-W10",
+        "peak_tfidf": 0.3255
       },
       {
-        "word": "蜜蜂",
-        "avg_tfidf": 0.3206,
-        "peak_week": "2020-W09",
-        "peak_tfidf": 0.3206
-      },
-      {
-        "word": "电影院",
-        "avg_tfidf": 0.3193,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.674
+        "word": "徐帆",
+        "avg_tfidf": 0.3217,
+        "peak_week": "2020-W39",
+        "peak_tfidf": 0.3217
       },
       {
         "word": "非政府",
-        "avg_tfidf": 0.3181,
+        "avg_tfidf": 0.3141,
         "peak_week": "2019-W49",
-        "peak_tfidf": 0.3181
+        "peak_tfidf": 0.3141
       },
       {
-        "word": "于鑫慧",
-        "avg_tfidf": 0.3152,
-        "peak_week": "2020-W42",
-        "peak_tfidf": 0.3152
-      },
-      {
-        "word": "阿钭",
-        "avg_tfidf": 0.3121,
-        "peak_week": "2020-W27",
-        "peak_tfidf": 0.3121
-      },
-      {
-        "word": "严禁",
-        "avg_tfidf": 0.31,
-        "peak_week": "2020-W05",
-        "peak_tfidf": 0.31
+        "word": "聋人",
+        "avg_tfidf": 0.3075,
+        "peak_week": "2020-W25",
+        "peak_tfidf": 0.3075
       },
       {
         "word": "清明",
-        "avg_tfidf": 0.3058,
+        "avg_tfidf": 0.3047,
         "peak_week": "2020-W14",
-        "peak_tfidf": 0.3058
+        "peak_tfidf": 0.3047
+      },
+      {
+        "word": "电影院",
+        "avg_tfidf": 0.3034,
+        "peak_week": "2020-W29",
+        "peak_tfidf": 0.6409
+      },
+      {
+        "word": "已婚",
+        "avg_tfidf": 0.303,
+        "peak_week": "2019-W52",
+        "peak_tfidf": 0.303
+      },
+      {
+        "word": "于鑫慧",
+        "avg_tfidf": 0.3026,
+        "peak_week": "2020-W42",
+        "peak_tfidf": 0.3026
       },
       {
         "word": "法医",
-        "avg_tfidf": 0.3017,
+        "avg_tfidf": 0.2998,
         "peak_week": "2019-W50",
-        "peak_tfidf": 0.401
+        "peak_tfidf": 0.3991
       },
       {
-        "word": "警察故事",
-        "avg_tfidf": 0.2967,
-        "peak_week": "2020-W46",
-        "peak_tfidf": 0.4551
+        "word": "严禁",
+        "avg_tfidf": 0.2963,
+        "peak_week": "2020-W05",
+        "peak_tfidf": 0.2963
       },
       {
-        "word": "新发",
-        "avg_tfidf": 0.2964,
-        "peak_week": "2020-W24",
-        "peak_tfidf": 0.4395
+        "word": "阿钭",
+        "avg_tfidf": 0.2936,
+        "peak_week": "2020-W27",
+        "peak_tfidf": 0.2936
       },
       {
         "word": "小熊",
-        "avg_tfidf": 0.2919,
+        "avg_tfidf": 0.2841,
         "peak_week": "2020-W30",
-        "peak_tfidf": 0.5096
+        "peak_tfidf": 0.4988
       },
       {
-        "word": "电影局",
-        "avg_tfidf": 0.2881,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.2881
-      },
-      {
-        "word": "负压",
-        "avg_tfidf": 0.2857,
-        "peak_week": "2020-W08",
-        "peak_tfidf": 0.3531
-      },
-      {
-        "word": "不计成本",
-        "avg_tfidf": 0.2817,
-        "peak_week": "2020-W31",
-        "peak_tfidf": 0.2817
-      },
-      {
-        "word": "导弹",
-        "avg_tfidf": 0.2775,
-        "peak_week": "2019-W51",
-        "peak_tfidf": 0.2775
-      },
-      {
-        "word": "候诊",
-        "avg_tfidf": 0.2766,
-        "peak_week": "2020-W51",
-        "peak_tfidf": 0.2766
+        "word": "新发",
+        "avg_tfidf": 0.282,
+        "peak_week": "2020-W24",
+        "peak_tfidf": 0.4265
       }
     ],
     "surprise": [
       {
         "word": "天通",
-        "avg_tfidf": 0.8695,
+        "avg_tfidf": 0.8635,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.8695
+        "peak_tfidf": 0.8635
       },
       {
         "word": "急先锋",
-        "avg_tfidf": 0.5357,
+        "avg_tfidf": 0.5152,
         "peak_week": "2020-W36",
-        "peak_tfidf": 0.5357
+        "peak_tfidf": 0.5152
       },
       {
         "word": "郴州",
-        "avg_tfidf": 0.4707,
+        "avg_tfidf": 0.4542,
         "peak_week": "2020-W44",
-        "peak_tfidf": 0.7162
+        "peak_tfidf": 0.7035
+      },
+      {
+        "word": "打卡",
+        "avg_tfidf": 0.4328,
+        "peak_week": "2020-W09",
+        "peak_tfidf": 0.4328
       },
       {
         "word": "警察故事",
-        "avg_tfidf": 0.4551,
+        "avg_tfidf": 0.4298,
         "peak_week": "2020-W46",
-        "peak_tfidf": 0.4551
+        "peak_tfidf": 0.4298
       },
       {
         "word": "第一夫人",
-        "avg_tfidf": 0.4165,
+        "avg_tfidf": 0.3823,
         "peak_week": "2020-W40",
-        "peak_tfidf": 0.4165
+        "peak_tfidf": 0.3823
       },
       {
         "word": "梁小霞",
-        "avg_tfidf": 0.4046,
+        "avg_tfidf": 0.3767,
         "peak_week": "2020-W22",
-        "peak_tfidf": 0.4046
+        "peak_tfidf": 0.3767
       },
       {
         "word": "时尚",
-        "avg_tfidf": 0.3809,
+        "avg_tfidf": 0.3669,
         "peak_week": "2020-W49",
-        "peak_tfidf": 0.3809
-      },
-      {
-        "word": "面包店",
-        "avg_tfidf": 0.3625,
-        "peak_week": "2020-W33",
-        "peak_tfidf": 0.3625
-      },
-      {
-        "word": "徐帆",
-        "avg_tfidf": 0.3618,
-        "peak_week": "2020-W39",
-        "peak_tfidf": 0.3618
-      },
-      {
-        "word": "以待",
-        "avg_tfidf": 0.3482,
-        "peak_week": "2020-W10",
-        "peak_tfidf": 0.3482
+        "peak_tfidf": 0.3669
       },
       {
         "word": "减肥",
-        "avg_tfidf": 0.3479,
+        "avg_tfidf": 0.3535,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.3479
+        "peak_tfidf": 0.3535
       },
       {
-        "word": "蜜蜂",
-        "avg_tfidf": 0.3206,
-        "peak_week": "2020-W09",
-        "peak_tfidf": 0.3206
+        "word": "面包店",
+        "avg_tfidf": 0.3446,
+        "peak_week": "2020-W33",
+        "peak_tfidf": 0.3446
       },
       {
-        "word": "电影院",
-        "avg_tfidf": 0.3193,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.674
+        "word": "以待",
+        "avg_tfidf": 0.3255,
+        "peak_week": "2020-W10",
+        "peak_tfidf": 0.3255
+      },
+      {
+        "word": "徐帆",
+        "avg_tfidf": 0.3217,
+        "peak_week": "2020-W39",
+        "peak_tfidf": 0.3217
       },
       {
         "word": "非政府",
-        "avg_tfidf": 0.3181,
+        "avg_tfidf": 0.3141,
         "peak_week": "2019-W49",
-        "peak_tfidf": 0.3181
+        "peak_tfidf": 0.3141
+      },
+      {
+        "word": "电影院",
+        "avg_tfidf": 0.3034,
+        "peak_week": "2020-W29",
+        "peak_tfidf": 0.6409
       },
       {
         "word": "于鑫慧",
-        "avg_tfidf": 0.3152,
+        "avg_tfidf": 0.3026,
         "peak_week": "2020-W42",
-        "peak_tfidf": 0.3152
-      },
-      {
-        "word": "阿钭",
-        "avg_tfidf": 0.3121,
-        "peak_week": "2020-W27",
-        "peak_tfidf": 0.3121
+        "peak_tfidf": 0.3026
       },
       {
         "word": "法医",
-        "avg_tfidf": 0.3017,
+        "avg_tfidf": 0.2998,
         "peak_week": "2019-W50",
-        "peak_tfidf": 0.401
+        "peak_tfidf": 0.3991
+      },
+      {
+        "word": "阿钭",
+        "avg_tfidf": 0.2936,
+        "peak_week": "2020-W27",
+        "peak_tfidf": 0.2936
       },
       {
         "word": "小熊",
-        "avg_tfidf": 0.2919,
+        "avg_tfidf": 0.2841,
         "peak_week": "2020-W30",
-        "peak_tfidf": 0.5096
+        "peak_tfidf": 0.4988
       },
       {
-        "word": "电影局",
-        "avg_tfidf": 0.2881,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.2881
-      },
-      {
-        "word": "不计成本",
-        "avg_tfidf": 0.2817,
-        "peak_week": "2020-W31",
-        "peak_tfidf": 0.2817
+        "word": "预告",
+        "avg_tfidf": 0.2825,
+        "peak_week": "2020-W32",
+        "peak_tfidf": 0.2825
       },
       {
         "word": "导弹",
-        "avg_tfidf": 0.2775,
+        "avg_tfidf": 0.2772,
         "peak_week": "2019-W51",
-        "peak_tfidf": 0.2775
-      },
-      {
-        "word": "候诊",
-        "avg_tfidf": 0.2766,
-        "peak_week": "2020-W51",
-        "peak_tfidf": 0.2766
-      },
-      {
-        "word": "医师",
-        "avg_tfidf": 0.2756,
-        "peak_week": "2020-W34",
-        "peak_tfidf": 0.2756
-      },
-      {
-        "word": "禁毒",
-        "avg_tfidf": 0.2739,
-        "peak_week": "2020-W24",
-        "peak_tfidf": 0.2739
+        "peak_tfidf": 0.2772
       },
       {
         "word": "捐者",
-        "avg_tfidf": 0.2735,
+        "avg_tfidf": 0.2701,
         "peak_week": "2019-W50",
-        "peak_tfidf": 0.3603
+        "peak_tfidf": 0.3564
       },
       {
-        "word": "证券化",
-        "avg_tfidf": 0.2735,
-        "peak_week": "2020-W45",
-        "peak_tfidf": 0.2735
+        "word": "电影局",
+        "avg_tfidf": 0.2683,
+        "peak_week": "2020-W29",
+        "peak_tfidf": 0.2683
+      },
+      {
+        "word": "候诊",
+        "avg_tfidf": 0.2683,
+        "peak_week": "2020-W51",
+        "peak_tfidf": 0.2683
+      },
+      {
+        "word": "禁毒",
+        "avg_tfidf": 0.2647,
+        "peak_week": "2020-W24",
+        "peak_tfidf": 0.2647
       },
       {
         "word": "三文鱼",
-        "avg_tfidf": 0.273,
+        "avg_tfidf": 0.2627,
         "peak_week": "2020-W24",
-        "peak_tfidf": 0.273
+        "peak_tfidf": 0.2627
       },
       {
-        "word": "红梅赞",
-        "avg_tfidf": 0.2649,
-        "peak_week": "2020-W16",
-        "peak_tfidf": 0.2649
+        "word": "证券化",
+        "avg_tfidf": 0.2619,
+        "peak_week": "2020-W45",
+        "peak_tfidf": 0.2619
       },
       {
-        "word": "童伴",
-        "avg_tfidf": 0.2589,
-        "peak_week": "2020-W20",
-        "peak_tfidf": 0.2589
+        "word": "医师",
+        "avg_tfidf": 0.2611,
+        "peak_week": "2020-W34",
+        "peak_tfidf": 0.2611
       },
       {
         "word": "新发",
-        "avg_tfidf": 0.2572,
+        "avg_tfidf": 0.2489,
         "peak_week": "2020-W24",
-        "peak_tfidf": 0.4395
+        "peak_tfidf": 0.4265
+      },
+      {
+        "word": "刚果",
+        "avg_tfidf": 0.2475,
+        "peak_week": "2020-W23",
+        "peak_tfidf": 0.2475
+      },
+      {
+        "word": "不计成本",
+        "avg_tfidf": 0.2421,
+        "peak_week": "2020-W31",
+        "peak_tfidf": 0.2421
       }
     ],
     "neutral": [
       {
         "word": "天通",
-        "avg_tfidf": 0.8695,
+        "avg_tfidf": 0.8635,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.8695
-      },
-      {
-        "word": "表彰大会",
-        "avg_tfidf": 0.5495,
-        "peak_week": "2020-W37",
-        "peak_tfidf": 0.5495
+        "peak_tfidf": 0.8635
       },
       {
         "word": "急先锋",
-        "avg_tfidf": 0.5357,
+        "avg_tfidf": 0.5152,
         "peak_week": "2020-W36",
-        "peak_tfidf": 0.5357
+        "peak_tfidf": 0.5152
       },
       {
-        "word": "行者",
-        "avg_tfidf": 0.4678,
-        "peak_week": "2020-W38",
-        "peak_tfidf": 0.7791
+        "word": "打卡",
+        "avg_tfidf": 0.5099,
+        "peak_week": "2020-W07",
+        "peak_tfidf": 0.563
+      },
+      {
+        "word": "表彰大会",
+        "avg_tfidf": 0.4774,
+        "peak_week": "2020-W37",
+        "peak_tfidf": 0.4774
+      },
+      {
+        "word": "交钱",
+        "avg_tfidf": 0.4562,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4562
+      },
+      {
+        "word": "女排",
+        "avg_tfidf": 0.423,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.423
+      },
+      {
+        "word": "法网",
+        "avg_tfidf": 0.4218,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4218
+      },
+      {
+        "word": "内鬼",
+        "avg_tfidf": 0.4194,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.4194
       },
       {
         "word": "郴州",
-        "avg_tfidf": 0.4344,
+        "avg_tfidf": 0.4134,
         "peak_week": "2020-W44",
-        "peak_tfidf": 0.7162
+        "peak_tfidf": 0.7035
       },
       {
-        "word": "第一夫人",
-        "avg_tfidf": 0.4165,
-        "peak_week": "2020-W40",
-        "peak_tfidf": 0.4165
+        "word": "饭量",
+        "avg_tfidf": 0.4075,
+        "peak_week": "2026-W22",
+        "peak_tfidf": 0.4075
       },
       {
         "word": "鲍某明",
-        "avg_tfidf": 0.4132,
+        "avg_tfidf": 0.3909,
         "peak_week": "2020-W18",
-        "peak_tfidf": 0.4132
+        "peak_tfidf": 0.3909
+      },
+      {
+        "word": "第一夫人",
+        "avg_tfidf": 0.3823,
+        "peak_week": "2020-W40",
+        "peak_tfidf": 0.3823
+      },
+      {
+        "word": "辅警",
+        "avg_tfidf": 0.3787,
+        "peak_week": "2026-W23",
+        "peak_tfidf": 0.3787
       },
       {
         "word": "梁小霞",
-        "avg_tfidf": 0.4046,
+        "avg_tfidf": 0.3767,
         "peak_week": "2020-W22",
-        "peak_tfidf": 0.4046
+        "peak_tfidf": 0.3767
       },
       {
         "word": "时尚",
-        "avg_tfidf": 0.3809,
+        "avg_tfidf": 0.3669,
         "peak_week": "2020-W49",
-        "peak_tfidf": 0.3809
+        "peak_tfidf": 0.3669
       },
       {
-        "word": "面包店",
-        "avg_tfidf": 0.3625,
-        "peak_week": "2020-W33",
-        "peak_tfidf": 0.3625
-      },
-      {
-        "word": "徐帆",
-        "avg_tfidf": 0.3618,
-        "peak_week": "2020-W39",
-        "peak_tfidf": 0.3618
-      },
-      {
-        "word": "以待",
-        "avg_tfidf": 0.3482,
-        "peak_week": "2020-W10",
-        "peak_tfidf": 0.3482
+        "word": "行者",
+        "avg_tfidf": 0.3664,
+        "peak_week": "2020-W38",
+        "peak_tfidf": 0.5904
       },
       {
         "word": "减肥",
-        "avg_tfidf": 0.3479,
+        "avg_tfidf": 0.3535,
         "peak_week": "2020-W53",
-        "peak_tfidf": 0.3479
+        "peak_tfidf": 0.3535
+      },
+      {
+        "word": "面包店",
+        "avg_tfidf": 0.3446,
+        "peak_week": "2020-W33",
+        "peak_tfidf": 0.3446
       },
       {
         "word": "海鲜城",
-        "avg_tfidf": 0.3451,
+        "avg_tfidf": 0.3381,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.3451
+        "peak_tfidf": 0.3381
       },
       {
-        "word": "聋人",
-        "avg_tfidf": 0.3349,
-        "peak_week": "2020-W25",
-        "peak_tfidf": 0.3349
+        "word": "以待",
+        "avg_tfidf": 0.3255,
+        "peak_week": "2020-W10",
+        "peak_tfidf": 0.3255
       },
       {
-        "word": "已婚",
-        "avg_tfidf": 0.3222,
-        "peak_week": "2019-W52",
-        "peak_tfidf": 0.3222
-      },
-      {
-        "word": "蜜蜂",
-        "avg_tfidf": 0.3206,
-        "peak_week": "2020-W09",
-        "peak_tfidf": 0.3206
-      },
-      {
-        "word": "电影院",
-        "avg_tfidf": 0.3193,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.674
+        "word": "徐帆",
+        "avg_tfidf": 0.3217,
+        "peak_week": "2020-W39",
+        "peak_tfidf": 0.3217
       },
       {
         "word": "非政府",
-        "avg_tfidf": 0.3181,
+        "avg_tfidf": 0.3141,
         "peak_week": "2019-W49",
-        "peak_tfidf": 0.3181
+        "peak_tfidf": 0.3141
       },
       {
-        "word": "于鑫慧",
-        "avg_tfidf": 0.3152,
-        "peak_week": "2020-W42",
-        "peak_tfidf": 0.3152
-      },
-      {
-        "word": "阿钭",
-        "avg_tfidf": 0.3121,
-        "peak_week": "2020-W27",
-        "peak_tfidf": 0.3121
-      },
-      {
-        "word": "严禁",
-        "avg_tfidf": 0.31,
-        "peak_week": "2020-W05",
-        "peak_tfidf": 0.31
+        "word": "聋人",
+        "avg_tfidf": 0.3075,
+        "peak_week": "2020-W25",
+        "peak_tfidf": 0.3075
       },
       {
         "word": "清明",
-        "avg_tfidf": 0.3058,
+        "avg_tfidf": 0.3047,
         "peak_week": "2020-W14",
-        "peak_tfidf": 0.3058
+        "peak_tfidf": 0.3047
+      },
+      {
+        "word": "电影院",
+        "avg_tfidf": 0.3034,
+        "peak_week": "2020-W29",
+        "peak_tfidf": 0.6409
+      },
+      {
+        "word": "已婚",
+        "avg_tfidf": 0.303,
+        "peak_week": "2019-W52",
+        "peak_tfidf": 0.303
+      },
+      {
+        "word": "于鑫慧",
+        "avg_tfidf": 0.3026,
+        "peak_week": "2020-W42",
+        "peak_tfidf": 0.3026
       },
       {
         "word": "法医",
-        "avg_tfidf": 0.3017,
+        "avg_tfidf": 0.2998,
         "peak_week": "2019-W50",
-        "peak_tfidf": 0.401
+        "peak_tfidf": 0.3991
       },
       {
-        "word": "警察故事",
-        "avg_tfidf": 0.2967,
-        "peak_week": "2020-W46",
-        "peak_tfidf": 0.4551
+        "word": "严禁",
+        "avg_tfidf": 0.2963,
+        "peak_week": "2020-W05",
+        "peak_tfidf": 0.2963
       },
       {
-        "word": "新发",
-        "avg_tfidf": 0.2964,
-        "peak_week": "2020-W24",
-        "peak_tfidf": 0.4395
-      },
-      {
-        "word": "小熊",
-        "avg_tfidf": 0.2919,
-        "peak_week": "2020-W30",
-        "peak_tfidf": 0.5096
-      },
-      {
-        "word": "电影局",
-        "avg_tfidf": 0.2881,
-        "peak_week": "2020-W29",
-        "peak_tfidf": 0.2881
-      },
-      {
-        "word": "醒脑",
-        "avg_tfidf": 0.2861,
-        "peak_week": "2020-W01",
-        "peak_tfidf": 0.2861
-      },
-      {
-        "word": "负压",
-        "avg_tfidf": 0.2857,
-        "peak_week": "2020-W08",
-        "peak_tfidf": 0.3531
+        "word": "阿钭",
+        "avg_tfidf": 0.2936,
+        "peak_week": "2020-W27",
+        "peak_tfidf": 0.2936
       }
     ],
     "fear": [
       {
         "word": "新发",
-        "avg_tfidf": 0.4395,
+        "avg_tfidf": 0.4265,
         "peak_week": "2020-W24",
-        "peak_tfidf": 0.4395
+        "peak_tfidf": 0.4265
       },
       {
         "word": "海鲜城",
-        "avg_tfidf": 0.3451,
+        "avg_tfidf": 0.3381,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.3451
+        "peak_tfidf": 0.3381
       },
       {
         "word": "不明",
-        "avg_tfidf": 0.3146,
+        "avg_tfidf": 0.315,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.3146
+        "peak_tfidf": 0.315
       },
       {
         "word": "盘点",
-        "avg_tfidf": 0.2939,
+        "avg_tfidf": 0.2839,
         "peak_week": "2020-W52",
-        "peak_tfidf": 0.2939
-      },
-      {
-        "word": "变异",
-        "avg_tfidf": 0.2882,
-        "peak_week": "2020-W52",
-        "peak_tfidf": 0.2882
+        "peak_tfidf": 0.2839
       },
       {
         "word": "醒脑",
-        "avg_tfidf": 0.2861,
+        "avg_tfidf": 0.2801,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.2861
+        "peak_tfidf": 0.2801
+      },
+      {
+        "word": "变异",
+        "avg_tfidf": 0.2799,
+        "peak_week": "2020-W52",
+        "peak_tfidf": 0.2799
       },
       {
         "word": "禁毒",
-        "avg_tfidf": 0.2739,
+        "avg_tfidf": 0.2647,
         "peak_week": "2020-W24",
-        "peak_tfidf": 0.2739
+        "peak_tfidf": 0.2647
       },
       {
         "word": "三文鱼",
-        "avg_tfidf": 0.273,
+        "avg_tfidf": 0.2627,
         "peak_week": "2020-W24",
-        "peak_tfidf": 0.273
+        "peak_tfidf": 0.2627
       },
       {
         "word": "杀青",
-        "avg_tfidf": 0.2716,
+        "avg_tfidf": 0.2606,
         "peak_week": "2020-W52",
-        "peak_tfidf": 0.2716
+        "peak_tfidf": 0.2606
       },
       {
         "word": "送达",
-        "avg_tfidf": 0.2626,
+        "avg_tfidf": 0.2487,
         "peak_week": "2020-W04",
-        "peak_tfidf": 0.2626
+        "peak_tfidf": 0.2487
       },
       {
         "word": "供应商",
-        "avg_tfidf": 0.2579,
+        "avg_tfidf": 0.2442,
         "peak_week": "2020-W04",
-        "peak_tfidf": 0.2579
+        "peak_tfidf": 0.2442
       },
       {
         "word": "断定",
-        "avg_tfidf": 0.2434,
+        "avg_tfidf": 0.2394,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.2434
+        "peak_tfidf": 0.2394
       },
       {
         "word": "微博之夜",
-        "avg_tfidf": 0.2389,
+        "avg_tfidf": 0.2279,
         "peak_week": "2020-W52",
-        "peak_tfidf": 0.2389
-      },
-      {
-        "word": "防护服",
-        "avg_tfidf": 0.2246,
-        "peak_week": "2020-W04",
-        "peak_tfidf": 0.2246
+        "peak_tfidf": 0.2279
       },
       {
         "word": "总医院",
-        "avg_tfidf": 0.2192,
+        "avg_tfidf": 0.2162,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.2192
+        "peak_tfidf": 0.2162
+      },
+      {
+        "word": "防护服",
+        "avg_tfidf": 0.216,
+        "peak_week": "2020-W04",
+        "peak_tfidf": 0.216
       },
       {
         "word": "华南",
-        "avg_tfidf": 0.2147,
+        "avg_tfidf": 0.2129,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.2147
+        "peak_tfidf": 0.2129
       },
       {
-        "word": "器材",
-        "avg_tfidf": 0.2131,
+        "word": "英雄",
+        "avg_tfidf": 0.2105,
         "peak_week": "2020-W04",
-        "peak_tfidf": 0.2131
+        "peak_tfidf": 0.2105
       },
       {
         "word": "批发市场",
-        "avg_tfidf": 0.212,
+        "avg_tfidf": 0.2041,
         "peak_week": "2020-W24",
-        "peak_tfidf": 0.212
+        "peak_tfidf": 0.2041
       },
       {
         "word": "货物",
-        "avg_tfidf": 0.2118,
+        "avg_tfidf": 0.2017,
         "peak_week": "2020-W04",
-        "peak_tfidf": 0.2118
+        "peak_tfidf": 0.2017
+      },
+      {
+        "word": "器材",
+        "avg_tfidf": 0.2009,
+        "peak_week": "2020-W04",
+        "peak_tfidf": 0.2009
       },
       {
         "word": "支援",
-        "avg_tfidf": 0.206,
+        "avg_tfidf": 0.1982,
         "peak_week": "2020-W04",
-        "peak_tfidf": 0.206
+        "peak_tfidf": 0.1982
       },
       {
         "word": "接收",
-        "avg_tfidf": 0.204,
+        "avg_tfidf": 0.1946,
         "peak_week": "2020-W04",
-        "peak_tfidf": 0.204
+        "peak_tfidf": 0.1946
+      },
+      {
+        "word": "病毒性",
+        "avg_tfidf": 0.1919,
+        "peak_week": "2020-W01",
+        "peak_tfidf": 0.1919
       },
       {
         "word": "刘伟强",
-        "avg_tfidf": 0.2003,
+        "avg_tfidf": 0.1906,
         "peak_week": "2020-W52",
-        "peak_tfidf": 0.2003
-      },
-      {
-        "word": "医用",
-        "avg_tfidf": 0.1868,
-        "peak_week": "2020-W04",
-        "peak_tfidf": 0.1868
+        "peak_tfidf": 0.1906
       },
       {
         "word": "经营户",
-        "avg_tfidf": 0.1858,
+        "avg_tfidf": 0.1825,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.1858
+        "peak_tfidf": 0.1825
       },
       {
-        "word": "请求",
-        "avg_tfidf": 0.1837,
+        "word": "医用",
+        "avg_tfidf": 0.1784,
         "peak_week": "2020-W04",
-        "peak_tfidf": 0.1837
+        "peak_tfidf": 0.1784
       },
       {
-        "word": "物资",
-        "avg_tfidf": 0.1816,
-        "peak_week": "2020-W04",
-        "peak_tfidf": 0.1816
-      },
-      {
-        "word": "毒品",
-        "avg_tfidf": 0.1806,
+        "word": "抗疫",
+        "avg_tfidf": 0.1784,
         "peak_week": "2020-W24",
-        "peak_tfidf": 0.1806
-      },
-      {
-        "word": "阵容",
-        "avg_tfidf": 0.1766,
-        "peak_week": "2020-W52",
-        "peak_tfidf": 0.1766
+        "peak_tfidf": 0.184
       },
       {
         "word": "病情",
-        "avg_tfidf": 0.1759,
+        "avg_tfidf": 0.1771,
         "peak_week": "2020-W01",
-        "peak_tfidf": 0.1759
+        "peak_tfidf": 0.1771
       },
       {
-        "word": "急诊科",
-        "avg_tfidf": 0.1671,
-        "peak_week": "2020-W01",
-        "peak_tfidf": 0.1671
+        "word": "物资",
+        "avg_tfidf": 0.1752,
+        "peak_week": "2020-W04",
+        "peak_tfidf": 0.1752
+      },
+      {
+        "word": "请求",
+        "avg_tfidf": 0.175,
+        "peak_week": "2020-W04",
+        "peak_tfidf": 0.175
       }
     ]
   }

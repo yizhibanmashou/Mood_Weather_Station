@@ -9,7 +9,8 @@ import type {
   PostExamplesPayload,
   ProvinceMonth,
   ProvinceVector,
-  ProvinceWeek
+  ProvinceWeek,
+  RealtimeHotsearchSnapshot
 } from "../types";
 import type { NlpData, NlpKeywordsByWeek, NlpEmotionKeywords, NlpGlobalVocabulary } from "../types/nlp";
 import { normalizeProvinceName } from "../utils/province";
@@ -17,6 +18,9 @@ import { normalizeProvinceName } from "../utils/province";
 type CsvRow = Record<string, string>;
 
 let cache: Promise<DataBundle> | null = null;
+
+const HISTORICAL_END_WEEK = "2020-W53";
+const HISTORICAL_END_MONTH = "2020-12";
 
 function toNumber(value: unknown) {
   const n = Number.parseFloat(String(value ?? "").trim());
@@ -30,6 +34,14 @@ function toBool(value: unknown) {
 function toEmotion(value: unknown): EmotionKey {
   const key = String(value ?? "neutral").trim() as EmotionKey;
   return EMOTIONS.includes(key) ? key : "neutral";
+}
+
+function isHistoricalWeek(week: string | undefined) {
+  return Boolean(week) && String(week) <= HISTORICAL_END_WEEK;
+}
+
+function isHistoricalMonth(month: string | undefined) {
+  return Boolean(month) && String(month) <= HISTORICAL_END_MONTH;
 }
 
 async function fetchText(path: string) {
@@ -139,6 +151,39 @@ function parseProvinceVectors(rows: CsvRow[], labels: ClusterLabel[]): ProvinceV
   });
 }
 
+function buildProvinceVectorsFromWeeks(rows: ProvinceWeek[], labels: ClusterLabel[]): ProvinceVector[] {
+  const labelByProvince = new Map(labels.map((row) => [row.province, row.cluster_label]));
+  const groups = new Map<string, ProvinceWeek[]>();
+  for (const row of rows) {
+    groups.set(row.province, [...(groups.get(row.province) ?? []), row]);
+  }
+
+  return [...groups.entries()].map(([province, provinceRows]) => {
+    const totalPosts = provinceRows.reduce((sum, row) => sum + row.total_posts, 0);
+    const weightedMean = (selector: (row: ProvinceWeek) => number) =>
+      provinceRows.reduce((sum, row) => sum + selector(row) * row.total_posts, 0) / Math.max(1, totalPosts);
+    const joyMean = weightedMean((row) => row.joy_mean);
+    const fearMean = weightedMean((row) => row.fear_mean);
+    const weightedVariance = (selector: (row: ProvinceWeek) => number, mean: number) =>
+      provinceRows.reduce((sum, row) => sum + (selector(row) - mean) ** 2 * row.total_posts, 0) / Math.max(1, totalPosts);
+
+    return {
+      province,
+      total_posts_all: totalPosts,
+      joy_mean_all: joyMean,
+      sadness_mean_all: weightedMean((row) => row.sadness_mean),
+      anger_mean_all: weightedMean((row) => row.anger_mean),
+      fear_mean_all: fearMean,
+      surprise_mean_all: weightedMean((row) => row.surprise_mean),
+      neutral_mean_all: weightedMean((row) => row.neutral_mean),
+      emotional_intensity_mean: weightedMean((row) => row.emotional_intensity),
+      fear_variance: weightedVariance((row) => row.fear_mean, fearMean),
+      joy_variance: weightedVariance((row) => row.joy_mean, joyMean),
+      cluster_label: labelByProvince.get(province)
+    };
+  });
+}
+
 function parseClusterLabels(rows: CsvRow[]): ClusterLabel[] {
   return rows.map((row) => ({
     province: normalizeProvinceName(row.province),
@@ -158,6 +203,42 @@ function parseMonthlyClusters(rows: CsvRow[]): MonthlyClusterMatrix {
       province: normalizeProvinceName(row[provinceKey]),
       values: months.map((month) => Math.trunc(toNumber(row[month])))
     }))
+  };
+}
+
+function filterMonthlyClusters(matrix: MonthlyClusterMatrix): MonthlyClusterMatrix {
+  const keepIndices = matrix.months
+    .map((month, index) => ({ month, index }))
+    .filter(({ month }) => isHistoricalMonth(month));
+  return {
+    months: keepIndices.map(({ month }) => month),
+    rows: matrix.rows.map((row) => ({
+      province: row.province,
+      values: keepIndices.map(({ index }) => row.values[index] ?? -1)
+    }))
+  };
+}
+
+function filterNlpKeywords(data: NlpKeywordsByWeek | null): NlpKeywordsByWeek | null {
+  if (!data) return null;
+  return {
+    ...data,
+    weeks: Object.fromEntries(
+      Object.entries(data.weeks).filter(([week]) => isHistoricalWeek(week))
+    )
+  };
+}
+
+function filterNlpEmotionKeywords(data: NlpEmotionKeywords | null): NlpEmotionKeywords | null {
+  if (!data) return null;
+  return {
+    ...data,
+    emotions: Object.fromEntries(
+      Object.entries(data.emotions).map(([emotion, keywords]) => [
+        emotion,
+        (keywords ?? []).filter((keyword) => isHistoricalWeek(keyword.peak_week))
+      ])
+    ) as NlpEmotionKeywords["emotions"]
   };
 }
 
@@ -192,7 +273,8 @@ async function loadMoodDataInner(): Promise<DataBundle> {
     chinaGeoJson,
     nlpKeywordsByWeek,
     nlpEmotionKeywords,
-    nlpGlobalVocabulary
+    nlpGlobalVocabulary,
+    realtimeSnapshot
   ] = await Promise.all([
     fetchCsv("data/processed/emotion_national_timeline.csv").catch((e) => { throw new Error(`加载全国时序失败: ${e}`); }),
     fetchCsv("data/processed/emotion_panel_weekly.csv").catch((e) => { throw new Error(`加载周面板失败: ${e}`); }),
@@ -210,23 +292,31 @@ async function loadMoodDataInner(): Promise<DataBundle> {
     fetchJson<NlpKeywordsByWeek | null>("data/processed/nlp_keywords_by_week.json", null),
     fetchJson<NlpEmotionKeywords | null>("data/processed/nlp_emotion_keywords.json", null),
     fetchJson<NlpGlobalVocabulary | null>("data/processed/nlp_global_vocabulary.json", null),
+    fetchJson<RealtimeHotsearchSnapshot | null>("data/realtime/hotsearch_latest.json", null),
   ]);
 
   const clusterLabels = parseClusterLabels(clusterRows);
+  const nationalWeeks = parseNational(nationalRows).filter((row) => isHistoricalWeek(row.date_week));
+  const provinceWeeks = parseProvinceWeeks(weekRows).filter((row) => isHistoricalWeek(row.date_week));
+  const provinceMonths = parseProvinceMonths(monthRows).filter((row) => isHistoricalMonth(row.date_month));
+  const monthlyClusters = filterMonthlyClusters(parseMonthlyClusters(monthlyRows));
+  const historicalProvinceVectors = buildProvinceVectorsFromWeeks(provinceWeeks, clusterLabels);
+
   return {
-    nationalWeeks: parseNational(nationalRows),
-    provinceWeeks: parseProvinceWeeks(weekRows),
-    provinceMonths: parseProvinceMonths(monthRows),
+    nationalWeeks,
+    provinceWeeks,
+    provinceMonths,
     clusterLabels,
-    provinceVectors: parseProvinceVectors(vectorRows, clusterLabels),
-    monthlyClusters: parseMonthlyClusters(monthlyRows),
-    anomalies: anomalies ?? [],
+    provinceVectors: historicalProvinceVectors.length ? historicalProvinceVectors : parseProvinceVectors(vectorRows, clusterLabels),
+    monthlyClusters,
+    anomalies: (anomalies ?? []).filter((event) => isHistoricalWeek(event.date_week)),
     postExamples: normalizePostExamples(postExamples),
     chinaGeoJson,
     nlp: {
-      keywordsByWeek: nlpKeywordsByWeek,
-      emotionKeywords: nlpEmotionKeywords,
+      keywordsByWeek: filterNlpKeywords(nlpKeywordsByWeek),
+      emotionKeywords: filterNlpEmotionKeywords(nlpEmotionKeywords),
       globalVocabulary: nlpGlobalVocabulary,
     },
+    realtime: realtimeSnapshot,
   };
 }

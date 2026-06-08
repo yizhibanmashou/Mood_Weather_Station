@@ -110,7 +110,7 @@ export function StaticImageBubbleMap({
   const panelDragRef = useRef<{ startX: number; startY: number; startPosX: number; startPosY: number } | null>(null);
 
   const availableMonths = useMemo(
-    () => [...new Set(monthlyData.map((r) => r.date_month))].sort(),
+    () => [...new Set(monthlyData.filter((r) => r.reliable).map((r) => r.date_month))].sort(),
     [monthlyData],
   );
   const effectiveMonth =
@@ -217,7 +217,7 @@ export function StaticImageBubbleMap({
   const showTooltip = useCallback(
     (b: (typeof bubbles)[number]) => {
       if (!b || !tooltipRef.current || !imgWrapRef.current) return;
-      const monthLabel = effectiveMonth ? dateMonthToChinese(effectiveMonth) : "全量";
+      const monthLabel = isMonthly ? dateMonthToChinese(effectiveMonth) : "全量";
       const metricLabel =
         selectedMetric === "emotional_intensity" ? "情绪温度"
         : selectedMetric === "dominant" ? "主导情绪"
@@ -247,7 +247,7 @@ export function StaticImageBubbleMap({
       tooltipRef.current.style.left = `${left}px`;
       tooltipRef.current.style.top = `${top}px`;
     },
-    [effectiveMonth, selectedMetric],
+    [effectiveMonth, isMonthly, selectedMetric],
   );
 
   function hideTooltip() {

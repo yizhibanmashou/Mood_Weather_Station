@@ -35,12 +35,6 @@ export function ProvinceDetail({ data, initialProvince }: ProvinceDetailProps) {
   const vector = vectorForProvince(data, province);
   const weeks = provinceWeeks(data, province);
 
-  // Debug: log radar values to verify per-province data
-  useEffect(() => {
-    if (!vector) return;
-    const vals = EMOTIONS.map((k) => `${k}=${(vector[`${k}_mean_all` as keyof typeof vector] as number).toFixed(4)}`).join(", ");
-    console.log(`[RadarDebug] ${province}: ${vals}`);
-  }, [province, vector]);
   const examples = data.postExamples.provinces[province]?.[emotion] ?? [];
 
   // Get top 3 emotions for default display

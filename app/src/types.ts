@@ -101,6 +101,29 @@ export interface MonthlyClusterMatrix {
   }>;
 }
 
+export interface RealtimeTopic {
+  rank: number;
+  title: string;
+  hot_value: number;
+  emotion: Record<EmotionKey, number>;
+  dominant_emotion: EmotionKey;
+  dominant_emotion_cn: string;
+  dominant_score: number;
+  emotional_intensity: number;
+  emotional_entropy: number;
+}
+
+export interface RealtimeHotsearchSnapshot {
+  fetch_time: string;
+  fetch_time_str: string;
+  source: string;
+  total_topics: number;
+  aggregate_emotion: Record<EmotionKey, number>;
+  aggregate_dominant: EmotionKey;
+  aggregate_dominant_cn: string;
+  topics: RealtimeTopic[];
+}
+
 export interface DataBundle {
   nationalWeeks: NationalWeek[];
   provinceWeeks: ProvinceWeek[];
@@ -112,4 +135,5 @@ export interface DataBundle {
   postExamples: PostExamplesPayload;
   chinaGeoJson: unknown;
   nlp: NlpData;
+  realtime: RealtimeHotsearchSnapshot | null;
 }

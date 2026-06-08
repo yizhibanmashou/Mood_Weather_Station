@@ -1,50 +1,72 @@
 # 情绪气象站 · Mood Weather Station
 
-> 数据挖掘课程大作业 — 基于 COVID-19 期间微博数据的省级公众情绪演变分析
+> 数据挖掘课程项目：基于 COVID-19 期间微博文本的省级公众情绪演化分析与交互式可视化系统。
 
-**在线演示**: https://mood-weather-station.pages.dev/
+在线演示：https://mood-weather-station.pages.dev/
 
-## 数据挖掘方法
+## 项目简介
 
-本项目应用了以下数据挖掘算法与技术：
+情绪气象站将微博文本、时间窗口和省级空间信息结合起来，构建一个面向“公众情绪如何随疫情阶段变化”的数据挖掘与可视化系统。项目覆盖数据清洗、情绪标注、模型蒸馏、统计聚合、异常检测、聚类分析、NLP 关键词解释和前端交互展示。
 
-| 算法 | 应用场景 | 实现 |
+系统同时提供历史数据分析和实时热搜验证两条路径：历史模块用于观察 2019-W48 至 2020-W53 的省级情绪趋势；实时模块接入 UAPIS 微博热搜标题，并使用本地 RoBERTa 情绪模型生成当天情绪快照，用于展示模型的可扩展性和现实验证能力。
+
+## 核心功能
+
+- 全国情绪总览：展示全国周级情绪走势、主导情绪、情绪强度、正向指数和异常事件。
+- 中国情绪地图：按省份展示情绪温度、六维情绪占比和主导情绪。
+- 省份详情页：查看单省周/月趋势、样本量、情绪结构和典型文本样例。
+- 聚类分析：使用层次聚类和 KMeans 描述省份情绪模式，并展示月度聚类演化。
+- 事件时间线：基于 Rolling Z-Score 检测情绪突变周，结合关键词解释异常来源。
+- NLP 词云分析：使用中文分词、词性过滤和 TF-IDF 提取异常周关键词。
+- 实时热搜看板：抓取微博热搜聚合标题，进行本地情绪推理并生成 JSON 快照。
+- 前端交互体验：React 单页应用，支持主题切换、页面懒加载和响应式图表展示。
+
+## 系统架构
+
+项目采用“数据管线 + 模型推理 + 分析资产 + 前端可视化”的分层设计。
+
+```text
+原始/扩展数据
+  -> 文本清洗与样本控制
+  -> DeepSeek 教师标注 / 本地模型推理
+  -> 周级、月级、省级聚合
+  -> 异常检测、聚类分析、关键词提取
+  -> CSV / JSON 前端数据资产
+  -> React + TypeScript + ECharts 可视化系统
+```
+
+历史数据与实时数据保持解耦：历史分析数据写入 `app/public/data/processed/`，实时热搜快照写入 `app/public/data/realtime/`。前端通过统一的数据加载层读取静态资产，因此可以直接部署到 Cloudflare Pages、GitHub Pages 等静态托管平台。
+
+## 关键技术与方法
+
+| 模块 | 方法 | 说明 |
 |---|---|---|
-| **LLM 文本分类** | DeepSeek API 对 39,973 条微博进行 6 维情绪标注 | `scripts/02_label_emotions.py` |
-| **中文 NLP 分词 + TF-IDF** | jieba 分词 + 词性过滤 + TF-IDF 提取异常周关键词，解释情绪异常背后的语义 | `scripts/04b_nlp_keywords.py` |
-| **Rolling Z-Score 异常检测** | 对全国情绪时序做滑动窗口检测，识别情绪突变周 | `scripts/05_detect_anomalies.py` |
-| **层次聚类 (Agglomerative Clustering)** | 基于省份情绪特征向量做层次聚类，生成 dendrogram | `scripts/06_cluster_provinces.py` |
-| **KMeans 聚类** | 与层次聚类对照，通过轮廓系数选择最优 K | `scripts/06_cluster_provinces.py` |
-| **聚类演化分析** | 按月独立聚类，按风险得分对齐标签，追踪省份聚类迁移 | `scripts/07_cluster_evolution.py` |
-| **特征工程** | 6 维情绪均值 + 情绪强度 + 恐惧/喜悦方差 → 9 维特征向量 | `scripts/06_cluster_provinces.py` |
-| **标准化 (StandardScaler)** | 聚类前对特征做 Z-Score 标准化 | `scripts/06_cluster_provinces.py` |
-| **轮廓系数评估** | 纯 Python 实现，评估聚类质量 (silhouette=0.27) | `scripts/06_cluster_provinces.py` |
-| **外部验证** | SMP2020-EWECT 数据集验证标注准确性 (Accuracy 73.3%, Macro F1 0.662) | `scripts/03_validate_emotions.py` |
+| 情绪标注 | DeepSeek API | 对微博文本进行六维情绪软标签标注 |
+| 模型蒸馏 | RoBERTa student model | 使用教师模型结果训练本地推理模型 |
+| 情绪维度 | joy / sadness / anger / fear / surprise / neutral | 每条文本输出六维概率分布 |
+| NLP 解释 | jieba + TF-IDF | 提取异常周关键词和情绪相关词 |
+| 异常检测 | Rolling Z-Score | 使用滑动窗口识别情绪突变周 |
+| 省份聚类 | HAC + KMeans | 基于情绪均值、强度和方差构建省份画像 |
+| 实时验证 | UAPIS + 本地模型 | 抓取热搜标题并生成实时情绪快照 |
+| 前端展示 | React + Vite + ECharts | 构建可部署的交互式数据看板 |
 
-## 功能
+## 模型结果
 
-- **全国情绪总览** — 周级时序、情绪结构、异常事件、省份排行
-- **中国情绪地图** — 34 省气泡图，支持情绪温度 / 6 维情绪 / 主导情绪切换
-- **省份详情** — 单省情绪曲线、月度趋势、样本量
-- **聚类分析** — 层次聚类 + KMeans，省份画像和演化热力图
-- **事件时间线** — rolling z-score 异常检测，贡献省份 Top 5，点击展开 NLP 关键词分析面板
-- **NLP 词云分析** — 异常周关键词提取，交互式词云 + Top 20 排行 + 飙升词检测，解释情绪异常背后的语义驱动力
+当前生产模型为 V1-opt，在验证集上相比基线有更好的准确率表现。
 
-## 技术栈
+| 版本 | 损失函数 | Val Acc | Val MAE | 说明 |
+|---|---|---:|---:|---|
+| V1 | 标准 KL | 72.28% | 0.1640 | 基线配置 |
+| V2 | Focal KL + T=0.5 | 74.73% | 0.1931 | 标签锐化较强 |
+| V2.3 | Focal KL + T=1.0 | 71.95% | 0.1642 | 保留软分布 |
+| V3 | Weighted KL | 70.05% | 0.1661 | 维度加权实验 |
+| V1-opt | 标准 KL | 77.36% | 0.1611 | 当前生产模型 |
 
-| 层 | 技术 |
-|---|---|
-| 数据处理 | Python 3.12, pandas, scikit-learn, scipy |
-| NLP 分词 | jieba, jieba.posseg, sklearn TfidfVectorizer |
-| 情绪标注 | DeepSeek API (OpenAI SDK 兼容) |
-| 验证基准 | SMP2020-EWECT (Accuracy 73.3%, Macro F1 0.662) |
-| 前端 | React 18, TypeScript, ECharts, echarts-wordcloud, Framer Motion |
-| 构建 | Vite 7, CSS Modules |
-| 部署 | Cloudflare Pages |
+外部验证使用 SMP2020-EWECT：Accuracy 73.3%，Macro F1 0.662。
 
 ## 快速开始
 
-### 前端
+### 前端运行
 
 ```bash
 cd app
@@ -52,83 +74,91 @@ npm install
 npm run dev
 ```
 
-### 数据管线
+本地开发地址默认为 `http://localhost:5173`。
+
+### 前端构建
 
 ```bash
-# 复制 .env.example 为 .env 并填入 DeepSeek API Key
-cp .env.example .env
-
-conda activate py312
-pip install -r requirements.txt
-
-# 一键运行完整扩展流水线（标注 → 合并 → 质量检查 → 下游分析 → 前端导出）
-python scripts/run_week_cap60_expansion_pipeline.py
-
-# 或手动运行聚合管线（需要先完成标注）
-python scripts/04_aggregate_emotions.py --input data/processed/labeled_dataset_merged_week_cap60.csv
-python scripts/04b_nlp_keywords.py --input data/processed/labeled_dataset_merged_week_cap60.csv
-python scripts/05_detect_anomalies.py
-python scripts/06_cluster_provinces.py
-python scripts/07_cluster_evolution.py
-python scripts/08_prepare_frontend_assets.py
+cd app
+npm run build
 ```
+
+构建产物输出到 `app/dist/`。
+
+### 重新生成前端数据
+
+```bash
+cd app
+npm run prepare:data
+```
+
+该命令会根据 `data/processed/labeled_dataset_merged_week_cap60.csv` 重新生成前端样例数据。
+
+### Python 环境
+
+```bash
+pip install -r requirements.txt
+```
+
+如果使用本地 Intel XPU / Conda 环境，可以参考：
+
+```bash
+conda run -n emotion_xpu python scripts/17_hotsearch_live.py
+```
+
+### 实时热搜管线
+
+```bash
+python scripts/17_hotsearch_live.py
+```
+
+输出文件：
+
+- `app/public/data/realtime/hotsearch_latest.json`
+- `app/public/data/realtime/hotsearch_history.jsonl`
+
+如需访问 DeepSeek 或 UAPIS，请复制 `.env.example` 为 `.env` 并填写自己的 API Key。`.env` 已加入 `.gitignore`，不要提交到公开仓库。
 
 ## 项目结构
 
-```
+```text
 Mood_Weather_Station/
-├── app/                    # React 前端
-│   ├── src/
-│   │   ├── components/     # 地图、图表、卡片组件
-│   │   ├── pages/          # 4 个页面：总览/详情/聚类/事件
-│   │   ├── data/           # 数据加载和坐标配置
-│   │   ├── hooks/          # 数据获取 Hook
-│   │   └── utils/          # 日期、分析、指标工具
-│   └── public/
-│       ├── data/           # 前端静态数据 (CSV/JSON)
-│       ├── maps/           # 地图底图
-│       └── analysis/       # 词云等可视化产物
-├── scripts/                # Python 数据管线 (00-08)
-├── data/
-│   ├── raw/                # 原始数据 (COV-Weibo2.0, SMP2020)
-│   └── processed/          # 处理后数据集
-└── docs/                   # 方法论文档
+- app/
+  - src/
+    - components/      # 图表、地图、状态视图、时间轴等组件
+    - pages/           # 总览、省份详情、聚类、事件、实时热搜页面
+    - data/            # 前端数据加载与标准化
+    - hooks/           # 数据 Hook
+    - utils/           # 日期、指标、动画、分析工具
+  - public/
+    - data/processed/  # 前端历史分析资产
+    - data/realtime/   # 实时热搜快照
+    - data/geo/        # 地理边界数据
+  - scripts/           # 前端数据准备脚本
+- scripts/             # Python 数据挖掘、训练、推理和实时管线
+- docs/                # 方法说明、实时报告和数据获取说明
+- figures/             # 训练曲线与汇报图表
+- paper/               # 论文或报告相关材料
+- data/                # 原始与中间数据，本地保留，不提交
+- models/              # 模型权重，本地保留，不提交
 ```
 
-## 数据管线
+## 数据与隐私说明
 
-| 步骤 | 脚本 | 说明 |
-|---:|---|---|
-| 00 | `00_probe_data_feasibility.py` | 数据可行性探测 |
-| 01 | `01_build_mini_dataset.py` | 构建 76,441 条样本集 |
-| 02 | `02_label_emotions.py` | DeepSeek 6 维情绪标注 |
-| 02b | `02b_build_stratified_relabel_plan.py` | 分层补标计划生成 |
-| 02c | `02c_merge_labeled_datasets.py` | 合并多个标注数据集 |
-| 02d | `02d_build_week_cap_expansion_plan.py` | 周-省上限扩展计划 |
-| 02e | `02e_finalize_week_cap_expansion.py` | 扩展后合并 + 质量检查 + 下游流水线 |
-| 03 | `03_validate_emotions.py` | SMP2020 外部验证 |
-| 04 | `04_aggregate_emotions.py` | 周/月/省聚合 |
-| 04b | `04b_nlp_keywords.py` | NLP 关键词提取 (jieba + TF-IDF) |
-| 05 | `05_detect_anomalies.py` | 异常检测 (z-score) |
-| 06 | `06_cluster_provinces.py` | 省份聚类 |
-| 07 | `07_cluster_evolution.py` | 聚类演化 |
-| 08 | `08_prepare_frontend_assets.py` | 前端数据导出 |
+- 仓库不提交 `.env`、API Key、数据库索引、原始微博数据和模型权重。
+- `data/raw/`、`data/processed/`、`data/indexes/`、`models/`、`tmp/` 已通过 `.gitignore` 排除。
+- 前端展示所需的轻量 CSV / JSON 静态资产位于 `app/public/data/`，可用于部署演示。
+- 实时热搜模块只使用公开热搜标题，不抓取用户主页、评论或私信等个人内容。
+- `post_examples.json` 已限制为历史数据口径，截止到 `2020-W53`，不混入实时合成数据。
 
-## 情绪标注
 
-每条微博标注 6 维情绪分数，总和为 1：
+## 相关文档
 
-| 情绪 | 标签 | Cap60 均值 (39,973 条) |
-|---|---|---:|
-| joy | 喜悦 | 0.2683 |
-| sadness | 悲伤 | 0.0902 |
-| anger | 愤怒 | 0.0948 |
-| fear | 恐惧 | 0.0344 |
-| surprise | 惊讶 | 0.0560 |
-| neutral | 中性 | 0.4564 |
-
-验证结果：Accuracy 73.3%, Macro F1 0.662 (2000 SMP2020 样本)
+- [实时热搜汇报摘要](docs/REALTIME_REPORT_SUMMARY.md)
+- [实时抓取说明](docs/REALTIME_FETCH.md)
+- [数据获取报告](docs/DATA_ACQUISITION_REPORT.md)
+- [项目交接记录](HANDOVER.md)
 
 ## License
 
-[MIT](LICENSE)
+本项目使用 [MIT License](LICENSE)。
