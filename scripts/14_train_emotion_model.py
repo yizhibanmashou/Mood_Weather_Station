@@ -14,19 +14,24 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(ROOT / ".env")
 
-# Ensure Intel XPU runtime DLLs are on PATH
-_xpu_base = Path(os.getenv("EMOTION_XPU_ENV", r"D:\anaconda\envs\emotion_xpu"))
-for _sub in ["", "Library\\bin", "Scripts"]:
-    _p = str(_xpu_base / _sub) if _sub else str(_xpu_base)
-    if _p not in os.environ["PATH"]:
-        os.environ["PATH"] = _p + ";" + os.environ["PATH"]
+# Ensure Intel XPU runtime DLLs are on PATH (if EMOTION_XPU_ENV is set)
+_xpu_base = os.getenv("EMOTION_XPU_ENV", "")
+if _xpu_base:
+    _xpu_path = Path(_xpu_base)
+    for _sub in ["", "Library\\bin", "Scripts"]:
+        _p = str(_xpu_path / _sub) if _sub else str(_xpu_path)
+        if _p not in os.environ["PATH"]:
+            os.environ["PATH"] = _p + os.pathsep + os.environ["PATH"]
 
 # Avoid HuggingFace 403 on discussions endpoint
 os.environ.setdefault("HF_HUB_OFFLINE", "1")
 os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
 
 import functools
+import contextlib
+import random
 
+import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
@@ -48,7 +53,6 @@ LR = 2e-5
 WEIGHT_DECAY = 0.01
 WARMUP_RATIO = 0.10
 DROPOUT = 0.2
-GRAD_ACCUM_STEPS = 1
 EARLY_STOP_PATIENCE = 4
 COSINE_RESTART_PERIOD = 3
 LABEL_TEMPERATURE = 1.0
@@ -76,17 +80,8 @@ def get_device():
 
 def setup_imports():
     """Import local modules from scripts/"""
-    import importlib.util
-    scripts_dir = ROOT / "scripts"
-
-    def _load(name):
-        path = scripts_dir / f"{name}.py"
-        spec = importlib.util.spec_from_file_location(name, path)
-        mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(mod)
-        return mod
-
-    return _load("12_emotion_dataset"), _load("13_emotion_model")
+    from _utils import load_local_module
+    return load_local_module("12_emotion_dataset"), load_local_module("13_emotion_model")
 
 
 def standard_kl_loss(pred_logits, target_probs):
@@ -199,15 +194,8 @@ def save_model(model, tokenizer, output_dir, metadata=None):
     print(f"  Model saved to {output_dir}")
 
 
-def main():
-    sys.stdout.reconfigure(encoding='utf-8', line_buffering=True)
-
-    # Log to file (timestamped, avoid overwriting previous runs)
-    LOG_DIR.mkdir(parents=True, exist_ok=True)
-    log_stem = datetime.now().strftime("run_%m%d_%H%M")
-    sys.stdout = open(LOG_DIR / f"{log_stem}.log", "w", encoding="utf-8", buffering=1)
-
-    device = get_device()
+def _main_body(device, log_stem):
+    """Core training logic, called inside redirect_stdout context."""
     amp_dtype = torch.bfloat16 if USE_AMP and device.type in ("xpu", "cuda") else None
     scaler = torch.amp.GradScaler(device.type) if amp_dtype == torch.bfloat16 else None
 
@@ -238,6 +226,7 @@ def main():
     train_loader = DataLoader(
         train_ds, batch_size=BATCH_SIZE, shuffle=True,
         num_workers=0, pin_memory=False,
+        generator=torch.Generator().manual_seed(42),
     )
     val_loader = DataLoader(
         val_ds, batch_size=BATCH_SIZE, shuffle=False,
@@ -319,7 +308,7 @@ def main():
             save_model(model, train_ds.tokenizer, MODEL_OUTPUT_DIR, metadata={
                 "model_name": MODEL_NAME,
                 "best_epoch": best_epoch,
-                "val_loss": val_loss_uw,  # unweighted — comparable to V1/V2
+                "val_loss": val_loss_uw,
                 "val_loss_weighted": val_loss_w,
                 "val_acc": val_acc,
                 "val_mae": avg_mae,
@@ -350,6 +339,34 @@ def main():
     print(f"Training complete. Best epoch: {best_epoch} (val_loss_uw={best_val_loss:.6f})")
     print(f"Model saved to: {MODEL_OUTPUT_DIR}")
     print(f"History saved to: {history_path}")
+
+
+def main():
+    sys.stdout.reconfigure(encoding='utf-8', line_buffering=True)
+
+    # Set random seeds for reproducibility
+    RANDOM_SEED = 42
+    random.seed(RANDOM_SEED)
+    np.random.seed(RANDOM_SEED)
+    torch.manual_seed(RANDOM_SEED)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(RANDOM_SEED)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+    if hasattr(torch, "xpu") and torch.xpu.is_available():
+        torch.xpu.manual_seed_all(RANDOM_SEED)
+
+    # Log to file (timestamped, avoid overwriting previous runs)
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    log_stem = datetime.now().strftime("run_%m%d_%H%M")
+    log_path = LOG_DIR / f"{log_stem}.log"
+
+    # Redirect stdout to log file, with contextlib for safe restore on error
+    with open(log_path, "w", encoding="utf-8", buffering=1) as log_file:
+        with contextlib.redirect_stdout(log_file):
+            _main_body(device, log_stem)
+
+    print(f"Log saved to {log_path}")
 
 
 if __name__ == "__main__":

@@ -7,18 +7,19 @@ import os
 import json
 import math
 from pathlib import Path
-import importlib.util
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(ROOT / ".env")
 
-# Ensure Intel XPU runtime DLLs are on PATH
-_xpu_base = Path(os.getenv("EMOTION_XPU_ENV", r"D:\anaconda\envs\emotion_xpu"))
-for _sub in ["", "Library\\bin", "Scripts"]:
-    _p = str(_xpu_base / _sub) if _sub else str(_xpu_base)
-    if _p not in os.environ["PATH"]:
-        os.environ["PATH"] = _p + ";" + os.environ["PATH"]
+# Ensure Intel XPU runtime DLLs are on PATH (if EMOTION_XPU_ENV is set)
+_xpu_base = os.getenv("EMOTION_XPU_ENV", "")
+if _xpu_base:
+    _xpu_path = Path(_xpu_base)
+    for _sub in ["", "Library\\bin", "Scripts"]:
+        _p = str(_xpu_path / _sub) if _sub else str(_xpu_path)
+        if _p not in os.environ["PATH"]:
+            os.environ["PATH"] = _p + os.pathsep + os.environ["PATH"]
 
 os.environ.setdefault("HF_HUB_OFFLINE", "1")
 os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
@@ -50,16 +51,9 @@ def get_device():
     return torch.device("cpu")
 
 
-def load_local_mod(name):
-    path = ROOT / "scripts" / f"{name}.py"
-    spec = importlib.util.spec_from_file_location(name, path)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
-
-
 def load_model(device):
-    model_mod = load_local_mod("13_emotion_model")
+    from _utils import load_local_module
+    model_mod = load_local_module("13_emotion_model")
     from transformers import AutoTokenizer
 
     model = model_mod.EmotionClassifier(model_name=str(MODEL_DIR), dropout=0.1)

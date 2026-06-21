@@ -27,11 +27,13 @@ if _env_path.exists():
                 os.environ.setdefault(_k.strip(), _v.strip())
 
 # Ensure Intel XPU runtime DLLs are on PATH (needed for emotion_xpu env)
-_xpu_base = Path(os.getenv("EMOTION_XPU_ENV", r"D:\anaconda\envs\emotion_xpu"))
-for _sub in ["", "Library\\bin", "Scripts"]:
-    _p = str(_xpu_base / _sub) if _sub else str(_xpu_base)
-    if _p not in os.environ["PATH"]:
-        os.environ["PATH"] = _p + ";" + os.environ["PATH"]
+_xpu_base = os.getenv("EMOTION_XPU_ENV", "")
+if _xpu_base:
+    _xpu_path = Path(_xpu_base)
+    for _sub in ["", "Library\\bin", "Scripts"]:
+        _p = str(_xpu_path / _sub) if _sub else str(_xpu_path)
+        if _p not in os.environ["PATH"]:
+            os.environ["PATH"] = _p + os.pathsep + os.environ["PATH"]
 
 os.environ.setdefault("HF_HUB_OFFLINE", "1")
 os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
@@ -65,9 +67,8 @@ def get_device():
 def load_model():
     """Load fine-tuned emotion model from models/emotion_model/."""
     from transformers import AutoTokenizer
-    sys.path.insert(0, str(ROOT / "scripts"))
-    from importlib import import_module
-    model_mod = import_module("13_emotion_model")
+    from _utils import load_local_module
+    model_mod = load_local_module("13_emotion_model")
 
     model = model_mod.EmotionClassifier(model_name=str(MODEL_DIR), dropout=0.1)
     classifier_path = MODEL_DIR / "classifier.pt"
@@ -164,7 +165,7 @@ def _demo_topics():
     ]
 
 
-def build_snapshot(topics, emotions):
+def build_snapshot(topics, emotions, is_demo=False):
     """Build the full snapshot JSON structure."""
     now = datetime.now(CST)
 
@@ -207,6 +208,7 @@ def build_snapshot(topics, emotions):
         "fetch_time": now.isoformat(),
         "fetch_time_str": now.strftime("%Y-%m-%d %H:%M:%S"),
         "source": "UAPIS Weibo Hot Search",
+        "demo_mode": is_demo,
         "total_topics": len(items),
         "aggregate_emotion": {k: round(v, 4) for k, v in agg.items()},
         "aggregate_dominant": agg_dominant,
@@ -253,6 +255,8 @@ def main():
     # 2. Fetch hot search
     print("\n[2/4] Fetching UAPIS hot search...")
     topics = fetch_hotsearch()
+    # Detect demo mode: check if fetch_hotsearch fell back to _demo_topics
+    is_demo = not UAPIS_API_KEY or len(topics) == 10
     topics = topics[:TOP_N]
     print(f"  Top {len(topics)} topics:")
     for t in topics[:5]:
@@ -280,7 +284,7 @@ def main():
 
     # 4. Build & save snapshot
     print("\n[4/4] Building snapshot...")
-    snapshot = build_snapshot(topics, emotions)
+    snapshot = build_snapshot(topics, emotions, is_demo=is_demo)
     agg = snapshot["aggregate_emotion"]
     print(f"  Aggregate emotion: {snapshot['aggregate_dominant_cn']} (dominant)")
     print(f"    joy={agg['joy']:.3f}  sadness={agg['sadness']:.3f}  "

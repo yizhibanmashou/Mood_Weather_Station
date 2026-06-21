@@ -65,9 +65,16 @@ def run_script(script_name, args_list, step_name, timeout=7200):
         result = subprocess.run(cmd, capture_output=True, text=False, timeout=timeout)
         result.stdout = result.stdout.decode("utf-8", errors="replace") if result.stdout else ""
         result.stderr = result.stderr.decode("utf-8", errors="replace") if result.stderr else ""
-        # Print relevant output
+        # Write full log to pipeline log file
+        pipeline_log = TMP_DIR / f"pipeline_{step_name.replace(' ', '_').lower()}.log"
+        with open(pipeline_log, "a", encoding="utf-8") as plog:
+            plog.write(f"\n--- {step_name} at {datetime.now().isoformat()} ---\n")
+            plog.write(result.stdout)
+            if result.stderr:
+                plog.write(f"\n--- STDERR ---\n{result.stderr}\n")
+        # Print relevant output (include warnings now)
         for line in result.stdout.split("\n"):
-            if line.strip() and ("[OK]" in line or "[ERROR]" in line or "Done" in line or "SUMMARY" in line):
+            if line.strip() and ("[OK]" in line or "[WARN]" in line or "[ERROR]" in line or "Done" in line or "SUMMARY" in line):
                 log(f"  {line.strip()}")
         if result.returncode != 0:
             log(f"[ERROR] {step_name} failed (code {result.returncode})")

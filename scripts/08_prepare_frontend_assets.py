@@ -128,7 +128,8 @@ def main():
 
     # Copy data files
     for src, dst_rel in files_to_copy:
-        src_rel = str(src.relative_to(ROOT)) if src.is_relative_to(ROOT) else str(src)
+        src_rel = src.relative_to(ROOT).as_posix() if src.is_relative_to(ROOT) else str(src)
+        dst_rel = dst_rel.replace("\\", "/")
         dst = app_public / dst_rel
 
         if not src.exists():
@@ -159,7 +160,8 @@ def main():
         (data_dir / "nlp_global_vocabulary.json", "data/processed/nlp_global_vocabulary.json"),
     ]
     for src, dst_rel in nlp_files_to_copy:
-        src_rel = str(src.relative_to(ROOT)) if src.is_relative_to(ROOT) else str(src)
+        src_rel = src.relative_to(ROOT).as_posix() if src.is_relative_to(ROOT) else str(src)
+        dst_rel = dst_rel.replace("\\", "/")
         dst = app_public / dst_rel
 
         if not src.exists():
@@ -201,13 +203,14 @@ def main():
                 rel = Path("analysis") / rel
             except ValueError:
                 rel = Path("analysis") / img_dir.name / img.name
-            dst = app_public / str(rel)
+            rel_posix = rel.as_posix()
+            dst = app_public / rel_posix
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(img, dst)
 
             manifest["files"].append({
-                "path": str(rel),
-                "source": str(rel),
+                "path": rel_posix,
+                "source": rel_posix,
                 "hash": "",
                 "row_count": "N/A (image)",
                 "size_bytes": dst.stat().st_size,
