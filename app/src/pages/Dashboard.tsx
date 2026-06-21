@@ -333,15 +333,15 @@ export function Dashboard({ data, onProvinceSelect }: DashboardProps) {
               }}>
                 <div style={{ textAlign: "center" }}>
                   <div style={{ fontSize: 11, color: "var(--text-muted)" }}>正向</div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: "#4CAF50" }}>{formatPct(composition.positive)}</div>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: EMOTION_META.joy.color }}>{formatPct(composition.positive)}</div>
                 </div>
                 <div style={{ textAlign: "center" }}>
                   <div style={{ fontSize: 11, color: "var(--text-muted)" }}>中性</div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: "var(--emotion-neutral)" }}>{formatPct(composition.neutral)}</div>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: EMOTION_META.neutral.color }}>{formatPct(composition.neutral)}</div>
                 </div>
                 <div style={{ textAlign: "center" }}>
                   <div style={{ fontSize: 11, color: "var(--text-muted)" }}>负向</div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: "var(--emotion-anger)" }}>{formatPct(composition.negative)}</div>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: EMOTION_META.anger.color }}>{formatPct(composition.negative)}</div>
                 </div>
               </div>
               <p style={{ margin: "10px 0 0", fontSize: 12, color: "var(--text-muted)", lineHeight: 1.5, textAlign: "center" }}>

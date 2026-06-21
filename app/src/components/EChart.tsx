@@ -1,5 +1,6 @@
-import ReactECharts from "echarts-for-react";
+import ReactEChartsCore from "echarts-for-react/lib/core";
 import type { EChartsOption } from "echarts";
+import { echarts } from "../utils/echartsSetup";
 
 interface EChartProps {
   option: EChartsOption;
@@ -19,7 +20,8 @@ function withAnimation(option: EChartsOption): EChartsOption {
 
 export function EChart({ option, height = 360 }: EChartProps) {
   return (
-    <ReactECharts
+    <ReactEChartsCore
+      echarts={echarts}
       option={withAnimation(option)}
       notMerge
       lazyUpdate

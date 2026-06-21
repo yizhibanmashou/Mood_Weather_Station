@@ -1,6 +1,7 @@
 import { useMemo, useState, useCallback, useEffect, useRef } from "react";
-import ReactECharts from "echarts-for-react";
+import ReactEChartsCore from "echarts-for-react/lib/core";
 import { EMOTION_META, type EmotionKey } from "../config";
+import { echarts } from "../utils/echartsSetup";
 import type { NlpKeyword, NlpKeywordsByWeek, NlpEmotionKeywords, NlpWeekKeywords } from "../types/nlp";
 import { EmptyState } from "./StateViews";
 import styles from "./NlpPanel.module.css";
@@ -226,7 +227,7 @@ interface WordCloudChartProps {
 }
 
 function WordCloudChart({ keywords, selectedWord, onWordClick }: WordCloudChartProps) {
-  const chartRef = useRef<ReactECharts | null>(null);
+  const chartRef = useRef<any>(null);
   const [hasError, setHasError] = useState(false);
 
   const baseOption = useMemo(() => {
@@ -312,7 +313,7 @@ function WordCloudChart({ keywords, selectedWord, onWordClick }: WordCloudChartP
 
   return (
     <WordCloudErrorBoundary onError={() => setHasError(true)}>
-      <ReactECharts ref={chartRef} option={baseOption} onEvents={onEvents} style={{ height: "100%", minHeight: 320 }} opts={{ renderer: "canvas" }} notMerge={false} lazyUpdate />
+      <ReactEChartsCore echarts={echarts} ref={chartRef} option={baseOption} onEvents={onEvents} style={{ height: "100%", minHeight: 320 }} opts={{ renderer: "canvas" }} notMerge={false} lazyUpdate />
     </WordCloudErrorBoundary>
   );
 }

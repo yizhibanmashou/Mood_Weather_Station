@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import { PROVINCE_IMAGE_POSITIONS, type ProvinceImagePos } from "../data/provinceImagePositions";
 import { EMOTIONS, EMOTION_META, type EmotionKey } from "../config";
 import type { ProvinceMonth, ProvinceVector } from "../types";
-import { formatPct, formatNumber } from "../utils/analytics";
+import { formatPct, formatNumber, getDominantEmotion } from "../utils/analytics";
 import { dateMonthToChinese } from "../utils/dateUtils";
 import styles from "./StaticImageBubbleMap.module.css";
 
@@ -22,12 +22,6 @@ const ENABLE_MAP_POSITION_EDITOR = false;
 function getVal(row: ProvinceVector | ProvinceMonth, emotion: EmotionKey): number {
   if ("joy_mean_all" in row) return (row as ProvinceVector)[`${emotion}_mean_all`];
   return (row as ProvinceMonth)[`${emotion}_mean`];
-}
-
-function getDominantEmotion(row: ProvinceVector | ProvinceMonth): EmotionKey {
-  return EMOTIONS.reduce((best, e) => {
-    return getVal(row, e) > getVal(row, best) ? e : best;
-  }, "neutral" as EmotionKey);
 }
 
 function getMetricValue(row: ProvinceVector | ProvinceMonth, metric: MapMetric): number {

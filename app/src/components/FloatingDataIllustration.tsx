@@ -6,7 +6,7 @@ import { motion, type Transition } from "framer-motion";
 import { springGentle } from "../utils/motionPresets";
 
 /* ── Floating keyframes for CSS animation ────────────── */
-const floatKeyframes = (delay: number, distance: number): React.CSSProperties => ({
+const floatKeyframes = (delay: number, _distance: number): React.CSSProperties => ({
   animation: `heroFloat ${4 + delay}s ease-in-out ${delay * 0.6}s infinite`,
 });
 

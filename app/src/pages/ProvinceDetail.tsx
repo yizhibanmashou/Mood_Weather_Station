@@ -32,10 +32,10 @@ export function ProvinceDetail({ data, initialProvince }: ProvinceDetailProps) {
     prevInitialRef.current = initialProvince;
   }, [initialProvince, provinces]);
 
-  const vector = vectorForProvince(data, province);
-  const weeks = provinceWeeks(data, province);
+  const vector = useMemo(() => vectorForProvince(data, province), [data, province]);
+  const weeks = useMemo(() => provinceWeeks(data, province), [data, province]);
 
-  const examples = data.postExamples.provinces[province]?.[emotion] ?? [];
+  const examples = useMemo(() => data.postExamples.provinces[province]?.[emotion] ?? [], [data, province, emotion]);
 
   // Get top 3 emotions for default display
   const topEmotions = useMemo(() => {

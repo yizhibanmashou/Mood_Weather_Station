@@ -154,6 +154,13 @@ export function pcaProvinceScatter(vectors: ProvinceVector[]) {
   }));
 }
 
+/** Find which emotion has the highest mean in a row (supports both ProvinceVector and ProvinceWeek). */
+export function getDominantEmotion<T extends Record<string, number>>(row: T, keyPrefix = ""): EmotionKey {
+  return EMOTIONS.reduce((best, e) =>
+    Number(row[`${keyPrefix}${e}_mean` as keyof T] ?? 0) > Number(row[`${keyPrefix}${best}_mean` as keyof T] ?? 0) ? e : best
+  , "neutral" as EmotionKey);
+}
+
 export function clusterSummaries(vectors: ProvinceVector[], labels: ClusterLabel[]) {
   const labelMap = new Map(labels.map((row) => [row.province, row.cluster_label]));
   const groups = new Map<number, ProvinceVector[]>();

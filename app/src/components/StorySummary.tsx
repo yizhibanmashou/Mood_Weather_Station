@@ -1,5 +1,6 @@
 import type { NationalWeek, ProvinceVector } from "../types";
-import { EMOTIONS, EMOTION_META, type EmotionKey } from "../config";
+import { EMOTION_META, type EmotionKey } from "../config";
+import { getDominantEmotion } from "../utils/analytics";
 import { dateWeekToShortRange } from "../utils/dateUtils";
 
 interface StorySummaryProps {
@@ -14,13 +15,6 @@ function getTrendText(current: number, previous: number): string {
   if (delta > -0.02) return "基本稳定";
   if (delta > -0.05) return "小幅下降";
   return "明显下降";
-}
-
-function getDominantEmotion(row: NationalWeek): EmotionKey {
-  return EMOTIONS.reduce((best, e) => {
-    return (row[`${e}_mean` as keyof NationalWeek] as number) >
-      (row[`${best}_mean` as keyof NationalWeek] as number) ? e : best;
-  }, "neutral" as EmotionKey);
 }
 
 function getMostVolatileProvince(vectors: ProvinceVector[]): string | null {
