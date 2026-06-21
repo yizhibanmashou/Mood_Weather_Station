@@ -12,6 +12,8 @@ import re
 import sys
 import time
 import shutil
+import signal
+import random
 from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
@@ -59,6 +61,19 @@ OUTPUT_REQUIRED_COLS = SOURCE_REQUIRED_COLS + EMOTION_KEYS
 LOG_PATH = TMP_DIR / "02_labeling_log.json"
 FAILED_PATH = TMP_DIR / "02_labeling_failed.csv"
 client = None
+INTERRUPTED = False
+
+
+def _handle_interrupt(signum, frame):
+    """Graceful shutdown on Ctrl+C — checkpoint is preserved for resume."""
+    global INTERRUPTED
+    print("\n[WARN] Interrupted by user. Checkpoint saved in tmp. Resume with --mode <same_mode>.")
+    INTERRUPTED = True
+    sys.exit(130)
+
+
+signal.signal(signal.SIGINT, _handle_interrupt)
+signal.signal(signal.SIGTERM, _handle_interrupt)
 
 
 def get_client():
@@ -176,8 +191,8 @@ def run_dry_run(df):
         "temperature": TEMPERATURE,
         "prompt_version": PROMPT_VERSION,
     }
-    json.dump(est, open(TMP_DIR / "02_cost_estimate.json", "w", encoding="utf-8"),
-              indent=2, ensure_ascii=False)
+    with open(TMP_DIR / "02_cost_estimate.json", "w", encoding="utf-8") as _f:
+        json.dump(est, _f, indent=2, ensure_ascii=False)
     print(f"  [OK] Cost estimate saved to tmp/02_cost_estimate.json")
     return est
 
@@ -200,7 +215,8 @@ def label_dataset(df, mode, output_path):
     df_to_label["post_id"] = df_to_label["post_id"].astype(str)
     texts = df_to_label["content_clean"].tolist()
     post_ids = df_to_label["post_id"].tolist()
-    row_lookup = {str(row["post_id"]): row.to_dict() for _, row in df_to_label.iterrows()}
+    row_lookup = df_to_label.set_index("post_id").to_dict(orient="index")
+    row_lookup = {str(k): v for k, v in row_lookup.items()}
 
     # Check checkpoint
     existing = set()
@@ -284,7 +300,12 @@ def label_dataset(df, mode, output_path):
                 time.sleep(0.5)
             except Exception as e:
                 log_entries.append({"batch": batch_num, "error": str(e)[:200]})
-                time.sleep(2)
+                # Exponential backoff with jitter for rate limits
+                wait = (2 ** attempt) + random.uniform(0, 0.5)
+                if "429" in str(e) or "rate" in str(e).lower():
+                    wait = max(wait, 10.0)
+                print(f"  [WARN] Batch {batch_num} attempt {attempt+1} failed, retrying in {wait:.1f}s: {str(e)[:80]}")
+                time.sleep(wait)
 
         if not success:
             for pid in to_label_ids:
@@ -357,19 +378,20 @@ def label_dataset(df, mode, output_path):
 
     # Save logs
     log_path = LOG_PATH
-    json.dump({
-        "mode": mode,
-        "total_labeled": len(existing),
-        "total_batches": total_batches,
-        "usage": total_usage,
-        "errors": log_entries,
-        "model": MODEL,
-        "base_url": BASE_URL,
-        "batch_size": BATCH_SIZE,
-        "temperature": TEMPERATURE,
-        "prompt_version": PROMPT_VERSION,
-        "timestamp": datetime.now().isoformat(),
-    }, open(log_path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+    with open(log_path, "w", encoding="utf-8") as _f:
+        json.dump({
+            "mode": mode,
+            "total_labeled": len(existing),
+            "total_batches": total_batches,
+            "usage": total_usage,
+            "errors": log_entries,
+            "model": MODEL,
+            "base_url": BASE_URL,
+            "batch_size": BATCH_SIZE,
+            "temperature": TEMPERATURE,
+            "prompt_version": PROMPT_VERSION,
+            "timestamp": datetime.now().isoformat(),
+        }, _f, indent=2, ensure_ascii=False)
 
     if failed_entries:
         failed_path = FAILED_PATH
