@@ -26,15 +26,7 @@ POST_MONTHS = [f"2020-{m:02d}" for m in range(1, 13)] + ["2019-12"]
 REQUIRED_POST_COLS = ["_id", "user_id", "created_at", "content"]
 REQUIRED_USER_COLS = ["user_id", "province"]
 REQUIRED_SMP_COLS = ["id", "content", "label"]
-VALID_PROVINCES = {
-    "北京", "天津", "上海", "重庆",
-    "河北", "山西", "辽宁", "吉林", "黑龙江",
-    "江苏", "浙江", "安徽", "福建", "江西", "山东",
-    "河南", "湖北", "湖南", "广东", "广西", "海南",
-    "四川", "贵州", "云南", "西藏",
-    "陕西", "甘肃", "青海", "宁夏", "新疆",
-    "内蒙古", "香港", "澳门", "台湾",
-}
+from _config import VALID_PROVINCES
 
 
 def check_files():

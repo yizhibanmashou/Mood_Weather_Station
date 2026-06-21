@@ -22,16 +22,7 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 TMP_DIR = ROOT / "tmp"
 ANALYSIS_DIR = ROOT / "analysis"
 
-EMOTION_KEYS = ["joy", "sadness", "anger", "fear", "surprise", "neutral"]
-VALID_PROVINCES = {
-    "北京", "天津", "上海", "重庆",
-    "河北", "山西", "辽宁", "吉林", "黑龙江",
-    "江苏", "浙江", "安徽", "福建", "江西", "山东",
-    "河南", "湖北", "湖南", "广东", "广西", "海南",
-    "四川", "贵州", "云南", "西藏",
-    "陕西", "甘肃", "青海", "宁夏", "新疆",
-    "内蒙古", "香港", "澳门", "台湾",
-}
+from _config import EMOTION_KEYS, VALID_PROVINCES
 
 PYTHON = sys.executable
 

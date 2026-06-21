@@ -20,19 +20,11 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 ANALYSIS_DIR = ROOT / "analysis"
 TMP_DIR = ROOT / "tmp"
 
-EMOTION_KEYS = ["joy", "sadness", "anger", "fear", "surprise", "neutral"]
+from _config import EMOTION_KEYS, VALID_PROVINCES
+
 EMOTION_LABELS = ["喜悦", "悲伤", "愤怒", "恐惧", "惊讶", "中性"]
 EMOTION_CN = dict(zip(EMOTION_KEYS, EMOTION_LABELS))
 MIN_POSTS_RELIABLE = int(os.getenv("MIN_POSTS_RELIABLE", "30"))
-VALID_PROVINCES = {
-    "北京", "天津", "上海", "重庆",
-    "河北", "山西", "辽宁", "吉林", "黑龙江",
-    "江苏", "浙江", "安徽", "福建", "江西", "山东",
-    "河南", "湖北", "湖南", "广东", "广西", "海南",
-    "四川", "贵州", "云南", "西藏",
-    "陕西", "甘肃", "青海", "宁夏", "新疆",
-    "内蒙古", "香港", "澳门", "台湾",
-}
 
 # WordCloud font — try common Chinese font paths
 FONT_CANDIDATES = [
@@ -59,93 +51,58 @@ def compute_aggregations(df):
 
     province_df = df[df["province"].isin(VALID_PROVINCES)].copy()
 
-    # Weekly x province
-    weekly = province_df.groupby(["date_week", "province"]).agg(
-        total_posts=("post_id", "count"),
-        avg_word_count=("word_count", "mean"),
-        joy_mean=("joy", "mean"),
-        sadness_mean=("sadness", "mean"),
-        anger_mean=("anger", "mean"),
-        fear_mean=("fear", "mean"),
-        surprise_mean=("surprise", "mean"),
-        neutral_mean=("neutral", "mean"),
-        joy_std=("joy", "std"),
-        sadness_std=("sadness", "std"),
-        anger_std=("anger", "std"),
-        fear_std=("fear", "std"),
-        surprise_std=("surprise", "std"),
-        neutral_std=("neutral", "std"),
-    ).reset_index()
+    # Build reusable aggregation dicts
+    EMOTION_MEAN_AGGS = {f"{k}_mean": (k, "mean") for k in EMOTION_KEYS}
+    EMOTION_STD_AGGS = {f"{k}_std": (k, "std") for k in EMOTION_KEYS}
+    FULL_WEEKLY_AGGS = {"total_posts": ("post_id", "count"), "avg_word_count": ("word_count", "mean")}
+    FULL_WEEKLY_AGGS.update(EMOTION_MEAN_AGGS)
+    FULL_WEEKLY_AGGS.update(EMOTION_STD_AGGS)
+    MONTHLY_AGGS = {"total_posts": ("post_id", "count")}
+    MONTHLY_AGGS.update(EMOTION_MEAN_AGGS)
+    MONTHLY_AGGS["joy_std"] = ("joy", "std")
+    MONTHLY_AGGS["fear_std"] = ("fear", "std")
+    MONTHLY_AGGS["emotional_intensity"] = ("neutral", lambda x: 1 - x.mean())
+    NATIONAL_AGGS = FULL_WEEKLY_AGGS.copy()
+    NATIONAL_AGGS["emotional_intensity"] = ("neutral", lambda x: 1 - x.mean())
+    VECTOR_AGGS = {f"{k}_mean_all": (k, "mean") for k in EMOTION_KEYS}
+    VECTOR_AGGS["total_posts_all"] = ("post_id", "count")
+    VECTOR_AGGS["emotional_intensity_mean"] = ("neutral", lambda x: 1 - x.mean())
+    VECTOR_AGGS["fear_variance"] = ("fear", "var")
+    VECTOR_AGGS["joy_variance"] = ("joy", "var")
 
-    emotion_means = [f"{k}_mean" for k in EMOTION_KEYS]
-    weekly["dominant_emotion_key"] = weekly[emotion_means].idxmax(axis=1).str.replace("_mean", "")
-    weekly["dominant_emotion"] = weekly["dominant_emotion_key"].map(EMOTION_CN)
-    weekly["dominant_score"] = weekly[emotion_means].max(axis=1)
-    weekly["positive_index"] = weekly["joy_mean"] / (
-        weekly["sadness_mean"] + weekly["anger_mean"] + weekly["fear_mean"] + 0.01
-    )
-    weekly["emotional_intensity"] = 1 - weekly["neutral_mean"]
-    weekly["fear_joy_ratio"] = weekly["fear_mean"] / (weekly["joy_mean"] + 0.01)
+    def _add_derived_cols(df_in, emotion_col_prefix="", include_positive=True, include_intensity=True):
+        """Add dominant emotion, positive_index, emotional_intensity to a panel DataFrame."""
+        df_out = df_in.copy()
+        cols = [f"{emotion_col_prefix}{k}_mean" for k in EMOTION_KEYS] if emotion_col_prefix else [f"{k}_mean" for k in EMOTION_KEYS]
+        df_out["dominant_emotion_key"] = df_out[cols].idxmax(axis=1).str.replace("_mean", "").replace(f"{emotion_col_prefix}", "", regex=False)
+        df_out["dominant_emotion"] = df_out["dominant_emotion_key"].map(EMOTION_CN)
+        df_out["dominant_score"] = df_out[cols].max(axis=1)
+        if include_positive and "joy_mean" in df_out.columns:
+            df_out["positive_index"] = df_out["joy_mean"] / (
+                df_out["sadness_mean"] + df_out["anger_mean"] + df_out["fear_mean"] + 0.01
+            )
+        if include_intensity and "neutral_mean" in df_out.columns:
+            df_out["emotional_intensity"] = 1 - df_out["neutral_mean"]
+        if "fear_mean" in df_out.columns and "joy_mean" in df_out.columns:
+            df_out["fear_joy_ratio"] = df_out["fear_mean"] / (df_out["joy_mean"] + 0.01)
+        return df_out
+
+    # Weekly x province
+    weekly = province_df.groupby(["date_week", "province"]).agg(**FULL_WEEKLY_AGGS).reset_index()
+    weekly = _add_derived_cols(weekly)
     weekly["reliable"] = weekly["total_posts"] >= MIN_POSTS_RELIABLE
 
     # Monthly x province
-    monthly = province_df.groupby(["date_month", "province"]).agg(
-        total_posts=("post_id", "count"),
-        joy_mean=("joy", "mean"),
-        sadness_mean=("sadness", "mean"),
-        anger_mean=("anger", "mean"),
-        fear_mean=("fear", "mean"),
-        surprise_mean=("surprise", "mean"),
-        neutral_mean=("neutral", "mean"),
-        joy_std=("joy", "std"),
-        fear_std=("fear", "std"),
-        emotional_intensity=("neutral", lambda x: 1 - x.mean()),
-    ).reset_index()
-    monthly_means = [f"{k}_mean" for k in EMOTION_KEYS]
-    monthly["dominant_emotion_key"] = monthly[monthly_means].idxmax(axis=1).str.replace("_mean", "")
-    monthly["dominant_emotion"] = monthly["dominant_emotion_key"].map(EMOTION_CN)
-    monthly["dominant_score"] = monthly[monthly_means].max(axis=1)
+    monthly = province_df.groupby(["date_month", "province"]).agg(**MONTHLY_AGGS).reset_index()
+    monthly = _add_derived_cols(monthly)
     monthly["reliable"] = monthly["total_posts"] >= MIN_POSTS_RELIABLE
 
     # National timeline (weekly, no province split)
-    national_weekly = df.groupby("date_week").agg(
-        total_posts=("post_id", "count"),
-        joy_mean=("joy", "mean"),
-        sadness_mean=("sadness", "mean"),
-        anger_mean=("anger", "mean"),
-        fear_mean=("fear", "mean"),
-        surprise_mean=("surprise", "mean"),
-        neutral_mean=("neutral", "mean"),
-        joy_std=("joy", "std"),
-        sadness_std=("sadness", "std"),
-        anger_std=("anger", "std"),
-        fear_std=("fear", "std"),
-        surprise_std=("surprise", "std"),
-        neutral_std=("neutral", "std"),
-        emotional_intensity=("neutral", lambda x: 1 - x.mean()),
-    ).reset_index()
-    national_weekly["dominant_emotion_key"] = (
-        national_weekly[[f"{k}_mean" for k in EMOTION_KEYS]].idxmax(axis=1).str.replace("_mean", "")
-    )
-    national_weekly["dominant_emotion"] = national_weekly["dominant_emotion_key"].map(EMOTION_CN)
-    national_weekly["positive_index"] = national_weekly["joy_mean"] / (
-        national_weekly["sadness_mean"] + national_weekly["anger_mean"] + national_weekly["fear_mean"] + 0.01
-    )
-    national_weekly["fear_joy_ratio"] = national_weekly["fear_mean"] / (national_weekly["joy_mean"] + 0.01)
+    national_weekly = df.groupby("date_week").agg(**NATIONAL_AGGS).reset_index()
+    national_weekly = _add_derived_cols(national_weekly)
 
     # Province vectors (full period)
-    province_vecs = province_df.groupby("province").agg(
-        total_posts_all=("post_id", "count"),
-        joy_mean_all=("joy", "mean"),
-        sadness_mean_all=("sadness", "mean"),
-        anger_mean_all=("anger", "mean"),
-        fear_mean_all=("fear", "mean"),
-        surprise_mean_all=("surprise", "mean"),
-        neutral_mean_all=("neutral", "mean"),
-        emotional_intensity_mean=("neutral", lambda x: 1 - x.mean()),
-        fear_variance=("fear", "var"),
-        joy_variance=("joy", "var"),
-    ).reset_index()
+    province_vecs = province_df.groupby("province").agg(**VECTOR_AGGS).reset_index()
 
     return weekly, monthly, national_weekly, province_vecs
 

@@ -5,7 +5,6 @@ Load fine-tuned model and label new text/CSV.
 import sys
 import json
 from pathlib import Path
-import importlib.util
 
 import torch
 import pandas as pd
@@ -13,7 +12,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent.parent
 MODEL_DIR = ROOT / "models" / "emotion_model"
 
-EMOTION_KEYS = ["joy", "sadness", "anger", "fear", "surprise", "neutral"]
+from _config import EMOTION_KEYS
 
 
 def get_device():
@@ -25,7 +24,8 @@ def get_device():
 
 
 def load_model(device):
-    model_mod = _load_local("13_emotion_model")
+    from _utils import load_local_module
+    model_mod = load_local_module("13_emotion_model")
     from transformers import AutoTokenizer
 
     model = model_mod.EmotionClassifier(model_name=str(MODEL_DIR), dropout=0.1)
@@ -36,14 +36,6 @@ def load_model(device):
     model.eval()
     tokenizer = AutoTokenizer.from_pretrained(str(MODEL_DIR))
     return model, tokenizer
-
-
-def _load_local(name):
-    path = ROOT / "scripts" / f"{name}.py"
-    spec = importlib.util.spec_from_file_location(name, path)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
 
 
 @torch.no_grad()

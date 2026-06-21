@@ -17,12 +17,14 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(ROOT / ".env")
 
-# Ensure Intel XPU runtime DLLs are on PATH
-_xpu_base = Path(os.getenv("EMOTION_XPU_ENV", r"D:\anaconda\envs\emotion_xpu"))
-for _sub in ["", "Library\\bin", "Scripts"]:
-    _p = str(_xpu_base / _sub) if _sub else str(_xpu_base)
-    if _p not in os.environ["PATH"]:
-        os.environ["PATH"] = _p + ";" + os.environ["PATH"]
+# Ensure Intel XPU runtime DLLs are on PATH (if EMOTION_XPU_ENV is set)
+_xpu_base = os.getenv("EMOTION_XPU_ENV", "")
+if _xpu_base:
+    _xpu_path = Path(_xpu_base)
+    for _sub in ["", "Library\\bin", "Scripts"]:
+        _p = str(_xpu_path / _sub) if _sub else str(_xpu_path)
+        if _p not in os.environ["PATH"]:
+            os.environ["PATH"] = _p + os.pathsep + os.environ["PATH"]
 
 os.environ.setdefault("HF_HUB_OFFLINE", "1")
 
@@ -38,16 +40,8 @@ POSTS_PER_TOPIC = 20     # posts per topic (total = TOPICS_TO_USE * POSTS_PER_TO
 BATCH_SIZE = 10          # DeepSeek API batch size
 DRY_RUN = False          # if True, skip API calls, use demo data
 
-EMOTION_KEYS = ["joy", "sadness", "anger", "fear", "surprise", "neutral"]
-VALID_PROVINCES = [
-    "北京", "天津", "上海", "重庆",
-    "河北", "山西", "辽宁", "吉林", "黑龙江",
-    "江苏", "浙江", "安徽", "福建", "江西", "山东",
-    "河南", "湖北", "湖南", "广东", "广西", "海南",
-    "四川", "贵州", "云南", "西藏",
-    "陕西", "甘肃", "青海", "宁夏", "新疆",
-    "内蒙古", "香港", "澳门", "台湾",
-]
+from _config import EMOTION_KEYS, VALID_PROVINCES
+VALID_PROVINCES_LIST = sorted(VALID_PROVINCES)  # list needed for random.choice
 
 # ── UAPIS ──────────────────────────────────────────────────────
 UAPIS_API_KEY = os.getenv("UAPIS_API_KEY", "")
@@ -179,7 +173,7 @@ def _demo_posts(topic_title, n):
     ]
     results = []
     for i in range(min(n, len(demos))):
-        prov = random.choice(VALID_PROVINCES)
+        prov = random.choice(VALID_PROVINCES_LIST)
         results.append({
             "content_clean": demos[i],
             "province": prov,
@@ -199,12 +193,8 @@ def score_with_local_model(posts, model=None, tokenizer=None, device=None):
 
     if model is None or tokenizer is None:
         # Load model once
-        import importlib.util
-        sys.path.insert(0, str(ROOT / "scripts"))
-        spec = importlib.util.spec_from_file_location("emotion_model",
-            ROOT / "scripts" / "13_emotion_model.py")
-        model_mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(model_mod)
+        from _utils import load_local_module
+        model_mod = load_local_module("13_emotion_model")
         from transformers import AutoTokenizer
 
         MODEL_DIR = ROOT / "models" / "emotion_model"
@@ -346,13 +336,9 @@ def main():
     # Step 3: Score with local model (load once, score all)
     print(f"\n[3/4] Loading emotion model and scoring {total_generated} posts...")
     import torch
-    import importlib.util
     from transformers import AutoTokenizer
-    sys.path.insert(0, str(ROOT / "scripts"))
-    _spec = importlib.util.spec_from_file_location("emotion_model",
-        ROOT / "scripts" / "13_emotion_model.py")
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
+    from _utils import load_local_module
+    _mod = load_local_module("13_emotion_model")
     MODEL_DIR = ROOT / "models" / "emotion_model"
     _device = torch.device("xpu") if (hasattr(torch, "xpu") and torch.xpu.is_available()) else torch.device("cpu")
     _model = _mod.EmotionClassifier(model_name=str(MODEL_DIR), dropout=0.1)
